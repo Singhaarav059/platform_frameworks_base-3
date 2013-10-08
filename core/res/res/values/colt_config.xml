@@ -137,4 +137,7 @@
     <!-- signification move threshold - if stays below will trigger action -->
     <integer name="nav_gesture_move_threshold">4</integer>
 
+   <!-- True if the gesture service should be started at system start -->
+    <bool name="config_enableGestureService">false</bool>
+
 </resources>
