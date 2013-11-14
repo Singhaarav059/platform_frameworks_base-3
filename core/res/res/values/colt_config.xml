@@ -121,4 +121,10 @@
 
     <!-- Whether the device has outdated qti-telephony-common.jar -->
     <bool name="config_oldQtiTelephony">true</bool>
+
+    <!-- EdgeGesture service -->
+     <java-symbol type="dimen" name="edge_gesture_trigger_distance" />
+     <java-symbol type="dimen" name="edge_gesture_perpendicular_distance" />
+     <java-symbol type="dimen" name="edge_gesture_trigger_thickness" />
+
 </resources>
