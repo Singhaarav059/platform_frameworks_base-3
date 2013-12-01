@@ -5462,6 +5462,15 @@ public final class Settings {
         public static final String SCREEN_STATE_TWOG = "screen_state_twog";
 
         /**
+         * Whether to mute annoying notifications
+         * @hide
+         */
+        public static final String MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD =
+                "mute_annoying_notifications_threshold";
+        /** @hide */
+        public static final Validator MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD_VALIDATOR = ANY_STRING_VALIDATOR;
+
+        /**
          * @hide
          */
         public static final String SCREEN_STATE_GPS = "screen_state_gps";
@@ -6293,6 +6302,7 @@ public final class Settings {
 	    PRIVATE_SETTINGS.add(LOCK_HIDE_STATUS_BAR);
 	    PRIVATE_SETTINGS.add(ONE_HAND_MODE_ENABLED);
 	    PRIVATE_SETTINGS.add(SCREENRECORD_QUALITY_MODE);
+	    PRIVATE_SETTINGS.add(MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD);
         }
 
         /**
@@ -6460,6 +6470,7 @@ public final class Settings {
             VALIDATORS.put(HIDE_NOTCH, HIDE_NOTCH_VALIDATOR);
             VALIDATORS.put(ONE_HAND_MODE_ENABLED,ONE_HAND_MODE_ENABLED_VALIDATOR);
             VALIDATORS.put(SCREENRECORD_QUALITY_MODE,SCREENRECORD_QUALITY_MODE_VALIDATOR);
+	    VALIDATORS.put(MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD, MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD_VALIDATOR);
         }
 
         /**
