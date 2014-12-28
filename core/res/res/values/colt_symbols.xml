@@ -292,4 +292,8 @@
 
    <!-- Ambient display music ticker -->
    <java-symbol type="bool" name="config_canForceDozeNotifications" />   
+
+   <!-- Screenrecord -->
+   <java-symbol type="bool" name="config_enableScreenrecordChord" />
+
 </resources>
