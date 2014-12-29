@@ -116,7 +116,6 @@ import com.android.systemui.volume.SystemUIInterpolators.LogAccelerateInterpolat
 import java.util.ArrayList;
 import java.util.List;
 
-import com.android.systemui.colt.ImageHelper;
 import com.android.internal.util.colt.ImageHelper;;
 
 /**
