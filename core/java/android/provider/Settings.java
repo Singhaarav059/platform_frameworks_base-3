@@ -5147,6 +5147,17 @@ public final class Settings {
         public static final String ENABLE_GAMING_MODE = "enable_gaming_mode";
 
         /**
+         * Toast icon
+         * @hide
+         */
+        public static final String TOAST_ICON = "toast_icon";
+
+        /** @hide */
+        private static final Validator TOAST_ICON_VALIDATOR =
+              BOOLEAN_VALIDATOR;
+
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -5228,6 +5239,7 @@ public final class Settings {
             INCREASING_RING_RAMP_UP_TIME,
             STATUSBAR_SHOW_WIFI_ACTIVITY,
             USE_OLD_MOBILETYPE,
+            TOAST_ICON,
         };
 
         /**
@@ -5372,6 +5384,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD);
             PRIVATE_SETTINGS.add(STATUS_BAR_LOGO);
             PRIVATE_SETTINGS.add(USE_OLD_MOBILETYPE);
+	    PRIVATE_SETTINGS.add(TOAST_ICON);
         }
 
 
@@ -5496,6 +5509,7 @@ public final class Settings {
             VALIDATORS.put(INCREASING_RING_RAMP_UP_TIME, INCREASING_RING_RAMP_UP_TIME_VALIDATOR);
             VALIDATORS.put(STATUSBAR_SHOW_WIFI_ACTIVITY, STATUSBAR_SHOW_WIFI_ACTIVITY_VALIDATOR);
             VALIDATORS.put(USE_OLD_MOBILETYPE, USE_OLD_MOBILETYPE_VALIDATOR);
+            VALIDATORS.put(TOAST_ICON,TOAST_ICON_VALIDATOR);
         }
 
         /**
