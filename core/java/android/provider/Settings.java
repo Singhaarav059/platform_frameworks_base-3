@@ -4674,7 +4674,6 @@ public final class Settings {
         public static final String LOCKSCREEN_CAMERA_ICON_COLOR = "lockscreen_camera_icon_color";
 
         /**
-         * Change the color of the lockscreen bottom phone shortcut
          *
          * @hide
          */
@@ -4682,6 +4681,20 @@ public final class Settings {
 
         /**
          * Change the color of the lockscreen lock icon
+	/**
+         * Whether to display clock while recents are in full screen
+         * @hide
+         */
+        public static final String RECENTS_FULL_SCREEN_CLOCK = "recents_full_screen_clock";
+
+        /**
+         * Whether to display clock while recents are in full screen
+         * @hide
+         */
+        public static final String RECENTS_FULL_SCREEN_DATE = "recents_full_screen_date";
+
+        /**
+         * Change the color of the lockscreen bottom phone shortcut
          *
          * @hide
          */
