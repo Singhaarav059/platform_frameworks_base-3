@@ -4198,6 +4198,12 @@ public final class Settings {
         /** Beginning of ABC system settings**/
 
         /**
+         * Whether the phone volume up / down effect should be played
+         * @hide
+         */
+        public static final String VOLUME_ADJUST_SOUNDS_ENABLED = "volume_adjust_sounds_enabled";
+
+        /**
          * Whether to show the battery info on the lockscreen while charging
          * @hide
          */
