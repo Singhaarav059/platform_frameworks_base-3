@@ -6296,6 +6296,16 @@ public final class Settings {
          */
         public static final String FOD_ANIM = "fod_anim";
 
+       /**
+        * Defines the global heads up notification snooze
+        * @hide
+        */
+        public static final String HEADS_UP_NOTIFICATION_SNOOZE = "heads_up_notification_snooze";
+
+        /** @hide */
+        private static final Validator HEADS_UP_NOTIFICATION_SNOOZE_VALIDATOR =
+              new SettingsValidators.InclusiveIntegerRangeValidator(0, 1200000);
+
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
@@ -6454,6 +6464,7 @@ public final class Settings {
             TRANSPARENT_POWER_DIALOG_DIM,
             ANIM_TILE_STYLE,
             ANIM_TILE_DURATION,
+            HEADS_UP_NOTIFICATION_SNOOZE,
         };
 
         /**
@@ -6684,6 +6695,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(TRANSPARENT_POWER_DIALOG_DIM);
             PRIVATE_SETTINGS.add(ANIM_TILE_STYLE);
             PRIVATE_SETTINGS.add(ANIM_TILE_DURATION);
+            PRIVATE_SETTINGS.add(HEADS_UP_NOTIFICATION_SNOOZE);
         }
 
         /**
@@ -6890,6 +6902,7 @@ public final class Settings {
             VALIDATORS.put(TRANSPARENT_POWER_DIALOG_DIM,TRANSPARENT_POWER_DIALOG_DIM_VALIDATOR);
             VALIDATORS.put(ANIM_TILE_STYLE,ANIM_TILE_STYLE_VALIDATOR);
             VALIDATORS.put(ANIM_TILE_DURATION,ANIM_TILE_DURATION_VALIDATOR);
+            VALIDATORS.put(HEADS_UP_NOTIFICATION_SNOOZE,HEADS_UP_NOTIFICATION_SNOOZE_VALIDATOR);
         }
 
         /**
