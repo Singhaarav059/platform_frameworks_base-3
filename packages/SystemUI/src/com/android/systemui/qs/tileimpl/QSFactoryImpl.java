@@ -56,6 +56,7 @@ import com.android.systemui.qs.tiles.RebootTile;
 import com.android.systemui.qs.tiles.RotationLockTile;
 import com.android.systemui.qs.tiles.SmartPixelsTile;
 import com.android.systemui.qs.tiles.SoundSearchTile;
+import com.android.systemui.qs.tiles.SyncTile;
 import com.android.systemui.qs.tiles.UiModeNightTile;
 import com.android.systemui.qs.tiles.SoundTile;
 import com.android.systemui.qs.tiles.ScreenshotTile;
@@ -113,6 +114,7 @@ public class QSFactoryImpl implements QSFactory {
     private final Provider<ImmersiveTile> mImmersiveTileProvider;
     private final Provider<GamingModeTile> mGamingModeTileProvider;
     private final Provider<FPSInfoTile> mFPSInfoTileProvider;
+    private final Provider<SyncTile> mSyncTileProvider;
 
     private QSTileHost mHost;
 
@@ -154,7 +156,8 @@ public class QSFactoryImpl implements QSFactory {
             Provider<DataSwitchTile> dataSwitchTileProvider,
             Provider<ImmersiveTile> immersiveTileProvider,
             Provider<GamingModeTile> gamingModeTileProvider,
-            Provider<FPSInfoTile> fpsInfoTileProvider) {
+            Provider<FPSInfoTile> fpsInfoTileProvider,
+            Provider<SyncTile> syncTileProvider) {
         mWifiTileProvider = wifiTileProvider;
         mBluetoothTileProvider = bluetoothTileProvider;
         mCellularTileProvider = cellularTileProvider;
@@ -193,6 +196,7 @@ public class QSFactoryImpl implements QSFactory {
         mImmersiveTileProvider = immersiveTileProvider;
         mGamingModeTileProvider = gamingModeTileProvider;
         mFPSInfoTileProvider = fpsInfoTileProvider;
+        mSyncTileProvider = syncTileProvider;
     }
 
     public void setHost(QSTileHost host) {
@@ -284,6 +288,8 @@ public class QSFactoryImpl implements QSFactory {
                 return mGamingModeTileProvider.get();
             case "fpsinfo":
                 return mFPSInfoTileProvider.get();
+            case "sync":
+                return mSyncTileProvider.get();
         }
 
         // Intent tiles.
