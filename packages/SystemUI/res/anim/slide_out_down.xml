@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-     Copyright 2018 The ColtOS Project
+<!-- Copyright (C) 2009 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -14,16 +13,11 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources>
 
-    <!-- Pure Tuner Theme-->
-    <style name="ExTunerSettings" parent="@android:style/Theme.DeviceDefault.Settings">
-        <item name="preferenceTheme">@style/TunerPreferenceTheme</item>
-    </style>
+<translate
+    xmlns:android="http://schemas.android.com/apk/res/android"
 
-    <style name="TextAppearance.StatusBar.RecentsN" parent="@*android:style/TextAppearance.StatusBar.Icon">
-         <item name="android:textSize">16dp</item>
-         <item name="android:fontFamily">sans-serif-light</item>
-         <item name="android:textStyle">normal</item>
-     </style>
-</resources>
+    android:fromYDelta="0"
+    android:toYDelta="100%p"
+
+    android:duration="@android:integer/config_longAnimTime" />
