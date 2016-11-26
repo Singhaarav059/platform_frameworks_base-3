@@ -36,4 +36,6 @@
     <!-- Custom Carrier Label -->
     <color name="status_bar_carrier_color">#FFFFFFFF</color>
 
+    <!-- Navbar icon Colors -->
+    <color name="dark_nav_bar">#ff585858</color>
 </resources>

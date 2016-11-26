@@ -35,4 +35,6 @@
     -->
     <integer name="hardware_ui_align">53</integer>
 
+    <!-- Allow Opa (Pixel navbar) layout -->
+    <bool name="config_allowOpaLayout">true</bool>
 </resources>
