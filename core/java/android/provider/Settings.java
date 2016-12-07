@@ -5000,6 +5000,22 @@ public final class Settings {
          */
         public static final String USE_EDGE_SERVICE_FOR_GESTURES = "edge_service_for_gestures";
 
+	/**
+         * Whether the proximity sensor will adjust call to speaker
+         */
+        public static final String PROXIMITY_AUTO_SPEAKER = "proximity_auto_speaker";
+
+        /**
+         * Time delay to activate speaker after proximity sensor triggered
+         */
+        public static final String PROXIMITY_AUTO_SPEAKER_DELAY = "proximity_auto_speaker_delay";
+
+        /**
+         * Whether the proximity sensor will adjust call to speaker,
+         * only while in call (not while ringing on outgoing call)
+         */
+        public static final String PROXIMITY_AUTO_SPEAKER_INCALL_ONLY = "proximity_auto_speaker_incall_only";
+
         /**
          * Whether to show the battery bar
          * @hide
@@ -5581,6 +5597,9 @@ public final class Settings {
 	    PRIVATE_SETTINGS.add(THEMING_SETTINGS_DASHBOARD_ICONS);
             PRIVATE_SETTINGS.add(LOCK_QS_DISABLED);
 	    PRIVATE_SETTINGS.add(STATUS_BAR_BRIGHTNESS_CONTROL);
+            PRIVATE_SETTINGS.add(PROXIMITY_AUTO_SPEAKER);
+            PRIVATE_SETTINGS.add(PROXIMITY_AUTO_SPEAKER_DELAY);
+            PRIVATE_SETTINGS.add(PROXIMITY_AUTO_SPEAKER_INCALL_ONLY);
         }
 
 
