@@ -5897,11 +5897,20 @@ public final class Settings {
         /** @hide */
         public static final Validator LIVE_DISPLAY_HINTED_VALIDATOR =
                 new SettingsValidators.InclusiveIntegerRangeValidator(-3, 1);
-	
+
 	/**
          * @hide
          */
         public static final String SMART_CHARGING = "smart_charging";
+
+        /**
+          * enable or disable single handed mode
+          * @hide
+          */
+        public static final String ONE_HAND_MODE_ENABLED = "one_hand_mode_enabled";
+
+        /** @hide */
+        private static final Validator ONE_HAND_MODE_ENABLED_VALIDATOR = BOOLEAN_VALIDATOR;
 
         /**
          * @hide
@@ -6014,7 +6023,8 @@ public final class Settings {
             OMNI_STATUS_BAR_CUSTOM_HEADER_IMAGE,
             OMNI_STATUS_BAR_FILE_HEADER_IMAGE,
             FORCE_FULLSCREEN_CUTOUT_APPS,
-	    HIDE_NOTCH
+	    HIDE_NOTCH,
+            ONE_HAND_MODE_ENABLED,
         };
 
         /**
@@ -6197,6 +6207,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(LIVE_DISPLAY_HINTED);
             PRIVATE_SETTINGS.add(HIDE_NOTCH);
 	    PRIVATE_SETTINGS.add(LOCK_HIDE_STATUS_BAR);
+	    PRIVATE_SETTINGS.add(ONE_HAND_MODE_ENABLED);
         }
 
         /**
@@ -6362,6 +6373,7 @@ public final class Settings {
             VALIDATORS.put(DISPLAY_PICTURE_ADJUSTMENT, DISPLAY_PICTURE_ADJUSTMENT_VALIDATOR);
             VALIDATORS.put(LIVE_DISPLAY_HINTED, LIVE_DISPLAY_HINTED_VALIDATOR);
             VALIDATORS.put(HIDE_NOTCH, HIDE_NOTCH_VALIDATOR);
+            VALIDATORS.put(ONE_HAND_MODE_ENABLED,ONE_HAND_MODE_ENABLED_VALIDATOR);
         }
 
         /**
