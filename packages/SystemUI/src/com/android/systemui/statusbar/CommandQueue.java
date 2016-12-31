@@ -100,6 +100,7 @@ public class CommandQueue extends IStatusBar.Stub {
     private static final int MSG_TOGGLE_FLASHLIGHT             = 50 << MSG_SHIFT;
     private static final int MSG_TOGGLE_NAVIGATION_EDITOR      = 51 << MSG_SHIFT;
     private static final int MSG_DISPATCH_NAVIGATION_EDITOR_RESULTS = 52 << MSG_SHIFT;
+    private static final int MSG_RESTART_UI                    = 53 << MSG_SHIFT;
     private static final int MSG_TOGGLE_SETTINGS_PANEL                  = 100 << MSG_SHIFT;
 
     public static final int FLAG_EXCLUDE_NONE = 0;
@@ -181,6 +182,8 @@ public class CommandQueue extends IStatusBar.Stub {
         default void toggleFlashlight() {}
         default void toggleNavigationEditor() {}
         default void dispatchNavigationEditorResults(Intent intent) {}
+
+        default void restartUI() { }
     }
 
     @VisibleForTesting
@@ -619,6 +622,13 @@ public class CommandQueue extends IStatusBar.Stub {
         }
     }
 
+    public void restartUI() {
+        synchronized (mLock) {
+            mHandler.removeMessages(MSG_RESTART_UI);
+            mHandler.obtainMessage(MSG_RESTART_UI).sendToTarget();
+        }
+    }
+
     private final class H extends Handler {
         private H(Looper l) {
             super(l);
@@ -899,6 +909,11 @@ public class CommandQueue extends IStatusBar.Stub {
                     Intent intent = (Intent) msg.obj;
                     for (int i = 0; i < mCallbacks.size(); i++) {
                         mCallbacks.get(i).dispatchNavigationEditorResults(intent);
+                    }
+                    break;
+                case MSG_RESTART_UI:
+                    for (int i = 0; i < mCallbacks.size(); i++) {
+                        mCallbacks.get(i).restartUI();
                     }
                     break;
             }
