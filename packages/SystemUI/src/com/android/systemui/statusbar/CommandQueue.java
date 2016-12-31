@@ -859,6 +859,13 @@ public class CommandQueue extends IStatusBar.Stub implements CallbackController<
         }
     }
 
+    public void restartUI() {
+        synchronized (mLock) {
+            mHandler.removeMessages(MSG_RESTART_UI);
+            mHandler.obtainMessage(MSG_RESTART_UI).sendToTarget();
+        }
+    }
+
     public void toggleCameraFlash() {
         synchronized (mLock) {
             mHandler.removeMessages(MSG_TOGGLE_CAMERA_FLASH);
@@ -1131,6 +1138,11 @@ public class CommandQueue extends IStatusBar.Stub implements CallbackController<
                         mCallbacks.get(i).onRecentsAnimationStateChanged(msg.arg1 > 0);
 		    }
 		    break;
+                case MSG_RESTART_UI:
+                    for (int i = 0; i < mCallbacks.size(); i++) {
+                        mCallbacks.get(i).restartUI();
+                    }
+                    break;
                 case MSG_TOGGLE_CAMERA_FLASH:
                     for (int i = 0; i < mCallbacks.size(); i++) {
                         mCallbacks.get(i).toggleCameraFlash();

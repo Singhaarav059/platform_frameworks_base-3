@@ -545,6 +545,18 @@ public class StatusBarManagerService extends IStatusBarService.Stub implements D
     }
 
     @Override
+    public void restartUI() {
+        mContext.enforceCallingOrSelfPermission(android.Manifest.permission.RESTART_UI,
+                "StatusBarManagerService");
+        if (mBar != null) {
+            try {
+                mBar.restartUI();
+            } catch (RemoteException ex) {
+            }
+        }
+    }
+
+    @Override
     public void toggleRecentApps() {
         enforceStatusBarService();
 
