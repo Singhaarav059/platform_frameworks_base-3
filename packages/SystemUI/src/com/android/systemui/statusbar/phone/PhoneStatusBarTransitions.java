@@ -31,7 +31,8 @@ public final class PhoneStatusBarTransitions extends BarTransitions {
 
     private final float mIconAlphaWhenOpaque;
 
-    private View mLeftSide, mStatusIcons, mBattery, mCenterClock;
+<<<<<<< HEAD
+    private View mLeftSide, mStatusIcons, mBattery, mCenterClock, mNetworkTraffic;
 
     private View mBatteryBars[] = new View[2];
 
@@ -44,13 +45,13 @@ public final class PhoneStatusBarTransitions extends BarTransitions {
         super(backgroundView, R.drawable.status_background);
         final Resources res = statusBarView.getContext().getResources();
         mIconAlphaWhenOpaque = res.getFraction(R.dimen.status_bar_icon_drawing_alpha, 1, 1);
-
         mLeftSide = statusBarView.findViewById(R.id.status_bar_left_side);
         mStatusIcons = statusBarView.findViewById(R.id.statusIcons);
         mBattery = statusBarView.findViewById(R.id.battery);
         mBatteryBars[0] = statusBarView.findViewById(R.id.battery_bar);
         mBatteryBars[1] = statusBarView.findViewById(R.id.battery_bar_1);
         mCenterClock = statusBarView.findViewById(R.id.center_clock);
+        mNetworkTraffic = mView.findViewById(R.id.networkTraffic);
         applyModeBackground(-1, getMode(), false /*animate*/);
         applyMode(getMode(), false /*animate*/);
     }
@@ -96,7 +97,8 @@ public final class PhoneStatusBarTransitions extends BarTransitions {
                     animateTransitionTo(mBattery, newAlphaBC),
                     animateTransitionTo(mCenterClock, newAlphaBC),
                     animateTransitionTo(mBatteryBars[0], newAlphaBC),
-                    animateTransitionTo(mBatteryBars[1], newAlphaBC)
+                    animateTransitionTo(mBatteryBars[1], newAlphaBC),
+                    animateTransitionTo(mNetworkTraffic, newAlpha)
                     );
             if (isLightsOut(mode)) {
                 anims.setDuration(LIGHTS_OUT_DURATION);
@@ -110,6 +112,8 @@ public final class PhoneStatusBarTransitions extends BarTransitions {
             mBatteryBars[0].setAlpha(newAlphaBC);
             mBatteryBars[1].setAlpha(newAlphaBC);
             mCenterClock.setAlpha(newAlphaBC);
+            mNetworkTraffic.setAlpha(newAlpha);
         }
     }
 }
+
