@@ -34,4 +34,8 @@
 
   <!-- Toast animation -->
   <java-symbol type="style" name="Animation.Toast.Material" />
+
+  <!-- Emergency button in power menu -->
+  <java-symbol type="bool" name="config_showEmergencyButtonInPowerMenu" />
+
 </resources>
