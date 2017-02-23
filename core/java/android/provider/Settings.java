@@ -5292,6 +5292,15 @@ public final class Settings {
         private static final Validator SCREEN_OFF_ANIMATION_VALIDATOR = ANY_INTEGER_VALIDATOR;
 
         /**
+         * @hide
+         */
+        public static final String LOCK_SHOW_STATUS_BAR = "lockscreen_show_status_bar";
+
+        /** @hide */
+        private static final Validator LOCK_SHOW_STATUS_BAR_VALIDATOR =
+               BOOLEAN_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -5399,6 +5408,7 @@ public final class Settings {
 	    OMNI_DOZE_ON_CHARGE,
             NOTIFICATION_GUTS_KILL_APP_BUTTON,
             SCREEN_OFF_ANIMATION,
+            LOCK_SHOW_STATUS_BAR,
         };
 
         /**
@@ -5566,6 +5576,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(NOTIFICATION_GUTS_KILL_APP_BUTTON);
             PRIVATE_SETTINGS.add(SEEK_BAR_BATTERY_CHARGE_LEVEL_SOUND);
             PRIVATE_SETTINGS.add(SCREEN_OFF_ANIMATION);
+            PRIVATE_SETTINGS.add(LOCK_SHOW_STATUS_BAR);
         }
 
         /**
@@ -5713,6 +5724,7 @@ public final class Settings {
             VALIDATORS.put(NOTIFICATION_GUTS_KILL_APP_BUTTON, NOTIFICATION_GUTS_KILL_APP_BUTTON_VALIDATOR);
             VALIDATORS.put(SEEK_BAR_BATTERY_CHARGE_LEVEL_SOUND, SEEK_BAR_BATTERY_CHARGE_LEVEL_SOUND_VALIDATOR);
             VALIDATORS.put(SCREEN_OFF_ANIMATION, SCREEN_OFF_ANIMATION_VALIDATOR);
+            VALIDATORS.put(LOCK_SHOW_STATUS_BAR,LOCK_SHOW_STATUS_BAR_VALIDATOR);
         }
 
         /**
