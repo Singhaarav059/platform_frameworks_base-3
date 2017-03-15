@@ -4532,6 +4532,12 @@ public final class Settings {
          */
         public static final String FORCE_AMBIENT_FOR_MEDIA = "force_ambient_for_media";
 
+
+	/**
+         * @hide
+         */
+        public static final String ROAMING_INDICATOR_ICON = "roaming_indicator_icon";
+
 	 /**
          * Indicates whether ANBI (Accidental navigation button interaction) is enabled.
          *
