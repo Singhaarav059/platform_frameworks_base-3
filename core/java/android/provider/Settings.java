@@ -5327,15 +5327,16 @@ public final class Settings {
         public static final String LISTVIEW_ANIMATION = "listview_animation";
 
         /**
-         * ListView Interpolators
-         * 0 == None
-         * 1 == accelerate_interpolator
-         * 2 == decelerate_interpolator
-         * 3 == accelerate_decelerate_interpolator
-         * 4 == anticipate_interpolator
-         * 5 == overshoot_interpolator
-         * 6 == anticipate_overshoot_interpolator
-         * 7 == bounce_interpolator
+         * Disable expanding quick settings on secure lock screens
+         *
+         * @hide
+         */
+        public static final String LOCK_QS_DISABLED = "lockscreen_qs_disabled";
+
+        private static final Validator LOCK_QS_DISABLED_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
          * @hide
          */
         public static final String LISTVIEW_INTERPOLATOR = "listview_interpolator";
@@ -5425,6 +5426,7 @@ public final class Settings {
             TOAST_ICON,
 	    THEMING_SETTINGS_DASHBOARD_ICONS,
             NOTIFICATION_LIGHT_PULSE,
+            LOCK_QS_DISABLED
         };
 
         /**
@@ -5571,6 +5573,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(USE_OLD_MOBILETYPE);
 	    PRIVATE_SETTINGS.add(TOAST_ICON);
 	    PRIVATE_SETTINGS.add(THEMING_SETTINGS_DASHBOARD_ICONS);
+            PRIVATE_SETTINGS.add(LOCK_QS_DISABLED);
         }
 
 
@@ -5702,6 +5705,7 @@ public final class Settings {
             VALIDATORS.put(DEVICE_FEATURE_SETTINGS, DEVICE_FEATURE_SETTINGS_VALIDATOR);
 	    VALIDATORS.put(THEMING_SETTINGS_DASHBOARD_ICONS, THEMING_SETTINGS_DASHBOARD_ICONS_VALIDATOR);
             VALIDATORS.put(NOTIFICATION_LIGHT_PULSE, BOOLEAN_VALIDATOR);
+            VALIDATORS.put(LOCK_QS_DISABLED, LOCK_QS_DISABLED_VALIDATOR);
         }
 
         /**
