@@ -302,4 +302,7 @@
 
   <!-- Whether device has a physical display cutout -->
   <java-symbol type="bool" name="config_physicalDisplayCutout" />
+
+  <!-- sensor block -->
+   <java-symbol type="array" name="config_blockPackagesSensorDrain" />
 </resources>
