@@ -36,5 +36,9 @@
 
     <!-- Max visible system icons -->
     <integer name="config_maxVisibleStatusIconContainer">6</integer>
+
+    <!-- CPUInfoService temperature sysfs path -->
+    <string name="config_cpuinfoSysTemp" translatable="false"></string>
+
 </resources>
 
