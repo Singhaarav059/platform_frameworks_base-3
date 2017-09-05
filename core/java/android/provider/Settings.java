@@ -4808,6 +4808,33 @@ public final class Settings {
         public static final String NETWORK_TRAFFIC_ARROW = "network_traffic_arrow";
 
         /**
+         * Whether the phone vibrates on call connect
+         * @hide
+         */
+        public static final String VIBRATE_ON_CONNECT = "vibrate_on_connect";
+        /** @hide */
+        private static final Validator VIBRATE_ON_CONNECT_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+         /**
+         * Whether the phone vibrates on call waiting
+         * @hide
+         */
+        public static final String VIBRATE_ON_CALLWAITING = "vibrate_on_callwaiting";
+        /** @hide */
+        private static final Validator VIBRATE_ON_CALLWAITING_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+         /**
+         * Whether the phone vibrates on disconnect
+         * @hide
+         */
+        public static final String VIBRATE_ON_DISCONNECT = "vibrate_on_disconnect";
+        /** @hide */
+        private static final Validator VIBRATE_ON_DISCONNECT_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -4894,6 +4921,9 @@ public final class Settings {
             OMNI_LOCKSCREEN_WEATHER_ENABLED,
             AICP_LOCKSCREEN_WEATHER_STYLE,
 	    OMNI_QS_TILE_TITLE_VISIBILITY,
+            VIBRATE_ON_CONNECT,
+            VIBRATE_ON_CALLWAITING,
+            VIBRATE_ON_DISCONNECT,
         };
 
         /**
@@ -5038,6 +5068,9 @@ public final class Settings {
             PRIVATE_SETTINGS.add(OMNI_LOCKSCREEN_WEATHER_ENABLED);
             PRIVATE_SETTINGS.add(AICP_LOCKSCREEN_WEATHER_STYLE);
 	    PRIVATE_SETTINGS.add(OMNI_QS_TILE_TITLE_VISIBILITY);
+            PRIVATE_SETTINGS.add(VIBRATE_ON_CONNECT);
+            PRIVATE_SETTINGS.add(VIBRATE_ON_CALLWAITING);
+            PRIVATE_SETTINGS.add(VIBRATE_ON_DISCONNECT);
         }
 
         /**
@@ -5158,6 +5191,9 @@ public final class Settings {
                     OMNI_LOCKSCREEN_WEATHER_ENABLED_VALIDATOR);
             VALIDATORS.put(AICP_LOCKSCREEN_WEATHER_STYLE,AICP_LOCKSCREEN_WEATHER_STYLE_VALIDATOR);
 	    VALIDATORS.put(OMNI_QS_TILE_TITLE_VISIBILITY, OMNI_QS_TILE_TITLE_VISIBILITY_VALIDATOR);
+            VALIDATORS.put(VIBRATE_ON_CONNECT, VIBRATE_ON_CONNECT_VALIDATOR);
+            VALIDATORS.put(VIBRATE_ON_CALLWAITING, VIBRATE_ON_CALLWAITING_VALIDATOR);
+            VALIDATORS.put(VIBRATE_ON_DISCONNECT, VIBRATE_ON_DISCONNECT_VALIDATOR);
         }
 
         /**
