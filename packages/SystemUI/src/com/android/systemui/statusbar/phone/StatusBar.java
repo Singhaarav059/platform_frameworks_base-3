@@ -4118,6 +4118,9 @@ public class StatusBar extends SystemUI implements DemoMode,
             resolver.registerContentObserver(Settings.Secure.getUriFor(
                     Settings.Secure.LOCKSCREEN_DATE_SELECTION),
                     false, this, UserHandle.USER_ALL);
+	    resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.QS_FOOTER_WARNINGS),
+                    false, this, UserHandle.USER_ALL);
 	}
 
         @Override
@@ -4143,6 +4146,9 @@ public class StatusBar extends SystemUI implements DemoMode,
             } else if (uri.equals(Settings.System.getUriFor(Settings.System.QS_BLUR_ALPHA)) ||
                     uri.equals(Settings.System.getUriFor(Settings.System.QS_BLUR_INTENSITY))) {
                 updateBlurVisibility();
+	    } else if (uri.equals(Settings.System.getUriFor(
+                    Settings.System.QS_FOOTER_WARNINGS))) {
+                setQsPanelOptions();
 	    }
 	    update();
             updateNavigationBarVisibility();
@@ -4156,6 +4162,13 @@ public class StatusBar extends SystemUI implements DemoMode,
 	    updateKeyguardStatusSettings();
 	    updateQSPanel();
 	    setAmbientVis();
+	    setQsPanelOptions();
+        }
+    }
+
+    private void setQsPanelOptions() {
+        if (mQSPanel != null) {
+            mQSPanel.updateSettings();
         }
     }
 
