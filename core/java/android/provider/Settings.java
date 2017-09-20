@@ -4663,6 +4663,16 @@ public final class Settings {
         private static final Validator OMNI_QS_LAYOUT_ROWS_VALIDATOR =
                 ANY_INTEGER_VALIDATOR;
 
+	/**
+         * Whether to display qs tile titles in the qs panel
+         * @hide
+         */
+        public static final String OMNI_QS_TILE_TITLE_VISIBILITY = "qs_tile_title_visibility";
+
+        /** @hide */
+        private static final Validator OMNI_QS_TILE_TITLE_VISIBILITY_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
         /**
  	 * Enable/Disable screenshot sound
          * @hide
@@ -4865,6 +4875,7 @@ public final class Settings {
             OMNIJAWS_WEATHER_ICON_PACK,
             OMNI_LOCKSCREEN_WEATHER_ENABLED,
             AICP_LOCKSCREEN_WEATHER_STYLE,
+	    OMNI_QS_TILE_TITLE_VISIBILITY,
         };
 
         /**
@@ -5008,6 +5019,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(OMNIJAWS_WEATHER_ICON_PACK);
             PRIVATE_SETTINGS.add(OMNI_LOCKSCREEN_WEATHER_ENABLED);
             PRIVATE_SETTINGS.add(AICP_LOCKSCREEN_WEATHER_STYLE);
+	    PRIVATE_SETTINGS.add(OMNI_QS_TILE_TITLE_VISIBILITY);
         }
 
         /**
@@ -5127,6 +5139,7 @@ public final class Settings {
             VALIDATORS.put(OMNI_LOCKSCREEN_WEATHER_ENABLED,
                     OMNI_LOCKSCREEN_WEATHER_ENABLED_VALIDATOR);
             VALIDATORS.put(AICP_LOCKSCREEN_WEATHER_STYLE,AICP_LOCKSCREEN_WEATHER_STYLE_VALIDATOR);
+	    VALIDATORS.put(OMNI_QS_TILE_TITLE_VISIBILITY, OMNI_QS_TILE_TITLE_VISIBILITY_VALIDATOR);
         }
 
         /**
