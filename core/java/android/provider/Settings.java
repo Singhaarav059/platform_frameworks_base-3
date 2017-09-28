@@ -4753,8 +4753,7 @@ public final class Settings {
          */
         public static final String STATUS_BAR_CARRIER_COLOR = "status_bar_carrier_color";
 
-	 /**
-         * Change fonts for the system lockscreen date
+        /**
          *
          * @hide
          */
@@ -4780,6 +4779,13 @@ public final class Settings {
          * @hide
          */
         public static final String LOCKSCREEN_CLOCK_COLOR = "lockscreen_clock_color";
+
+	 /**
+         * Change fonts for the system lockscreen date
+         * Whether to control brightness from status bar
+         * @hide
+         */
+        public static final String STATUS_BAR_BRIGHTNESS_CONTROL = "status_bar_brightness_control";
 
         /**
          * Change the color of the lockscreen date underneath the clock
@@ -5574,6 +5580,7 @@ public final class Settings {
 	    PRIVATE_SETTINGS.add(TOAST_ICON);
 	    PRIVATE_SETTINGS.add(THEMING_SETTINGS_DASHBOARD_ICONS);
             PRIVATE_SETTINGS.add(LOCK_QS_DISABLED);
+	    PRIVATE_SETTINGS.add(STATUS_BAR_BRIGHTNESS_CONTROL);
         }
 
 
