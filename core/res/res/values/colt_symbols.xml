@@ -38,4 +38,8 @@
   <!-- Emergency button in power menu -->
   <java-symbol type="bool" name="config_showEmergencyButtonInPowerMenu" />
 
+  <!-- Device keyhandlers -->
+  <java-symbol type="array" name="config_deviceKeyHandlerLibs" />
+  <java-symbol type="array" name="config_deviceKeyHandlerClasses" />
+
 </resources>
