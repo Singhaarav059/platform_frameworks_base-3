@@ -21,6 +21,9 @@ import static android.app.StatusBarManager.DISABLE_SYSTEM_INFO;
 import android.annotation.Nullable;
 import android.app.Fragment;
 import android.app.StatusBarManager;
+import android.content.ContentResolver;
+import android.database.ContentObserver;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,6 +48,14 @@ import com.android.systemui.statusbar.policy.EncryptionHelper;
 import com.android.systemui.statusbar.policy.KeyguardMonitor;
 import com.android.systemui.statusbar.policy.NetworkController;
 import com.android.systemui.statusbar.policy.NetworkController.SignalCallback;
+
+import android.widget.ImageView;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuff.Mode;
+
 
 /**
  * Contains the collapsed status bar and handles hiding/showing based on disable flags
@@ -80,22 +91,44 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
 
     private Handler mHandler = new Handler();
 
+    private ImageView mColtLogo;
+    private ImageView mColtLogoRight;
+    private int mLogoStyle;
+    private int mShowLogo;
+    private int mLogoColor;
+
     private class CustomSettingsObserver extends ContentObserver {
        CustomSettingsObserver(Handler handler) {
-           super(handler);
-       }
+		super(handler);
+    }
+
 
        void observe() {
-           mContentResolver.registerContentObserver(Settings.System.getUriFor(
+         mContentResolver.registerContentObserver(Settings.System.getUriFor(
                    Settings.System.STATUS_BAR_CLOCK),
                    false, this, UserHandle.USER_ALL);
+	 mContentResolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.STATUS_BAR_LOGO),
+                    false, this, UserHandle.USER_ALL);
+	 mContentResolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.STATUS_BAR_LOGO_STYLE),
+		    false, this, UserHandle.USER_ALL);
+	 mContentResolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.STATUS_BAR_LOGO_COLOR),
+		    false, this, UserHandle.USER_ALL);
        }
 
-       @Override
-       public void onChange(boolean selfChange) {
-           updateSettings(true);
-       }
+        @Override
+        public void onChange(boolean selfChange, Uri uri) {
+            if ((uri.equals(Settings.System.getUriFor(Settings.System.STATUS_BAR_LOGO))) ||
+                (uri.equals(Settings.System.getUriFor(Settings.System.STATUS_BAR_LOGO_STYLE))) ||
+                (uri.equals(Settings.System.getUriFor(Settings.System.STATUS_BAR_LOGO_COLOR)))){
+                 updateLogoSettings(true);
+	    }
+            updateSettings(true);
+        }
     }
+
     private CustomSettingsObserver mCustomSettingsObserver = new CustomSettingsObserver(mHandler);
     private ContentResolver mContentResolver;
 
@@ -137,8 +170,11 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         mBatteryBar = mStatusBar.findViewById(R.id.battery_bar);
         mCenterClockLayout = (LinearLayout) mStatusBar.findViewById(R.id.center_clock_layout);
         mRightClock = mStatusBar.findViewById(R.id.right_clock);
-        showSystemIconArea(false);
+	mColtLogo = mStatusBar.findViewById(R.id.status_bar_logo);
+	mColtLogoRight = mStatusBar.findViewById(R.id.status_bar_logo_right);
         updateSettings(false);
+	updateLogoSettings(false);
+        showSystemIconArea(false);
         initEmergencyCryptkeeperText();
         initOperatorName();
     }
@@ -245,6 +281,9 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         if (mStatusBarClockConfig == STATUS_BAR_CLOCK_RIGHT) {
             animateHide(mRightClock, animate, true);
         }
+        if (mShowLogo == 2) {
+            animateHide(mColtLogoRight, animate, false);
+        }
         animateHide(mSystemIconArea, animate, true);
     }
 
@@ -254,17 +293,26 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         if (mStatusBarClockConfig == STATUS_BAR_CLOCK_RIGHT) {
             animateShow(mRightClock, animate);
         }
-        animateShow(mSystemIconArea, animate);
+        if (mShowLogo == 2) {
+            animateShow(mColtLogoRight, animate);
+        }
+	animateShow(mSystemIconArea, animate);
     }
 
     public void hideNotificationIconArea(boolean animate) {
         animateHide(mNotificationIconAreaInner, animate, true);
         animateHide(mCenterClockLayout, animate, true);
+        if (mShowLogo == 1) {
+            animateHide(mColtLogo, animate, false);
+        }
     }
 
     public void showNotificationIconArea(boolean animate) {
         animateShow(mNotificationIconAreaInner, animate);
         animateShow(mCenterClockLayout, animate);
+         if (mShowLogo == 1) {
+             animateShow(mColtLogo, animate);
+         }
     }
 
     public void hideOperatorName(boolean animate) {
@@ -350,9 +398,156 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     }
 
     public void updateSettings(boolean animate) {
-        mStatusBarClockConfig = Settings.System.getIntForUser(mContentResolver,
+        if (mStatusBar == null) return;
+
+        if (getContext() == null) {
+            return;
+        }
+
+        try {
+	mStatusBarClockConfig = Settings.System.getIntForUser(mContentResolver,
                 Settings.System.STATUS_BAR_CLOCK, STATUS_BAR_CLOCK_LEFT, UserHandle.USER_CURRENT);
-        updateClockConfig(animate);
+        } catch (Exception e) {
+        }
+	updateClockConfig(animate);
+    }
+
+    public void updateLogoSettings(boolean animate) {
+        Drawable logo = null;
+
+        if (mStatusBar == null) return;
+
+        if (getContext() == null) {
+            return;
+        }
+
+        mShowLogo = Settings.System.getIntForUser(
+                getContext().getContentResolver(), Settings.System.STATUS_BAR_LOGO, 0,
+                UserHandle.USER_CURRENT);
+        mLogoColor = Settings.System.getIntForUser(
+                getContext().getContentResolver(), Settings.System.STATUS_BAR_LOGO_COLOR, 0xffff7700,
+                UserHandle.USER_CURRENT);
+        mLogoStyle = Settings.System.getIntForUser(
+                getContext().getContentResolver(), Settings.System.STATUS_BAR_LOGO_STYLE, 0,
+                UserHandle.USER_CURRENT);
+
+        switch(mLogoStyle) {
+                // Colt
+            case 1:
+                logo = getContext().getDrawable(R.drawable.ic_colt_logo);
+                break;
+                // Android
+            case 2:
+                logo = getContext().getResources().getDrawable(R.drawable.status_bar_gzr_skull_logo);
+                break;
+                // GZR Circle
+            case 3:
+                logo = getContext().getResources().getDrawable(R.drawable.status_bar_gzr_circle_logo);
+                break;
+            case 4:
+                logo = getContext().getDrawable(R.drawable.ic_android_logo);
+                break;
+                // Shit
+            case 5:
+                logo = getContext().getDrawable(R.drawable.ic_apple_logo);
+                break;
+                // Shitty Logo
+            case 6:
+                logo = getContext().getDrawable(R.drawable.ic_ios_logo);
+                break;
+                // Others
+            case 7:
+                logo = getContext().getDrawable(R.drawable.ic_blackberry);
+                break;
+            case 8:
+                logo = getContext().getDrawable(R.drawable.ic_cake);
+                break;
+            case 9:
+                logo = getContext().getDrawable(R.drawable.ic_blogger);
+                break;
+            case 10:
+                logo = getContext().getDrawable(R.drawable.ic_biohazard);
+                break;
+            case 11:
+                logo = getContext().getDrawable(R.drawable.ic_linux);
+                break;
+            case 12:
+                logo = getContext().getDrawable(R.drawable.ic_yin_yang);
+                break;
+            case 13:
+                logo = getContext().getDrawable(R.drawable.ic_windows);
+                break;
+            case 14:
+                logo = getContext().getDrawable(R.drawable.ic_robot);
+                break;
+            case 15:
+                logo = getContext().getDrawable(R.drawable.ic_ninja);
+                break;
+            case 16:
+                logo = getContext().getDrawable(R.drawable.ic_heart);
+                break;
+            case 17:
+                logo = getContext().getDrawable(R.drawable.ic_ghost);
+                break;
+            case 18:
+                logo = getContext().getDrawable(R.drawable.ic_google);
+                break;
+            case 19:
+                logo = getContext().getDrawable(R.drawable.ic_human_male);
+                break;
+            case 20:
+                logo = getContext().getDrawable(R.drawable.ic_human_female);
+                break;
+            case 21:
+                logo = getContext().getDrawable(R.drawable.ic_human_male_female);
+                break;
+            case 22:
+                logo = getContext().getDrawable(R.drawable.ic_gender_male);
+                break;
+            case 23:
+                logo = getContext().getDrawable(R.drawable.ic_gender_female);
+                break;
+            case 24:
+                logo = getContext().getDrawable(R.drawable.ic_gender_male_female);
+                break;
+            case 25:
+                logo = getContext().getDrawable(R.drawable.ic_guitar_electric);
+                break;
+                // Default (Colt Main)
+            case 0:
+            default:
+                logo = getContext().getDrawable(R.drawable.status_bar_logo);
+                break;
+        }
+
+        if (mShowLogo == 1) {
+	    mColtLogo.setImageDrawable(null);
+	    mColtLogo.setImageDrawable(logo);
+ 	    mColtLogo.setColorFilter(mLogoColor, PorterDuff.Mode.MULTIPLY);
+	} else if (mShowLogo == 2) {
+	    mColtLogoRight.setImageDrawable(null);
+	    mColtLogoRight.setImageDrawable(logo);
+	    mColtLogoRight.setColorFilter(mLogoColor, PorterDuff.Mode.MULTIPLY);
+	}
+
+        if (mNotificationIconAreaInner != null) {
+            if (mShowLogo == 1) {
+                if (mNotificationIconAreaInner.getVisibility() == View.VISIBLE) {
+                    animateShow(mColtLogo, animate);
+                }
+            } else if (mShowLogo != 1) {
+                animateHide(mColtLogo, animate, false);
+            }	   
+        }	
+        if (mSystemIconArea != null) {
+            if (mShowLogo == 2) {
+                if (mSystemIconArea.getVisibility() == View.VISIBLE) {
+                    animateShow(mColtLogoRight, animate);
+                }
+            } else if (mShowLogo != 2) {
+                   animateHide(mColtLogoRight, animate, false);
+            }
+        }	
     }
 
     private void updateClockConfig(boolean animate) {
