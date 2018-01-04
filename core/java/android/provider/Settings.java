@@ -6014,6 +6014,18 @@ public final class Settings {
          */
         public static final String SHOW_BATTERY_ESTIMATE = "show_battery_estimate";
 
+	/**
+         * Wheter to play notification sound and vibration if screen is ON
+         * 0 - never
+         * 1 - always
+         * @hide
+         */
+        public static final String NOTIFICATION_SOUND_VIB_SCREEN_ON = "notification_sound_vib_screen_on";
+
+        /** @hide */
+        private static final Validator NOTIFICATION_SOUND_VIB_SCREEN_ON_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
@@ -6118,6 +6130,7 @@ public final class Settings {
 	    HIDE_NOTCH,
             ONE_HAND_MODE_ENABLED,
             SCREENRECORD_QUALITY_MODE,
+            NOTIFICATION_SOUND_VIB_SCREEN_ON
         };
 
         /**
@@ -6303,6 +6316,7 @@ public final class Settings {
 	    PRIVATE_SETTINGS.add(ONE_HAND_MODE_ENABLED);
 	    PRIVATE_SETTINGS.add(SCREENRECORD_QUALITY_MODE);
 	    PRIVATE_SETTINGS.add(MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD);
+            PRIVATE_SETTINGS.add(NOTIFICATION_SOUND_VIB_SCREEN_ON);
         }
 
         /**
@@ -6471,6 +6485,7 @@ public final class Settings {
             VALIDATORS.put(ONE_HAND_MODE_ENABLED,ONE_HAND_MODE_ENABLED_VALIDATOR);
             VALIDATORS.put(SCREENRECORD_QUALITY_MODE,SCREENRECORD_QUALITY_MODE_VALIDATOR);
 	    VALIDATORS.put(MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD, MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD_VALIDATOR);
+            VALIDATORS.put(NOTIFICATION_SOUND_VIB_SCREEN_ON, NOTIFICATION_SOUND_VIB_SCREEN_ON_VALIDATOR);
         }
 
         /**
