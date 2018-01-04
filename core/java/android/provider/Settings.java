@@ -5715,6 +5715,14 @@ public final class Settings {
         private static final Validator PULSE_BRIGHTNESS_VALIDATOR = ANY_INTEGER_VALIDATOR;
 
         /**
+         * Wheter to play notification sound and vibration if screen is ON
+         * 0 - never
+         * 1 - always
+         * @hide
+         */
+        public static final String NOTIFICATION_SOUND_VIB_SCREEN_ON = "notification_sound_vib_screen_on";
+
+        /**
          * User definable value of aod screen brightness
          *
          * @hide
