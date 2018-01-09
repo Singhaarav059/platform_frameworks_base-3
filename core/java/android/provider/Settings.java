@@ -5401,6 +5401,12 @@ public final class Settings {
          */
         public static final String SCREEN_STATE_ON_DELAY = "screen_state_on_delay";
 
+	/**
+         * Unlock keystore with fingerprint after reboot
+         * @hide
+         */
+        public static final String FP_UNLOCK_KEYSTORE = "fp_unlock_keystore";
+
         /**
         * @hide
          * Whether to set a lower brightness level when enabling night mode
