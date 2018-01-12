@@ -300,4 +300,13 @@ public class ColtUtils {
                 networkOperator.substring(0, /*Filter only 3 digits*/ 3));
     }
 
+     public static void takeScreenrecord(int mode) {
+        IWindowManager wm = WindowManagerGlobal.getWindowManagerService();
+        try {
+            wm.screenRecordAction(mode);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
