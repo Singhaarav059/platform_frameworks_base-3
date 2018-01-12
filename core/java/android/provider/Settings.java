@@ -5283,6 +5283,15 @@ public final class Settings {
         private static final Validator SEEK_BAR_BATTERY_CHARGE_LEVEL_SOUND_VALIDATOR = ANY_INTEGER_VALIDATOR;
 
         /**
+         * Defines the screen-off animation to display
+         * @hide
+         */
+        public static final String SCREEN_OFF_ANIMATION = "screen_off_animation";
+
+        /** @hide */
+        private static final Validator SCREEN_OFF_ANIMATION_VALIDATOR = ANY_INTEGER_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -5389,6 +5398,7 @@ public final class Settings {
             FORCE_FULLSCREEN_CUTOUT_APPS,
 	    OMNI_DOZE_ON_CHARGE,
             NOTIFICATION_GUTS_KILL_APP_BUTTON,
+            SCREEN_OFF_ANIMATION,
         };
 
         /**
@@ -5555,6 +5565,7 @@ public final class Settings {
 	    PRIVATE_SETTINGS.add(OMNI_DOZE_ON_CHARGE);
             PRIVATE_SETTINGS.add(NOTIFICATION_GUTS_KILL_APP_BUTTON);
             PRIVATE_SETTINGS.add(SEEK_BAR_BATTERY_CHARGE_LEVEL_SOUND);
+            PRIVATE_SETTINGS.add(SCREEN_OFF_ANIMATION);
         }
 
         /**
@@ -5701,6 +5712,7 @@ public final class Settings {
 	    VALIDATORS.put(OMNI_DOZE_ON_CHARGE, OMNI_DOZE_ON_CHARGE_VALIDATOR);
             VALIDATORS.put(NOTIFICATION_GUTS_KILL_APP_BUTTON, NOTIFICATION_GUTS_KILL_APP_BUTTON_VALIDATOR);
             VALIDATORS.put(SEEK_BAR_BATTERY_CHARGE_LEVEL_SOUND, SEEK_BAR_BATTERY_CHARGE_LEVEL_SOUND_VALIDATOR);
+            VALIDATORS.put(SCREEN_OFF_ANIMATION, SCREEN_OFF_ANIMATION_VALIDATOR);
         }
 
         /**
