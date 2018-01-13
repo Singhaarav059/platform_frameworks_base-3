@@ -76,6 +76,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     private View mOperatorNameFrame;
     private LinearLayout mCenterClockLayout;
 
+    private View mBatteryBar;
 
     private Handler mHandler = new Handler();
 
@@ -133,6 +134,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         Dependency.get(StatusBarIconController.class).addIconGroup(mDarkIconManager);
         mSystemIconArea = mStatusBar.findViewById(R.id.system_icon_area);
         mClockView = mStatusBar.findViewById(R.id.clock);
+        mBatteryBar = mStatusBar.findViewById(R.id.battery_bar);
         mCenterClockLayout = (LinearLayout) mStatusBar.findViewById(R.id.center_clock_layout);
         mRightClock = mStatusBar.findViewById(R.id.right_clock);
         showSystemIconArea(false);
@@ -238,19 +240,21 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     }
 
     public void hideSystemIconArea(boolean animate) {
-        animateHide(mSystemIconArea, animate, true);
+        animateHide(mBatteryBar, animate, false);
         animateHide(mCenterClockLayout, animate, true);
         if (mStatusBarClockConfig == STATUS_BAR_CLOCK_RIGHT) {
             animateHide(mRightClock, animate, true);
         }
+        animateHide(mSystemIconArea, animate, true);
     }
 
     public void showSystemIconArea(boolean animate) {
-        animateShow(mSystemIconArea, animate);
+        animateShow(mBatteryBar, animate);
         animateShow(mCenterClockLayout, animate);
         if (mStatusBarClockConfig == STATUS_BAR_CLOCK_RIGHT) {
             animateShow(mRightClock, animate);
         }
+        animateShow(mSystemIconArea, animate);
     }
 
     public void hideNotificationIconArea(boolean animate) {
