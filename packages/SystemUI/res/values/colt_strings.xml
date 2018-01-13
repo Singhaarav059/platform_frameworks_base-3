@@ -159,4 +159,7 @@
     <string name="accessibility_quick_settings_ambient_display_on">Ambient display on.</string>
     <string name="accessibility_quick_settings_ambient_display_changed_off">Ambient display turned off.</string>
     <string name="accessibility_quick_settings_ambient_display_changed_on">Ambient display turned on.</string>
+
+    <!-- Always on Display Tile -->
+    <string name="quick_settings_always_on_display_label">Always on display</string>
 </resources>
