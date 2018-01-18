@@ -206,4 +206,7 @@
 
     <!-- ColtOS slide animation time -->
     <integer name="config_slideAnimationTime">485</integer>
+
+     <!-- Ambient display music ticker -->
+    <bool name="config_canForceDozeNotifications">true</bool>
 </resources>

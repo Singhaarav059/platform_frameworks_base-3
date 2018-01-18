@@ -56,6 +56,7 @@ import com.android.keyguard.clocks.CustomAnalogClock;
 import com.android.keyguard.clocks.CustomTextClock;
 import com.android.systemui.Dependency;
 import com.android.systemui.Interpolators;
+import com.android.systemui.doze.DozeLog;
 import com.android.systemui.statusbar.policy.ConfigurationController;
 import com.android.systemui.util.wakelock.KeepAwakeAnimationListener;
 
@@ -108,6 +109,8 @@ public class KeyguardStatusView extends GridLayout implements
     private int mTextClockAlign;
 
     private boolean mWasLatestViewSmall;
+
+    private boolean mForcedMediaDoze;
 
     private KeyguardUpdateMonitorCallback mInfoCallback = new KeyguardUpdateMonitorCallback() {
 
@@ -1708,9 +1711,19 @@ public class KeyguardStatusView extends GridLayout implements
         updateDozeVisibleViews();
     }
 
+    public void setCleanLayout(int reason) {
+        mForcedMediaDoze =
+                reason == DozeLog.PULSE_REASON_FORCED_MEDIA_NOTIFICATION;
+        updateDozeVisibleViews();
+    }
+
     private void updateDozeVisibleViews() {
         for (View child : mVisibleInDoze) {
-            child.setAlpha(mDarkAmount == 1 && mPulsing ? 0.8f : 1);
+            if (!mForcedMediaDoze) {
+                child.setAlpha(mDarkAmount == 1 && mPulsing ? 0.8f : 1);
+            } else {
+                child.setAlpha(mDarkAmount == 1 ? 0 : 1);
+            }
         }
     }
 
