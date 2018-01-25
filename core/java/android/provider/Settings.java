@@ -5912,6 +5912,15 @@ public final class Settings {
         public static final String SMART_CHARGING = "smart_charging";
 
         /**
+         * @hide
+         */
+        public static final String SCREENRECORD_QUALITY_MODE = "screenrecord_quality_mode";
+
+        /** @hide */
+        private static final Validator SCREENRECORD_QUALITY_MODE_VALIDATOR =
+               new SettingsValidators.InclusiveIntegerRangeValidator(0, 2);
+
+        /**
           * enable or disable single handed mode
           * @hide
           */
@@ -6033,6 +6042,7 @@ public final class Settings {
             FORCE_FULLSCREEN_CUTOUT_APPS,
 	    HIDE_NOTCH,
             ONE_HAND_MODE_ENABLED,
+            SCREENRECORD_QUALITY_MODE,
         };
 
         /**
@@ -6216,6 +6226,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(HIDE_NOTCH);
 	    PRIVATE_SETTINGS.add(LOCK_HIDE_STATUS_BAR);
 	    PRIVATE_SETTINGS.add(ONE_HAND_MODE_ENABLED);
+	    PRIVATE_SETTINGS.add(SCREENRECORD_QUALITY_MODE);
         }
 
         /**
@@ -6382,6 +6393,7 @@ public final class Settings {
             VALIDATORS.put(LIVE_DISPLAY_HINTED, LIVE_DISPLAY_HINTED_VALIDATOR);
             VALIDATORS.put(HIDE_NOTCH, HIDE_NOTCH_VALIDATOR);
             VALIDATORS.put(ONE_HAND_MODE_ENABLED,ONE_HAND_MODE_ENABLED_VALIDATOR);
+            VALIDATORS.put(SCREENRECORD_QUALITY_MODE,SCREENRECORD_QUALITY_MODE_VALIDATOR);
         }
 
         /**
