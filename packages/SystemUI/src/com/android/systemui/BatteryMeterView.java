@@ -274,7 +274,9 @@ public class BatteryMeterView extends LinearLayout implements
     private void updatePercentText() {
         Typeface tf = Typeface.create(FONT_FAMILY, Typeface.NORMAL);
         if (mBatteryPercentView != null) {
-            mBatteryPercentView.setText(
+            CharSequence mChargeIndicator =
+                    mCharging && mStyle == BatteryMeterDrawableBase.BATTERY_STYLE_TEXT ? "~" : "";
+            mBatteryPercentView.setText(mChargeIndicator +
                     NumberFormat.getPercentInstance().format(mLevel / 100f));
 			mBatteryPercentView.setTypeface(tf);
         }
@@ -475,6 +477,7 @@ public class BatteryMeterView extends LinearLayout implements
         }
 
         updateShowPercent();
+        updatePercentText();
         onDensityOrFontScaleChanged();
     }
 }
