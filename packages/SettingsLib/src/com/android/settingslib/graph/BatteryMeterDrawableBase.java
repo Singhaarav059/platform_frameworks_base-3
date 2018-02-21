@@ -175,7 +175,7 @@ public class BatteryMeterDrawableBase extends Drawable {
         mPowersavePaint.setStrokeWidth(context.getResources()
                 .getDimensionPixelSize(R.dimen.battery_powersave_outline_thickness));
 
-        mPathEffect = new DashPathEffect(new float[]{3,2},0);
+        mPathEffect = new DashPathEffect(new float[]{3,2}, 0);
 
         mIntrinsicWidth = context.getResources().getDimensionPixelSize(R.dimen.battery_width);
         mIntrinsicHeight = context.getResources().getDimensionPixelSize(R.dimen.battery_height);
