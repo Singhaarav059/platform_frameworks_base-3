@@ -296,6 +296,10 @@
 
    <!-- Screenrecord -->
    <java-symbol type="bool" name="config_enableScreenrecordChord" />
+ 
+  <!-- Whether device has turbo power charging support -->
+  <java-symbol type="bool" name="config_hasTurboPowerCharger" />
+
 
    <!-- On-The-Go -->
   <java-symbol type="drawable" name="ic_lock_onthego" />
