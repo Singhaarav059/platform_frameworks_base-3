@@ -113,4 +113,6 @@
     <string name="accessibility_quick_settings_cpuinfo_on">CPU Info on</string>
     <string name="accessibility_quick_settings_cpuinfo_changed_off">CPU Info turned off</string>
     <string name="accessibility_quick_settings_cpuinfo_changed_on">CPU Info turned on</string>
+
+    <string name="recents_custom_android_n">Clear All</string>
 </resources>
