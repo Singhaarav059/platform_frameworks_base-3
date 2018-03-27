@@ -123,4 +123,6 @@
    <!-- Icon packs -->
    <java-symbol type="drawable" name="adaptive_icon_drawable_wrapper" />
 
+   <!-- Settings icon tint color -->
+   <java-symbol type="color" name="settings_icon_tint_color" />
 </resources>
