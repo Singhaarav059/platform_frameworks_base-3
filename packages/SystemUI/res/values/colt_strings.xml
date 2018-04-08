@@ -180,4 +180,8 @@
     <string name="accessibility_quick_settings_reading_mode_off">Reading mode off.</string>
     <string name="accessibility_quick_settings_reading_mode_changed_on">Reading mode turned on.</string>
     <string name="accessibility_quick_settings_reading_mode_changed_off">Reading mode turned off.</string>
+
+    <!-- Smart Pixels QS Tile -->
+    <string name="quick_settings_smart_pixels">Smart Pixels</string>
+    <string name="quick_settings_smart_pixels_on_power_save">Auto-enabled Smart Pixels</string>
 </resources>
