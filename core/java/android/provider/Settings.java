@@ -4608,7 +4608,17 @@ public final class Settings {
                 BOOLEAN_VALIDATOR;
 
         /**
-         * Enable/Disable screenshot sound
+         * Whether to change the transparency of the qs panel
+         * @hide
+         */
+        public static final String OMNI_QS_PANEL_BG_ALPHA = "qs_panel_bg_alpha";
+
+        /** @hide */
+        private static final Validator OMNI_QS_PANEL_BG_ALPHA_VALIDATOR =
+                ANY_INTEGER_VALIDATOR;
+
+        /**
+ 	 * Enable/Disable screenshot sound
          * @hide
          */
         public static final String SCREENSHOT_SOUND = "screenshot_sound";
@@ -4703,6 +4713,10 @@ public final class Settings {
             ENABLE_SUGGESTIONS,
             SCREENSHOT_SOUND,
             LOCKSCREEN_BATTERY_INFO,
+            OMNI_QS_LAYOUT_COLUMNS_LANDSCAPE,
+            OMNI_QS_LAYOUT_COLUMNS,
+            OMNI_QS_LAYOUT_ROWS,
+            OMNI_QS_PANEL_BG_ALPHA,
         };
 
         /**
@@ -4838,6 +4852,10 @@ public final class Settings {
             PRIVATE_SETTINGS.add(ENABLE_SUGGESTIONS);
             PRIVATE_SETTINGS.add(SCREENSHOT_SOUND);
             PRIVATE_SETTINGS.add(LOCKSCREEN_BATTERY_INFO);
+            PRIVATE_SETTINGS.add(OMNI_QS_LAYOUT_COLUMNS_LANDSCAPE);
+            PRIVATE_SETTINGS.add(OMNI_QS_LAYOUT_COLUMNS);
+            PRIVATE_SETTINGS.add(OMNI_QS_LAYOUT_ROWS);
+            PRIVATE_SETTINGS.add(OMNI_QS_PANEL_BG_ALPHA);
         }
 
         /**
@@ -4947,6 +4965,11 @@ public final class Settings {
             VALIDATORS.put(ENABLE_SUGGESTIONS, ENABLE_SUGGESTIONS_VALIDATOR);
             VALIDATORS.put(SCREENSHOT_SOUND, SCREENSHOT_SOUND_VALIDATOR);
             VALIDATORS.put(LOCKSCREEN_BATTERY_INFO, LOCKSCREEN_BATTERY_INFO_VALIDATOR);
+            VALIDATORS.put(OMNI_QS_LAYOUT_COLUMNS_LANDSCAPE,
+                    OMNI_QS_LAYOUT_COLUMNS_LANDSCAPE_VALIDATOR);
+            VALIDATORS.put(OMNI_QS_LAYOUT_COLUMNS, OMNI_QS_LAYOUT_COLUMNS_VALIDATOR);
+            VALIDATORS.put(OMNI_QS_LAYOUT_ROWS, OMNI_QS_LAYOUT_ROWS_VALIDATOR);
+            VALIDATORS.put(OMNI_QS_PANEL_BG_ALPHA, OMNI_QS_PANEL_BG_ALPHA_VALIDATOR);
         }
 
         /**
