@@ -4692,16 +4692,14 @@ public final class Settings {
         public static final String SHOW_FOURG_ICON = "show_fourg_icon";
 
         /**
-         * Which component to use for Recents UI
+         * Which kind of style you might want to see on Recents UI
          * 0 - Pie Recents (Quickstep)
          * 1 - Oreo Recents (SystemUI)
+         * 2 - Grid Recents (SystemUI)
+         * 3 - Android Go Recents (SystemUI)
          * @hide
          */
-        public static final String RECENTS_COMPONENT = "recents_component";
-
-        /** @hide */
-        public static final Validator RECENTS_COMPONENT_VALIDATOR =
-                new SettingsValidators.InclusiveIntegerRangeValidator(0, 1);
+	public static final String RECENTS_LAYOUT_STYLE  = "recents_layout_style";
 
         /**
          * Whether to display cross sign for a data disabled connection
@@ -5541,7 +5539,6 @@ public final class Settings {
             OMNI_QS_QUICKBAR_COLUMNS,
             OMNI_QS_PANEL_BG_ALPHA,
             OMNI_USE_BOTTOM_GESTURE_NAVIGATION,
-            RECENTS_COMPONENT,
             WEATHER_LOCKSCREEN_UNIT,
             STATUS_BAR_CLOCK,
             STATUS_BAR_CLOCK_SHOW_SECONDS,
@@ -5687,7 +5684,6 @@ public final class Settings {
             PRIVATE_SETTINGS.add(OMNI_QS_PANEL_BG_ALPHA);
             PRIVATE_SETTINGS.add(OMNI_USE_BOTTOM_GESTURE_NAVIGATION);
             PRIVATE_SETTINGS.add(QS_TILE_STYLE);
-            PRIVATE_SETTINGS.add(RECENTS_COMPONENT);
             PRIVATE_SETTINGS.add(WEATHER_LOCKSCREEN_UNIT);
             PRIVATE_SETTINGS.add(STATUS_BAR_CLOCK);
             PRIVATE_SETTINGS.add(STATUS_BAR_CLOCK_SHOW_SECONDS);
@@ -5826,7 +5822,6 @@ public final class Settings {
             VALIDATORS.put(OMNI_QS_PANEL_BG_ALPHA, OMNI_QS_PANEL_BG_ALPHA_VALIDATOR);
             VALIDATORS.put(OMNI_USE_BOTTOM_GESTURE_NAVIGATION,
                     OMNI_USE_BOTTOM_GESTURE_NAVIGATION_VALIDATOR);
-            VALIDATORS.put(RECENTS_COMPONENT,RECENTS_COMPONENT_VALIDATOR);
 	    VALIDATORS.put(WEATHER_LOCKSCREEN_UNIT, WEATHER_LOCKSCREEN_UNIT_VALIDATOR);
             VALIDATORS.put(STATUS_BAR_CLOCK_SHOW_DAY, STATUS_BAR_CLOCK_SHOW_DAY_VALIDATOR);
 	    VALIDATORS.put(STATUS_BAR_CLOCK, STATUS_BAR_CLOCK_VALIDATOR);
