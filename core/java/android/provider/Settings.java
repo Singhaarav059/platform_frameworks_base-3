@@ -5414,6 +5414,13 @@ public final class Settings {
          */
         public static final String SYSTEMUI_RECENTS_MEM_DISPLAY = "systemui_recents_mem_display";
 
+	 /**
+         * Hide lockscreen indicator text
+         *
+         * @hide
+         */
+        public static final String HIDE_LOCKSCREEN_INDICATOR_DISPLAY = "hide_lockscreen_indicator_display";
+
         /**
          * 0 - wallpaper based
          * 1 - force light
@@ -6379,6 +6386,7 @@ public final class Settings {
 	    PRIVATE_SETTINGS.add(MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD);
             PRIVATE_SETTINGS.add(NOTIFICATION_SOUND_VIB_SCREEN_ON);
             PRIVATE_SETTINGS.add(POCKET_JUDGE);
+	    PRIVATE_SETTINGS.add(HIDE_LOCKSCREEN_INDICATOR_DISPLAY);
         }
 
         /**
