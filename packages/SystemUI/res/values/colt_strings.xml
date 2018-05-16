@@ -173,4 +173,11 @@
     <!-- Elmyra -->
     <string name="elmyra_raw_sensor_string_type">com.google.sensor.elmyra.raw</string>
     <string name="google_camera_app_package_name">com.google.android.GoogleCamera</string>
+
+    <!-- Reader mode QS tile -->
+    <string name="quick_settings_reading_mode">Reading mode</string>
+    <string name="accessibility_quick_settings_reading_mode_on">Reading mode on.</string>
+    <string name="accessibility_quick_settings_reading_mode_off">Reading mode off.</string>
+    <string name="accessibility_quick_settings_reading_mode_changed_on">Reading mode turned on.</string>
+    <string name="accessibility_quick_settings_reading_mode_changed_off">Reading mode turned off.</string>
 </resources>
