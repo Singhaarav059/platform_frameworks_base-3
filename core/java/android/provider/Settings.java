@@ -9280,6 +9280,14 @@ public final class Settings {
           */
         public static final String QUICK_SETTINGS_TILES_VIBRATE = "quick_settings_vibrate";
 
+        /**
+         * Ambient Display Visualizer
+         *
+         * @hide
+         */
+        public static final String AMBIENT_VISUALIZER_ENABLED = "ambient_visualizer";
+
+
 	/*
          * Hide lockscreen shortcuts on secure lock screens
          *
