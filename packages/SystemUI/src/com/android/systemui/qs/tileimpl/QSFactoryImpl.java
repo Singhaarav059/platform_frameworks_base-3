@@ -41,6 +41,7 @@ import com.android.systemui.qs.tiles.DndTile;
 import com.android.systemui.qs.tiles.CalendarTile;
 import com.android.systemui.qs.tiles.AlarmTile;
 import com.android.systemui.qs.tiles.CalcTile;
+import com.android.systemui.qs.tiles.CallTile;
 import com.android.systemui.qs.tiles.FlashlightTile;
 import com.android.systemui.qs.tiles.ColtTile;
 import com.android.systemui.qs.tiles.HeadsUpTile;
@@ -171,6 +172,8 @@ public class QSFactoryImpl implements QSFactory {
                 return new CalcTile(mHost);
             case "camera":
                 return new CameraTile(mHost);
+            case "call":
+                return new CallTile(mHost);
         }
 
         // Intent tiles.
