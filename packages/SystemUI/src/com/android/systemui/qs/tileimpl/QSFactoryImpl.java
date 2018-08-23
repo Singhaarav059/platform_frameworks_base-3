@@ -38,6 +38,7 @@ import com.android.systemui.qs.tiles.CompassTile;
 import com.android.systemui.qs.tiles.DataSaverTile;
 import com.android.systemui.qs.tiles.DndTile;
 import com.android.systemui.qs.tiles.CalendarTile;
+import com.android.systemui.qs.tiles.AlarmTile;
 import com.android.systemui.qs.tiles.FlashlightTile;
 import com.android.systemui.qs.tiles.ColtTile;
 import com.android.systemui.qs.tiles.HeadsUpTile;
@@ -162,6 +163,8 @@ public class QSFactoryImpl implements QSFactory {
                 return new CompassTile(mHost);
             case "screenrecord":
                 return new ScreenrecordTile(mHost);
+            case "alarm":
+                return new AlarmTile(mHost);
         }
 
         // Intent tiles.

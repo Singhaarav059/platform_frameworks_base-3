@@ -234,4 +234,7 @@
     <!-- Screenrecord QS tile -->
     <string name="quick_settings_screenrecord_label">Screenrecord</string>
 
+    <!-- Other QS tiles -->
+    <string name="alarm_title_tile">Alarm</string>
+
 </resources>
