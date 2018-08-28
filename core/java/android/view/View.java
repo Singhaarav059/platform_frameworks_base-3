@@ -24081,6 +24081,7 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
                 root.setLocalDragState(null);
             }
             session.kill();
+            surface.destroy();
         }
     }
 
