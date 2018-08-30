@@ -64,6 +64,9 @@
     <string name="qs_menu_item_reset">Reset</string>
     <string name="qs_menu_item_titles">Show labels</string>
 
+    <string name="qs_menu_item_qs_columns">Quickbar columns</string>
+    <string name="qs_menu_item_columns_auto">Automatic</string>
+
     <!-- Caffeine tile -->
     <string name="quick_settings_caffeine_label">Caffeine</string>
     <string name="accessibility_quick_settings_caffeine_off">Caffeine off</string>
@@ -118,4 +121,5 @@
     <string name="status_bar_data_saver">Data saver</string>
     <string name="status_bar_vpn">VPN</string>
     <string name="status_bar_roaming">Roaming</string>
+
 </resources>
