@@ -46,6 +46,7 @@ import com.android.systemui.qs.tiles.NightDisplayTile;
 import com.android.systemui.qs.tiles.RotationLockTile;
 import com.android.systemui.qs.tiles.UiModeNightTile;
 import com.android.systemui.qs.tiles.UserTile;
+import com.android.systemui.qs.tiles.WeatherTile;
 import com.android.systemui.qs.tiles.WifiTile;
 import com.android.systemui.qs.tiles.WorkModeTile;
 import com.android.systemui.util.leak.GarbageMonitor;
@@ -81,6 +82,7 @@ public class QSFactoryImpl implements QSFactory {
     private final Provider<LteTile> mLteTileProvider;
     private final Provider<AODTile> mAODTileProvider;
     private final Provider<CaffeineTile> mCaffeineTileProvider;
+    private final Provider<WeatherTile> mWeatherTileProvider;
 
     private QSTileHost mHost;
 
@@ -106,7 +108,8 @@ public class QSFactoryImpl implements QSFactory {
             Provider<UiModeNightTile> uiModeNightTileProvider,
             Provider<LteTile> lteTileProvider,
             Provider<AODTile> aodTileProvider,
-            Provider<CaffeineTile> caffeineTileProvider) {
+            Provider<CaffeineTile> caffeineTileProvider,
+            Provider<WeatherTile> weatherTileProvider) {
         mWifiTileProvider = wifiTileProvider;
         mBluetoothTileProvider = bluetoothTileProvider;
         mCellularTileProvider = cellularTileProvider;
@@ -129,6 +132,7 @@ public class QSFactoryImpl implements QSFactory {
         mLteTileProvider = lteTileProvider;
         mAODTileProvider = aodTileProvider;
         mCaffeineTileProvider = caffeineTileProvider;
+        mWeatherTileProvider = weatherTileProvider;
     }
 
     public void setHost(QSTileHost host) {
@@ -188,6 +192,8 @@ public class QSFactoryImpl implements QSFactory {
                 return mAODTileProvider.get();
             case "caffeine":
                 return mCaffeineTileProvider.get();
+            case "weather":
+                return mWeatherTile.get();
         }
 
         // Intent tiles.
