@@ -5778,6 +5778,12 @@ public final class Settings {
         public static final String VIBRATE_ON_NOTIFICATIONS = "vibrate_on_notifications";
 
         /**
+	 ** Whether to use partial screenshot when using volume keys
+	 ** @hide
+	 **/
+        public static final String SCREENSHOT_TYPE = "screenshot_type";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
