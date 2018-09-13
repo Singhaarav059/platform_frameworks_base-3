@@ -5109,6 +5109,14 @@ public final class Settings {
 	public static final String STATUS_BAR_LOGO_COLOR = "status_bar_logo_color";
 
         /**
+         * @hide
+         */
+        public static final String USE_OLD_MOBILETYPE = "use_old_mobiletype";
+
+        /** @hide */
+        private static final Validator USE_OLD_MOBILETYPE_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -5186,7 +5194,9 @@ public final class Settings {
             INCREASING_RING,
             INCREASING_RING_START_VOLUME,
             INCREASING_RING_RAMP_UP_TIME,
-            STATUSBAR_SHOW_WIFI_ACTIVITY,    };
+            STATUSBAR_SHOW_WIFI_ACTIVITY,
+            USE_OLD_MOBILETYPE,
+        };
 
         /**
          * Keys we no longer back up under the current schema, but want to continue to
@@ -5327,6 +5337,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_TYPE);
             PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD);
             PRIVATE_SETTINGS.add(STATUS_BAR_LOGO);
+            PRIVATE_SETTINGS.add(USE_OLD_MOBILETYPE);
         }
 
 
@@ -5446,6 +5457,7 @@ public final class Settings {
             VALIDATORS.put(INCREASING_RING_START_VOLUME, INCREASING_RING_START_VOLUME_VALIDATOR);
             VALIDATORS.put(INCREASING_RING_RAMP_UP_TIME, INCREASING_RING_RAMP_UP_TIME_VALIDATOR);
             VALIDATORS.put(STATUSBAR_SHOW_WIFI_ACTIVITY, STATUSBAR_SHOW_WIFI_ACTIVITY_VALIDATOR);
+            VALIDATORS.put(USE_OLD_MOBILETYPE, USE_OLD_MOBILETYPE_VALIDATOR);
         }
 
         /**
