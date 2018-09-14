@@ -1002,6 +1002,16 @@ public class Build {
     public static final String FINGERPRINT = deriveFingerprint();
 
     /**
+     * Colt fingerprint
+     * @hide
+     */
+    public static final String PROP_COLT_FINGERPRINT = "org.colt.fingerprint";
+
+    /** @hide */
+    public static final String COLT_FINGERPRINT = SystemProperties.get(PROP_COLT_FINGERPRINT,
+            deriveFingerprint());
+
+    /**
      * Some devices split the fingerprint components between multiple
      * partitions, so we might derive the fingerprint at runtime.
      */
