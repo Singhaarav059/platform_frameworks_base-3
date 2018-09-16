@@ -86,6 +86,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.AudioAttributes;
 import android.media.MediaMetadata;
+import android.media.session.MediaController;
 import android.media.session.PlaybackState;
 import android.metrics.LogMaker;
 import android.net.Uri;
@@ -97,6 +98,7 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
 import android.os.PowerManager;
+import android.os.Process;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.SystemClock;
@@ -142,12 +144,12 @@ import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.internal.statusbar.IStatusBarService;
 import com.android.internal.statusbar.NotificationVisibility;
 import com.android.internal.statusbar.StatusBarIcon;
-import com.android.internal.util.hwkeys.ActionConstants;
-import com.android.internal.util.hwkeys.ActionUtils;
-import com.android.internal.util.hwkeys.PackageMonitor;
-import com.android.internal.util.hwkeys.PackageMonitor.PackageChangedListener;
-import com.android.internal.util.hwkeys.PackageMonitor.PackageState;
 import com.android.internal.util.colt.ColtUtils;
+import com.android.internal.utils.ActionConstants;
+import com.android.internal.utils.ActionUtils;
+import com.android.internal.utils.SmartPackageMonitor;
+import com.android.internal.utils.SmartPackageMonitor.PackageChangedListener;
+import com.android.internal.utils.SmartPackageMonitor.PackageState;
 import com.android.internal.widget.LockPatternUtils;
 import com.android.internal.widget.MessagingGroup;
 import com.android.internal.widget.MessagingMessage;
@@ -180,6 +182,7 @@ import com.android.systemui.fragments.FragmentHostManager;
 import com.android.systemui.keyguard.KeyguardViewMediator;
 import com.android.systemui.keyguard.ScreenLifecycle;
 import com.android.systemui.keyguard.WakefulnessLifecycle;
+import com.android.systemui.navigation.Navigator;
 import com.android.systemui.plugins.ActivityStarter;
 import com.android.systemui.plugins.qs.QS;
 import com.android.systemui.plugins.statusbar.NotificationSwipeActionHelper.SnoozeOption;
@@ -508,7 +511,7 @@ public class StatusBar extends SystemUI implements DemoMode,
 
     private final DisplayMetrics mDisplayMetrics = new DisplayMetrics();
 
-    private PackageMonitor mPackageMonitor;
+    private SmartPackageMonitor mPackageMonitor;
 
     // XXX: gesture research
     private final GestureRecorder mGestureRec = DEBUG_GESTURES
@@ -545,6 +548,20 @@ public class StatusBar extends SystemUI implements DemoMode,
     };
 
     protected final H mHandler = createHandler();
+
+    protected final ContentObserver mNavbarObserver = new ContentObserver(mHandler) {
+        @Override
+        public void onChange(boolean selfChange) {
+            boolean showing = Settings.Secure.getInt(mContext.getContentResolver(),
+                    Settings.Secure.NAVIGATION_BAR_VISIBLE,
+                    ActionUtils.hasNavbarByDefault(mContext) ? 1 : 0) != 0;
+            if (!showing && mNavigationBar != null && mNavigationBarView != null) {
+                removeNavigationBar();
+            } else if (showing && mNavigationBar == null && mNavigationBarView == null) {
+                createNavigationBar();
+            }
+        }
+    };
 
     private int mInteractingWindows;
     private boolean mAutohideSuspended;
@@ -731,11 +748,12 @@ public class StatusBar extends SystemUI implements DemoMode,
         mWindowManager = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
 
         mDisplay = mWindowManager.getDefaultDisplay();
-        updateDisplaySize();
 
-        mPackageMonitor = new PackageMonitor();
+        mPackageMonitor = new SmartPackageMonitor();
         mPackageMonitor.register(mContext, mHandler);
         mPackageMonitor.addListener(this);
+
+        updateDisplaySize();
 
         Resources res = mContext.getResources();
         mVibrateOnOpening = mContext.getResources().getBoolean(
@@ -878,6 +896,7 @@ public class StatusBar extends SystemUI implements DemoMode,
         Dependency.get(ActivityStarterDelegate.class).setActivityStarterImpl(this);
 
         Dependency.get(ConfigurationController.class).addCallback(this);
+        mFlashlightController = Dependency.get(FlashlightController.class);
     }
 
     // ================================================================================
@@ -1197,6 +1216,9 @@ public class StatusBar extends SystemUI implements DemoMode,
             if (mLightBarController != null) {
                 mNavigationBar.setLightBarController(mLightBarController);
             }
+            if (!mNavigationBar.isUsingStockNav()) {
+                ((NavigationBarFrame)mNavigationBarView).disableDeadZone();
+            }
             mNavigationBar.setCurrentSysuiVisibility(mSystemUiVisibility);
         });
     }
@@ -1211,6 +1233,10 @@ public class StatusBar extends SystemUI implements DemoMode,
             fragmentHost.getFragmentManager().beginTransaction().remove(mNavigationBar).commit();
             mNavigationBar = null;
         }
+    }
+
+    public NotificationMediaManager getMediaManager() {
+        return mMediaManager;
     }
 
     /**
@@ -2256,6 +2282,9 @@ public class StatusBar extends SystemUI implements DemoMode,
         if (!isExpanded) {
             mRemoteInputManager.removeRemoteInputEntriesKeptUntilCollapsed();
         }
+        if (mNavigationBar != null) {
+            mNavigationBar.setPanelExpanded(isExpanded);
+        }
     }
 
     public NotificationStackScrollLayout getNotificationScrollLayout() {
@@ -2775,6 +2804,40 @@ public class StatusBar extends SystemUI implements DemoMode,
             // workspace
             WirelessChargingAnimation.makeWirelessChargingAnimation(mContext, null,
                     batteryLevel, null, false).show();
+        }
+    }
+
+    @Override
+    public void toggleFlashlight() {
+        if (mFlashlightController != null
+                && mFlashlightController.hasFlashlight()
+                && mFlashlightController.isAvailable()) {
+            mFlashlightController.setFlashlight(!mFlashlightController.isEnabled());
+        }
+    }
+
+    @Override
+    public void onPackageChanged(String pkg, PackageState state) {
+        if (state == PackageState.PACKAGE_REMOVED
+                || state == PackageState.PACKAGE_CHANGED) {
+            final Context ctx = mContext;
+            final Thread thread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    if (!ActionUtils.hasNavbarByDefault(ctx)) {
+                        ActionUtils.resolveAndUpdateButtonActions(ctx,
+                                ActionConstants
+                                        .getDefaults(ActionConstants.HWKEYS));
+                    }
+                    ActionUtils
+                            .resolveAndUpdateButtonActions(ctx, ActionConstants
+                                    .getDefaults(ActionConstants.SMARTBAR));
+                    ActionUtils.resolveAndUpdateButtonActions(ctx,
+                            ActionConstants.getDefaults(ActionConstants.FLING));
+                }
+            });
+            thread.setPriority(Process.THREAD_PRIORITY_BACKGROUND);
+            thread.start();
         }
     }
 
@@ -3647,26 +3710,6 @@ public class StatusBar extends SystemUI implements DemoMode,
         mPackageMonitor.unregister();
     }
 
-    @Override
-    public void onPackageChanged(String pkg, PackageState state) {
-        if (state == PackageState.PACKAGE_REMOVED
-                || state == PackageState.PACKAGE_CHANGED) {
-            final Context ctx = mContext;
-            final Thread thread = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    if (!ActionUtils.hasNavbarByDefault(ctx)) {
-                        ActionUtils.resolveAndUpdateButtonActions(ctx,
-                                ActionConstants
-                                        .getDefaults(ActionConstants.HWKEYS));
-                    }
-                }
-            });
-            thread.setPriority(Process.THREAD_PRIORITY_BACKGROUND);
-            thread.start();
-        }
-    }
-
     private boolean mDemoModeAllowed;
     private boolean mDemoMode;
 
@@ -4446,9 +4489,9 @@ public class StatusBar extends SystemUI implements DemoMode,
         return getMaxNotificationsWhileLocked(false /* recompute */);
     }
 
-    // TODO: Figure out way to remove these.
-    public NavigationBarView getNavigationBarView() {
-        return (mNavigationBar != null ? (NavigationBarView) mNavigationBar.getView() : null);
+    // TODO: Figure out way to remove this.
+    public Navigator getNavigationBarView() {
+        return mNavigationBar != null ? mNavigationBar.getNavigator() : null;
     }
 
     public View getNavigationBarWindow() {
@@ -5454,25 +5497,6 @@ public class StatusBar extends SystemUI implements DemoMode,
     public boolean shouldIgnoreTouch() {
         return isDozing() && mDozeServiceHost.mIgnoreTouchWhilePulsing;
     }
-
-    protected final ContentObserver mNavbarObserver = new ContentObserver(mHandler) {
-        @Override
-        public void onChange(boolean selfChange) {
-            boolean showing = Settings.Secure.getInt(mContext.getContentResolver(),
-                    Settings.Secure.NAVIGATION_BAR_VISIBLE,
-                    ActionUtils.hasNavbarByDefault(mContext) ? 1 : 0) != 0;
-            if (!showing && mNavigationBar != null && mNavigationBarView != null) {
-                removeNavigationBar();
-            } else if (showing && mNavigationBar == null && mNavigationBarView == null) {
-                createNavigationBar();
-            }
-            if (!ActionUtils.hasNavbarByDefault(mContext)) {
-                Intent intent = new Intent("com.cyanogenmod.action.UserChanged");
-                intent.setPackage("com.android.settings");
-                mContext.sendBroadcastAsUser(intent, new UserHandle(UserHandle.USER_CURRENT));
-            }
-        }
-    };
 
     // Begin Extra BaseStatusBar methods.
 
