@@ -5197,9 +5197,22 @@ public final class Settings {
         public static final String NETWORK_TRAFFIC_HIDEARROW = "network_traffic_hidearrow";
 
         /**
+         * Settings for carrier label font size
+         * @hide
+         */
+        public static final String STATUS_BAR_CARRIER_FONT_SIZE = "status_bar_carrier_font_size";
+
+        /**
+         * Custom carrier label font style
+         * @hide
+         */
+        public static final String STATUS_BAR_CARRIER_FONT_STYLE = "status_bar_carrier_font_style";
+
+        /**
+         * @hide
          * 0 = off
-	 * 1 = left
-	 * 2 = right
+         * 1 = left
+         * 2 = right
          */
         public static final String STATUS_BAR_LOGO = "status_bar_logo";
 
