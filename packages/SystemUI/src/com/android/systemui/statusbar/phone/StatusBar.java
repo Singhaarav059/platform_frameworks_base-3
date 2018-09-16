@@ -480,6 +480,10 @@ public class StatusBar extends SystemUI implements DemoMode,
     private boolean mBrightnessChanged;
     private boolean mJustPeeked;
 
+    //Lockscreen Notifications
+    private int mMaxKeyguardNotifConfig;
+    private boolean mCustomMaxKeyguard;
+
     // for disabling the status bar
     private int mDisabled1 = 0;
     private int mDisabled2 = 0;
@@ -4295,8 +4299,11 @@ public class StatusBar extends SystemUI implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.DOUBLE_TAP_SLEEP_LOCKSCREEN),
 		    false, this, UserHandle.USER_ALL);
-            mContext.getContentResolver().registerContentObserver(Settings.System.getUriFor(
+            resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.FORCE_SHOW_NAVBAR),
+	            false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.LOCKSCREEN_MAX_NOTIF_CONFIG),
                     false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.Secure.getUriFor(
                     Settings.Secure.FP_SWIPE_TO_DISMISS_NOTIFICATIONS),
@@ -4390,6 +4397,9 @@ public class StatusBar extends SystemUI implements DemoMode,
 	    } else if (uri.equals(Settings.System.getUriFor(
                     Settings.System.QS_FOOTER_WARNINGS))) {
                 setQsPanelOptions();
+            } else if (uri.equals(Settings.System.getUriFor(
+                Settings.System.LOCKSCREEN_MAX_NOTIF_CONFIG))) {
+                setMaxKeyguardNotifConfig();
 	    }
 	    update();
             updateNavigationBarVisibility();
@@ -4408,6 +4418,7 @@ public class StatusBar extends SystemUI implements DemoMode,
 	    setUseLessBoringHeadsUp();
             setGamingMode();
             updateCorners();
+	    setMaxKeyguardNotifConfig();
         }
     }
 
@@ -4514,6 +4525,11 @@ public class StatusBar extends SystemUI implements DemoMode,
                 Settings.System.GAMING_MODE_HEADSUP_TOGGLE, 1,
                 UserHandle.USER_CURRENT) == 1;
         mNotificationInterruptionStateProvider.setGamingPeekMode(mGamingModeActivated && mHeadsUpDisabled);
+    }
+
+    private void setMaxKeyguardNotifConfig() {
+        mMaxKeyguardNotifConfig = Settings.System.getIntForUser(mContext.getContentResolver(),
+                 Settings.System.LOCKSCREEN_MAX_NOTIF_CONFIG, 3, UserHandle.USER_CURRENT);
     }
 
     public int getWakefulnessState() {
