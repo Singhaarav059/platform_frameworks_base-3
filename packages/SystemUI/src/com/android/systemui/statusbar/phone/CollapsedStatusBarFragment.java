@@ -78,6 +78,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     private NetworkController mNetworkController;
     private LinearLayout mSystemIconArea;
     private LinearLayout mCenterClockLayout;
+    private LinearLayout mCustomIconArea;
     private View mClockView;
     private View mRightClock;
     private int mClockStyle;
@@ -186,6 +187,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         mBatteryBar = mStatusBar.findViewById(R.id.battery_bar);
 	mColtLogo = mStatusBar.findViewById(R.id.status_bar_logo);
 	mColtLogoRight = mStatusBar.findViewById(R.id.status_bar_logo_right);
+        mCustomIconArea = mStatusBar.findViewById(R.id.left_icon_area);
         mClockView = mStatusBar.findViewById(R.id.clock);
         mCenterClockLayout = (LinearLayout) mStatusBar.findViewById(R.id.center_clock_layout);
         mRightClock = mStatusBar.findViewById(R.id.right_clock);
@@ -330,6 +332,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
 
     public void hideNotificationIconArea(boolean animate) {
         animateHide(mNotificationIconAreaInner, animate, true);
+        animateHide(mCustomIconArea, animate, true);
         animateHide(mCenterClockLayout, animate, true);
 	if (mShowLogo == 1) {
             animateHide(mColtLogo, animate, false);
@@ -338,6 +341,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
 
     public void showNotificationIconArea(boolean animate) {
         animateShow(mNotificationIconAreaInner, animate);
+        animateShow(mCustomIconArea, animate);
         animateShow(mCenterClockLayout, animate);
 	if (mShowLogo == 1) {
              animateShow(mColtLogo, animate);
