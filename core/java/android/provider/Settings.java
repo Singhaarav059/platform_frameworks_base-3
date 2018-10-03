@@ -4405,6 +4405,16 @@ public final class Settings {
          */
         public static final String POWERMENU_USERS = "powermenu_users";
 
+
+        /**
+         * @hide
+         */
+        public static final String HIDE_NOTCH = "hide_notch";
+
+        /** @hide */
+        private static final Validator HIDE_NOTCH_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
         /**
          * Whether to show VoLTE icon or not
          * @hide
@@ -5909,7 +5919,8 @@ public final class Settings {
             OMNI_STATUS_BAR_CUSTOM_HEADER_PROVIDER,
             OMNI_STATUS_BAR_CUSTOM_HEADER_IMAGE,
             OMNI_STATUS_BAR_FILE_HEADER_IMAGE,
-            FORCE_FULLSCREEN_CUTOUT_APPS
+            FORCE_FULLSCREEN_CUTOUT_APPS,
+	    HIDE_NOTCH
         };
 
         /**
@@ -6087,6 +6098,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(DISPLAY_COLOR_ADJUSTMENT);
             PRIVATE_SETTINGS.add(DISPLAY_PICTURE_ADJUSTMENT);
             PRIVATE_SETTINGS.add(LIVE_DISPLAY_HINTED);
+            PRIVATE_SETTINGS.add(HIDE_NOTCH);
         }
 
         /**
@@ -6250,6 +6262,7 @@ public final class Settings {
             VALIDATORS.put(DISPLAY_COLOR_ADJUSTMENT, DISPLAY_COLOR_ADJUSTMENT_VALIDATOR);
             VALIDATORS.put(DISPLAY_PICTURE_ADJUSTMENT, DISPLAY_PICTURE_ADJUSTMENT_VALIDATOR);
             VALIDATORS.put(LIVE_DISPLAY_HINTED, LIVE_DISPLAY_HINTED_VALIDATOR);
+            VALIDATORS.put(HIDE_NOTCH, HIDE_NOTCH_VALIDATOR);
         }
 
         /**
