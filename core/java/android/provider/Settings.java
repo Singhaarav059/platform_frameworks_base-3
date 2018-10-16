@@ -4507,7 +4507,16 @@ public final class Settings {
                 BOOLEAN_VALIDATOR;
 
         /**
-         * volume answer
+         * 0 - Default
+         * 1 - Round with ring
+         * 2 - Two-toned round with ring
+	 * 3 - Squircle with ring
+         * @hide
+         */
+        public static final String QS_TILE_STYLE = "qs_tile_style";
+
+        /**
+	 * Volume Answer
          * @hide
          */
         public static final String ANSWER_VOLUME_BUTTON_BEHAVIOR_ANSWER = "call_volume_answer";
@@ -4707,6 +4716,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(OMNI_QS_QUICKBAR_COLUMNS);
             PRIVATE_SETTINGS.add(OMNI_QS_PANEL_BG_ALPHA);
             PRIVATE_SETTINGS.add(OMNI_USE_BOTTOM_GESTURE_NAVIGATION);
+            PRIVATE_SETTINGS.add(QS_TILE_STYLE);       
         }
 
 
