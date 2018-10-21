@@ -25,7 +25,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 
-import com.android.internal.util.nitrogen.NitrogenUtils;
+import com.android.internal.util.colt.ColtUtils;
 import com.android.systemui.ExpandHelper;
 import com.android.systemui.Gefingerpoken;
 import com.android.systemui.Interpolators;
@@ -80,7 +80,7 @@ public class DragDownHelper implements Gefingerpoken {
         mGoToSleep = new Runnable() {
             @Override
             public void run() {
-                NitrogenUtils.switchScreenOff(context);
+                ColtUtils.switchScreenOff(context);
             }
         };
     }

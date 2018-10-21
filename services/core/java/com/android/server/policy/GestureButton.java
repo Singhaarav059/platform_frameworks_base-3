@@ -43,8 +43,8 @@ import android.view.WindowManagerPolicyConstants.PointerEventListener;
 import android.view.inputmethod.InputMethodManagerInternal;
 
 import com.android.internal.R;
-import com.android.internal.util.nitrogen.NitrogenUtils;
-import com.android.internal.util.nitrogen.TaskUtils;
+import com.android.internal.util.colt.ColtUtils;
+import com.android.internal.util.colt.TaskUtils;
 import com.android.server.LocalServices;
 
 public class GestureButton implements PointerEventListener {
@@ -278,7 +278,7 @@ public class GestureButton implements PointerEventListener {
     }
 
     private void triggerGestureVirtualKeypress(int keyCode) {
-        NitrogenUtils.sendKeycode(keyCode);
+        ColtUtils.sendKeycode(keyCode);
     }
 
     void navigationBarPosition(int displayWidth, int displayHeight, int displayRotation) {

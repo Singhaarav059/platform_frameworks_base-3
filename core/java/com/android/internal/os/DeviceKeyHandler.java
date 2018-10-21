@@ -17,6 +17,7 @@
 package com.android.internal.os;
 
 import android.view.KeyEvent;
+import android.content.Intent;
 
 public interface DeviceKeyHandler {
 
@@ -28,4 +29,5 @@ public interface DeviceKeyHandler {
      * @return null if event is consumed, KeyEvent to be handled otherwise
      */
     public KeyEvent handleKeyEvent(KeyEvent event);
+
 }
