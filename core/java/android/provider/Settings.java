@@ -4300,8 +4300,12 @@ public final class Settings {
         public static final String POWERMENU_USERS = "powermenu_users";
 
         /**
-         * Whether to display the users option in the power menu
-         *
+         * Whether to show VoLTE icon or not
+         * @hide
+         */
+        public static final String SHOW_VOLTE_ICON = "volte_icon";
+
+        /**
          * @hide
          */
         public static final String POWERMENU_LOGOUT = "powermenu_logout";
