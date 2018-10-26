@@ -5069,6 +5069,15 @@ public final class Settings {
         public static final String RECENTS_ICON_PACK = "recents_icon_pack";
 
         /**
+         * Enable or disable wifi data activity indicators
+         * @hide
+         */
+        public static final String STATUSBAR_SHOW_WIFI_ACTIVITY = "statusbar_show_wifi_activity";
+
+        /** @hide */
+        private static final Validator STATUSBAR_SHOW_WIFI_ACTIVITY_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -5145,8 +5154,8 @@ public final class Settings {
             NIGHT_BRIGHTNESS_VALUE,
             INCREASING_RING,
             INCREASING_RING_START_VOLUME,
-            INCREASING_RING_RAMP_UP_TIME
-        };
+            INCREASING_RING_RAMP_UP_TIME,
+            STATUSBAR_SHOW_WIFI_ACTIVITY,    };
 
         /**
          * Keys we no longer back up under the current schema, but want to continue to
@@ -5282,6 +5291,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(INCREASING_RING);
             PRIVATE_SETTINGS.add(INCREASING_RING_START_VOLUME);
             PRIVATE_SETTINGS.add(INCREASING_RING_RAMP_UP_TIME);
+            PRIVATE_SETTINGS.add(STATUSBAR_SHOW_WIFI_ACTIVITY);
         }
 
 
@@ -5400,6 +5410,7 @@ public final class Settings {
             VALIDATORS.put(INCREASING_RING, INCREASING_RING_VALIDATOR);
             VALIDATORS.put(INCREASING_RING_START_VOLUME, INCREASING_RING_START_VOLUME_VALIDATOR);
             VALIDATORS.put(INCREASING_RING_RAMP_UP_TIME, INCREASING_RING_RAMP_UP_TIME_VALIDATOR);
+            VALIDATORS.put(STATUSBAR_SHOW_WIFI_ACTIVITY, STATUSBAR_SHOW_WIFI_ACTIVITY_VALIDATOR);
         }
 
         /**
