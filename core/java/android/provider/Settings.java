@@ -4661,6 +4661,52 @@ public final class Settings {
 	 **/
         public static final String LOCKOWNER_FONT_SIZE= "lockowner_font_size";
 
+	/**
+         * Position of the status bar clock
+         * 0 - Hide clock
+         * 1 - Left clock (default)
+         * 2 - Center clock
+         * 3 - Right clock
+         * @hide
+         */
+        public static final String STATUS_BAR_CLOCK = "status_bar_clock";
+
+        /** @hide */
+        private static final Validator STATUS_BAR_CLOCK_VALIDATOR = NON_NEGATIVE_INTEGER_VALIDATOR;
+
+        /**
+         * Show seconds in the status bar clock
+         * 0 - Hide seconds (default)
+         * 1 - Show seconds
+         * @hide
+         */
+        public static final String STATUS_BAR_CLOCK_SHOW_SECONDS = "status_bar_clock_show_seconds";
+
+        /** @hide */
+        private static final Validator STATUS_BAR_CLOCK_SHOW_SECONDS_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
+         * Show AM/PM to the right of the status bar clock
+         * 0 - Hide AM/PM (default)
+         * 1 - Show AM/PM
+         * @hide
+         */
+        public static final String STATUS_BAR_CLOCK_SHOW_AM_PM = "status_bar_clock_show_am_pm";
+
+        /** @hide */
+        private static final Validator STATUS_BAR_CLOCK_SHOW_AM_PM_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
+         * Show day of the week to the left of the status bar clock
+         * 0 - Hide day of the week (default)
+         * 1 - Show day of the week
+         * @hide
+         */
+        public static final String STATUS_BAR_CLOCK_SHOW_DAY = "status_bar_clock_show_day";
+
+        /** @hide */
+        private static final Validator STATUS_BAR_CLOCK_SHOW_DAY_VALIDATOR = BOOLEAN_VALIDATOR;
+
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
@@ -4730,6 +4776,10 @@ public final class Settings {
             OMNI_USE_BOTTOM_GESTURE_NAVIGATION,
             RECENTS_COMPONENT,
             WEATHER_LOCKSCREEN_UNIT,
+            STATUS_BAR_CLOCK,
+            STATUS_BAR_CLOCK_SHOW_SECONDS,
+            STATUS_BAR_CLOCK_SHOW_AM_PM,
+            STATUS_BAR_CLOCK_SHOW_DAY,
         };
 
         /**
@@ -4855,6 +4905,10 @@ public final class Settings {
             PRIVATE_SETTINGS.add(QS_TILE_STYLE);
             PRIVATE_SETTINGS.add(RECENTS_COMPONENT);
             PRIVATE_SETTINGS.add(WEATHER_LOCKSCREEN_UNIT);
+            PRIVATE_SETTINGS.add(STATUS_BAR_CLOCK);
+            PRIVATE_SETTINGS.add(STATUS_BAR_CLOCK_SHOW_SECONDS);
+            PRIVATE_SETTINGS.add(STATUS_BAR_CLOCK_SHOW_AM_PM);
+            PRIVATE_SETTINGS.add(STATUS_BAR_CLOCK_SHOW_DAY);
         }
 
 
@@ -4963,7 +5017,12 @@ public final class Settings {
                     OMNI_USE_BOTTOM_GESTURE_NAVIGATION_VALIDATOR);
             VALIDATORS.put(RECENTS_COMPONENT,RECENTS_COMPONENT_VALIDATOR);
 	    VALIDATORS.put(WEATHER_LOCKSCREEN_UNIT, WEATHER_LOCKSCREEN_UNIT_VALIDATOR);
-	 }
+            VALIDATORS.put(STATUS_BAR_CLOCK_SHOW_DAY, STATUS_BAR_CLOCK_SHOW_DAY_VALIDATOR);
+	    VALIDATORS.put(STATUS_BAR_CLOCK, STATUS_BAR_CLOCK_VALIDATOR);
+            VALIDATORS.put(STATUS_BAR_CLOCK_SHOW_SECONDS, STATUS_BAR_CLOCK_SHOW_SECONDS_VALIDATOR);
+            VALIDATORS.put(STATUS_BAR_CLOCK_SHOW_AM_PM, STATUS_BAR_CLOCK_SHOW_AM_PM_VALIDATOR);
+            VALIDATORS.put(STATUS_BAR_CLOCK_SHOW_DAY, STATUS_BAR_CLOCK_SHOW_DAY_VALIDATOR);
+        }
 
         /**
          * These entries are considered common between the personal and the managed profile,
