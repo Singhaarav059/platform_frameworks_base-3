@@ -4195,6 +4195,8 @@ public final class Settings {
          * the setting value. See an example above.
          */
 
+        /** Beginning of ABC system settings**/
+
         /**
          * Whether to show the battery info on the lockscreen while charging
          * @hide
@@ -4209,7 +4211,25 @@ public final class Settings {
         public static final String POWERMENU_SOUNDPANEL = "powermenu_soundpanel";
 
         /**
-         * Whether to display screenshot in the power menu
+         * Custom Ambient handwave gesture
+         * @hide
+         */
+        public static final String CUSTOM_AMBIENT_HANDWAVE_GESTURE = "custom_ambient_handwave_gesture";
+         /**
+         * Custom Ambient pocketmode gesture
+         * @hide
+         */
+        public static final String CUSTOM_AMBIENT_POCKETMODE_GESTURE = "custom_ambient_pocketmode_gesture";
+
+        /** End of ABC system settings**/
+
+        /**
+         * Settings to backup. This is here so that it's in the same place as the settings
+         * keys and easy to update.
+         *
+         * NOTE: Settings are backed up and restored in the order they appear
+         *       in this array. If you have one setting depending on another,
+         *       make sure that they are ordered appropriately.
          *
          * @hide
          */
