@@ -4243,7 +4243,18 @@ public final class Settings {
         public static final String POWERMENU_SETTINGS = "powermenu_settings";
 
         /**
-         * Whether to display lock in the power menu
+         * Custom Ambient tilt gesture
+         * @hide
+         */
+        public static final String CUSTOM_AMBIENT_TILT_GESTURE = "custom_ambient_tilt_gesture";
+
+        /**
+         * Settings to backup. This is here so that it's in the same place as the settings
+         * keys and easy to update.
+         *
+         * NOTE: Settings are backed up and restored in the order they appear
+         *       in this array. If you have one setting depending on another,
+         *       make sure that they are ordered appropriately.
          *
          * @hide
          */
