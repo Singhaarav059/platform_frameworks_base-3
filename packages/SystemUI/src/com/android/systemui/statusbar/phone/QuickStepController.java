@@ -232,7 +232,7 @@ public class QuickStepController implements GestureHelper {
                 mAllowGestureDetection = true;
 
                 // don't check double tap or navbar home action if full gesture mode or dt2s are disabled
-                // or if we tap on the home button
+                // or if we tap on the home or rotation button
                 if (!mNavigationBarView.isFullGestureMode()
                         || mNavigationBarView.getDownHitTarget() == HIT_TARGET_HOME
                         || mNavigationBarView.getDownHitTarget() == HIT_TARGET_ROTATION) {
