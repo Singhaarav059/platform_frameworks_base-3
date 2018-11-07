@@ -108,6 +108,8 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     }
     private SettingsObserver mSettingsObserver = new SettingsObserver(mHandler);
 
+    private View mBatteryBars[] = new View[2];
+
     private SignalCallback mSignalCallback = new SignalCallback() {
         @Override
         public void setIsAirplaneMode(NetworkController.IconState icon) {
@@ -147,6 +149,8 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         mClockView = mStatusBar.findViewById(R.id.clock);
         mCenterClockLayout = (LinearLayout) mStatusBar.findViewById(R.id.center_clock_layout);
         mRightClock = mStatusBar.findViewById(R.id.right_clock);
+        mBatteryBars[0] = mStatusBar.findViewById(R.id.battery_bar);
+        mBatteryBars[1] = mStatusBar.findViewById(R.id.battery_bar_1);
         mCustomCarrierLabel = mStatusBar.findViewById(R.id.statusbar_carrier_text);
         showSystemIconArea(false);
         initEmergencyCryptkeeperText();
@@ -292,6 +296,9 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         if (mClockStyle == 2) {
             animateHide(mRightClock, animate, true);
         }
+        for (View batteryBar: mBatteryBars) {
+            animateHide(batteryBar, animate, true);
+        }
         animateHide(mSystemIconArea, animate, true);
     }
 
@@ -299,6 +306,9 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         animateShow(mCenterClockLayout, animate);
         if (mClockStyle == 2) {
             animateShow(mRightClock, animate);
+        }
+        for (View batteryBar: mBatteryBars) {
+            animateShow(batteryBar, animate);
         }
         animateShow(mSystemIconArea, animate);
     }
