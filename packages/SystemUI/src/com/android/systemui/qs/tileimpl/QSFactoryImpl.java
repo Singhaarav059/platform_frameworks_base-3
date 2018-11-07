@@ -33,6 +33,7 @@ import com.android.systemui.qs.tiles.CPUInfoTile;
 import com.android.systemui.qs.tiles.ColorInversionTile;
 import com.android.systemui.qs.tiles.DataSaverTile;
 import com.android.systemui.qs.tiles.DndTile;
+import com.android.systemui.qs.tiles.CalendarTile;
 import com.android.systemui.qs.tiles.FlashlightTile;
 import com.android.systemui.qs.tiles.ColtTile;
 import com.android.systemui.qs.tiles.HeadsUpTile;
@@ -131,6 +132,8 @@ public class QSFactoryImpl implements QSFactory {
                 return new ColtTile(mHost);
             case "gaming":
                 return new GamingModeTile(mHost);
+            case "calendar":
+                return new CalendarTile(mHost);
         }
 
         // Intent tiles.

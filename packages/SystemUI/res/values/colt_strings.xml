@@ -134,4 +134,7 @@
     <string name="accessibility_quick_settings_gaming_mode_on">Gaming mode on</string>
     <string name="accessibility_quick_settings_gaming_mode_off">Gaming mode off</string>
 
+    <!-- Other QS tiles -->
+    <string name="calendar_title_tile">Add Event</string>
+
 </resources>
