@@ -13,9 +13,9 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- Button backlight -->
-    <java-symbol type="integer" name="config_buttonBrightnessSettingDefault" />
-    <java-symbol type="bool" name="config_deviceHasVariableButtonBrightness" />
+  <!-- Button backlight -->
+  <java-symbol type="integer" name="config_buttonBrightnessSettingDefault" />
+  <java-symbol type="bool" name="config_deviceHasVariableButtonBrightness" />
 
     <!-- HW keys binding -->
     <java-symbol type="anim" name="custom_app_in" />
@@ -214,5 +214,10 @@
   <java-symbol type="style" name="Animation.Toast.Translucent" />
   <java-symbol type="style" name="Animation.Toast.SlideRightLeft" />
   <java-symbol type="style" name="Animation.Toast.SlideLeftRight" />
+
+  <!-- Powermenu animations -->
+  <java-symbol type="style" name="GlobalActionsAnimation" />
+  <java-symbol type="style" name="GlobalActionsAnimationTop" />
+  <java-symbol type="style" name="GlobalActionsAnimationEnter" />
 
 </resources>
