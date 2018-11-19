@@ -20,9 +20,12 @@
           android:end="4dp">
         <shape android:shape="rectangle"
                android:tint="@color/switch_track_material">
-            <corners android:radius="7dp" />
+            <corners android:radius="2dp" />
             <solid android:color="@color/white_disabled_material" />
-            <size android:height="14dp" />
+            <size android:height="20dp" />
+	    <stroke
+	         android:width="2dip"
+        	 android:color="@color/switch_track_material"/>
         </shape>
     </item>
 </layer-list>
