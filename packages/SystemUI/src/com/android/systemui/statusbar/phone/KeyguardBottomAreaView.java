@@ -42,6 +42,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -100,6 +101,7 @@ public class KeyguardBottomAreaView extends FrameLayout implements View.OnClickL
         AccessibilityController.AccessibilityStateChangedCallback, View.OnLongClickListener {
 
     final static String TAG = "StatusBar/KeyguardBottomAreaView";
+	private static final String FONT_FAMILY = "sans-serif";
 
     public static final String CAMERA_LAUNCH_SOURCE_AFFORDANCE = "lockscreen_affordance";
     public static final String CAMERA_LAUNCH_SOURCE_WIGGLE = "wiggle_gesture";
@@ -348,6 +350,7 @@ public class KeyguardBottomAreaView extends FrameLayout implements View.OnClickL
     @Override
     protected void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
+    	Typeface tf = Typeface.create(FONT_FAMILY, Typeface.ITALIC);
         mIndicationBottomMargin = getResources().getDimensionPixelSize(
                 R.dimen.keyguard_indication_margin_bottom);
         mIndicationBottomMarginAmbient = getResources().getDimensionPixelSize(
@@ -367,7 +370,7 @@ public class KeyguardBottomAreaView extends FrameLayout implements View.OnClickL
         mIndicationText.setTextSize(TypedValue.COMPLEX_UNIT_PX,
                 getResources().getDimensionPixelSize(
                         com.android.internal.R.dimen.text_size_small_material));
-
+		mIndicationText.setTypeface(tf);
         ViewGroup.LayoutParams lp = mRightAffordanceView.getLayoutParams();
         lp.width = getResources().getDimensionPixelSize(R.dimen.keyguard_affordance_width);
         lp.height = getResources().getDimensionPixelSize(R.dimen.keyguard_affordance_height);
