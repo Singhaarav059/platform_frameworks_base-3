@@ -107,4 +107,7 @@
   <java-symbol type="drawable" name="weather_sunny" />
   <java-symbol type="drawable" name="weather_thunderstorms" />
   <java-symbol type="drawable" name="weather_windy" />
+
+  <!-- Usb drive persistent notification -->
+  <java-symbol type="bool" name="config_persistUsbDriveNotification" />
 </resources>

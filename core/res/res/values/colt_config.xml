@@ -116,4 +116,7 @@
     <!-- Component name for the activity that will be presenting the Oreo's Recents UI -->
     <string name="config_recentsComponentNameOreo" translatable="false">com.android.systemui/.recents.RecentsActivity</string>
 
+    <!-- Whether to persist the notification for when a usb drive device is plugged in -->
+    <bool name="config_persistUsbDriveNotification">true</bool>
+
 </resources>
