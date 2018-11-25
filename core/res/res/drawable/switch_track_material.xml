@@ -18,14 +18,18 @@
     <item android:gravity="center_vertical|fill_horizontal"
           android:start="4dp"
           android:end="4dp">
-        <shape android:shape="rectangle"
-               android:tint="@color/switch_track_material">
-            <corners android:radius="2dp" />
-            <solid android:color="@color/white_disabled_material" />
-            <size android:height="20dp" />
+        <shape xmlns:android="http://schemas.android.com/apk/res/android">
+	    <size android:height="48dp" />
+	    <corners android:radius="24dp" />
 	    <stroke
-	         android:width="2dip"
+	         android:width="1dp"
         	 android:color="@color/switch_track_material"/>
+	    <gradient
+	         android:startColor="#333"
+		 android:centerColor="#CCC"
+		 android:endColor="#FFF"
+		 android:centerY="33%"
+		 android:angle="-90" />
         </shape>
     </item>
 </layer-list>
