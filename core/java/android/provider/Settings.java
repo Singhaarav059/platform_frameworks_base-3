@@ -4883,6 +4883,19 @@ public final class Settings {
          */
         public static final String SCREEN_STATE_ON_DELAY = "screen_state_on_delay";
 
+        /**
+        * @hide
+         * Whether to set a lower brightness level when enabling night mode
+         * 0: Disabled
+         * 1: Set the brightness to a very low value
+         * 2: Set the brightness to a low value
+         * 3: Set the brightness to a medium value
+         * @hide
+         */
+        public static final String NIGHT_BRIGHTNESS_VALUE = "night_brightness_value";
+        /** @hide */
+        private static final Validator NIGHT_BRIGHTNESS_VALUE_VALIDATOR =
+                ANY_INTEGER_VALIDATOR;
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
@@ -4958,6 +4971,7 @@ public final class Settings {
             STATUS_BAR_CLOCK_SHOW_SECONDS,
             STATUS_BAR_CLOCK_SHOW_AM_PM,
             STATUS_BAR_CLOCK_SHOW_DAY,
+            NIGHT_BRIGHTNESS_VALUE,
         };
 
         /**
@@ -5089,6 +5103,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(STATUS_BAR_CLOCK_SHOW_AM_PM);
             PRIVATE_SETTINGS.add(STATUS_BAR_CLOCK_SHOW_DAY);
             PRIVATE_SETTINGS.add(SYSTEM_THEME_STYLE);
+            PRIVATE_SETTINGS.add(NIGHT_BRIGHTNESS_VALUE);
         }
 
 
@@ -5203,6 +5218,7 @@ public final class Settings {
             VALIDATORS.put(STATUS_BAR_CLOCK_SHOW_SECONDS, STATUS_BAR_CLOCK_SHOW_SECONDS_VALIDATOR);
             VALIDATORS.put(STATUS_BAR_CLOCK_SHOW_AM_PM, STATUS_BAR_CLOCK_SHOW_AM_PM_VALIDATOR);
             VALIDATORS.put(STATUS_BAR_CLOCK_SHOW_DAY, STATUS_BAR_CLOCK_SHOW_DAY_VALIDATOR);
+            VALIDATORS.put(NIGHT_BRIGHTNESS_VALUE, NIGHT_BRIGHTNESS_VALUE_VALIDATOR);
         }
 
         /**
