@@ -5435,7 +5435,7 @@ public final class Settings {
 
         /** @hide */
         public static final Validator TEXT_CHARGING_SYMBOL_VALIDATOR =
-             new SettingsValidators.InclusiveIntegerRangeValidator(0, 2);
+             new SettingsValidators.InclusiveIntegerRangeValidator(0, 8);
 
         /**
          * Immersive recents options
