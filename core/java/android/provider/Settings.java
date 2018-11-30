@@ -6428,6 +6428,16 @@ public final class Settings {
         private static final Validator FLASHLIGHT_ON_CALL_RATE_VALIDATOR =
                 new SettingsValidators.InclusiveIntegerRangeValidator(1, 5);
 
+       /**
+         * Settings dashboard icon style
+         * @hide
+         */
+        public static final String THEMING_SETTINGS_DASHBOARD_ICONS =
+                "theming_settings_dashboard_icons";
+
+        /** @hide */
+        private static final Validator THEMING_SETTINGS_DASHBOARD_ICONS_VALIDATOR = ANY_INTEGER_VALIDATOR;
+
         /**
          * A2DP codec priority
          * @hide
@@ -6615,6 +6625,7 @@ public final class Settings {
             FLASHLIGHT_ON_CALL_IGNORE_DND,
             FLASHLIGHT_ON_CALL_RATE,
             SHOW_MEDIA_HEADS_UP,
+            THEMING_SETTINGS_DASHBOARD_ICONS
         };
 
         /**
@@ -6849,6 +6860,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(FLASHLIGHT_ON_CALL);
             PRIVATE_SETTINGS.add(FLASHLIGHT_ON_CALL_IGNORE_DND);
             PRIVATE_SETTINGS.add(FLASHLIGHT_ON_CALL_RATE);
+            PRIVATE_SETTINGS.add(THEMING_SETTINGS_DASHBOARD_ICONS);
         }
 
         /**
@@ -7063,6 +7075,7 @@ public final class Settings {
             VALIDATORS.put(FLASHLIGHT_ON_CALL_IGNORE_DND, FLASHLIGHT_ON_CALL_IGNORE_DND_VALIDATOR);
             VALIDATORS.put(FLASHLIGHT_ON_CALL_RATE, FLASHLIGHT_ON_CALL_RATE_VALIDATOR);
             VALIDATORS.put(SHOW_MEDIA_HEADS_UP, SHOW_MEDIA_HEADS_UP_VALIDATOR);
+            VALIDATORS.put(THEMING_SETTINGS_DASHBOARD_ICONS, THEMING_SETTINGS_DASHBOARD_ICONS_VALIDATOR);
         }
 
         /**
