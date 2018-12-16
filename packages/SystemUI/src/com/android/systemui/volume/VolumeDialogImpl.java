@@ -1099,12 +1099,12 @@ public class VolumeDialogImpl implements VolumeDialog {
         }
         boolean useActiveColoring = isActive && row.slider.isEnabled();
         final ColorStateList tint = useActiveColoring ? mActiveTint : mInactiveTint;
+        final ColorStateList progressTint = useActiveColoring ? null : mInactiveTint;
         final int alpha = useActiveColoring ? mActiveAlpha : mInactiveAlpha;
         Log.d(TAG, "updateVolumeRowTintH "+row.stream+" "+isActive+" "+useActiveColoring+" "+tint+" "+alpha);
         if (tint == row.cachedTint) return;
-        row.slider.setProgressTintList(tint);
+        row.slider.setProgressTintList(progressTint);
         row.slider.setThumbTintList(tint);
-        row.slider.setProgressBackgroundTintList(tint);
         row.slider.setAlpha(((float) alpha) / 255);
         row.icon.setImageTintList(tint);
         row.icon.setImageAlpha(alpha);
