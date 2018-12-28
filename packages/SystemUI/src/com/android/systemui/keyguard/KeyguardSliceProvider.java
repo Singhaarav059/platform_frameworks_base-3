@@ -333,7 +333,7 @@ public class KeyguardSliceProvider extends SliceProvider implements
         return mZenModeController.getZen() != Settings.Global.ZEN_MODE_OFF;
     }
 
-    protected void addWeather(ListBuilder builder) {
+    public void addWeather(ListBuilder builder) {
         if (!mWeatherClient.isOmniJawsEnabled()) return;
         if (!mWeatherEnabled || !mShowWeatherSlice || mWeatherInfo == null || mPackageInfo == null) {
             return;
@@ -467,10 +467,10 @@ public class KeyguardSliceProvider extends SliceProvider implements
             mZenModeController.addCallback(this);
             mWeatherSettingsObserver = new WeatherSettingsObserver(mHandler);
             mWeatherSettingsObserver.updateDateSkeleton();
+            mWeatherSettingsObserver.updateLockscreenWeatherStyle();
+            mWeatherSettingsObserver.updateLockscreenWeather();
             mWeatherSettingsObserver.observe();
             mWeatherClient = new OmniJawsClient(getContext());
-            mWeatherEnabled = Settings.System.getIntForUser(mContentResolver, Settings.System.OMNI_LOCKSCREEN_WEATHER_ENABLED, 0, UserHandle.USER_CURRENT) != 0;
-            mShowWeatherSlice = Settings.System.getIntForUser(mContentResolver, Settings.System.AICP_LOCKSCREEN_WEATHER_STYLE, 0, UserHandle.USER_CURRENT) != 0;
             mWeatherClient.addSettingsObserver();
             mWeatherClient.addObserver(this);
             queryAndUpdateWeather();
