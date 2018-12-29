@@ -380,6 +380,13 @@ public class StatusBar extends SystemUI implements DemoMode,
         "com.android.systemui.qsheader.transparent", // 4
     };
 
+    // Switch themes
+    private static final String[] SWITCH_THEMES = {
+        "com.android.system.switch.stock", // 0
+        "com.android.system.switch.md2", // 1
+        "com.android.system.switch.oneplus", // 2
+    };
+
     /** If true, the system is in the half-boot-to-decryption-screen state.
      * Prudently disable QS and notifications.  */
     private static final boolean ONLY_CORE_APPS;
@@ -4391,6 +4398,16 @@ public class StatusBar extends SystemUI implements DemoMode,
     // Unload all qs header styles back to stock
     public void stockQSHeaderStyle() {
         stockNewQSHeaderStyle(mOverlayManager, mLockscreenUserManager.getCurrentUserId());
+
+    }
+    public void updateSwitchStyle() {
+        int switchStyle = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.SWITCH_STYLE, 2, mLockscreenUserManager.getCurrentUserId());
+        updateSwitchStyle(mOverlayManager, mLockscreenUserManager.getCurrentUserId(), switchStyle);
+    }
+
+    public void stockSwitchStyle() {
+        stockSwitchStyle(mOverlayManager, mLockscreenUserManager.getCurrentUserId());
     }
 
     private void updateDozingState() {
@@ -5103,8 +5120,11 @@ public class StatusBar extends SystemUI implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.LESS_BORING_HEADS_UP),
                     false, this, UserHandle.USER_ALL);
+	   resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.SWITCH_STYLE),
+                    false, this, UserHandle.USER_ALL);
 	    update();
-	    }
+        }
 
          @Override
          public void onChange(boolean selfChange, Uri uri) {
@@ -5132,6 +5152,10 @@ public class StatusBar extends SystemUI implements DemoMode,
             } else if (uri.equals(Settings.System.getUriFor(
                     Settings.System.LESS_BORING_HEADS_UP))) {
                 setUseLessBoringHeadsUp();
+            } else if (uri.equals(Settings.System.getUriFor(
+                    Settings.System.SWITCH_STYLE))) {
+                stockSwitchStyle();
+                updateSwitchStyle();           
             }
 	    update();
         }
@@ -5250,6 +5274,31 @@ public class StatusBar extends SystemUI implements DemoMode,
             String qsheadertheme = QS_HEADER_THEMES[i];
             try {
                 om.setEnabled(qsheadertheme,
+                        false /*disable*/, userId);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+     public static void updateSwitchStyle(IOverlayManager om, int userId, int switchStyle) {
+        if (switchStyle == 2) {
+            stockSwitchStyle(om, userId);
+        } else {
+            try {
+                om.setEnabled(SWITCH_THEMES[switchStyle],
+                        true, userId);
+            } catch (RemoteException e) {
+                Log.w(TAG, "Can't change switch theme", e);
+            }
+        }
+    }
+
+    public static void stockSwitchStyle(IOverlayManager om, int userId) {
+        for (int i = 0; i < SWITCH_THEMES.length; i++) {
+            String switchtheme = SWITCH_THEMES[i];
+            try {
+                om.setEnabled(switchtheme,
                         false /*disable*/, userId);
             } catch (RemoteException e) {
                 e.printStackTrace();
