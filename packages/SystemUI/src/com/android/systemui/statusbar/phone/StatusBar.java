@@ -4820,6 +4820,12 @@ public class StatusBar extends SystemUI implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.USE_OLD_MOBILETYPE),
                     false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.LOCKSCREEN_CLOCK),
+                    false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.LOCKSCREEN_INFO),
+                    false, this, UserHandle.USER_ALL);
         }
 
          @Override
@@ -4832,6 +4838,9 @@ public class StatusBar extends SystemUI implements DemoMode,
                     Settings.System.QS_HEADER_STYLE))) {
                 stockQSHeaderStyle();
                 updateQSHeaderStyle();
+            } else if (uri.equals(Settings.System.getUriFor(Settings.System.LOCKSCREEN_CLOCK)) ||
+                   uri.equals(Settings.System.getUriFor(Settings.System.LOCKSCREEN_INFO))) {
+                updateKeyguardStatusSettings();
             }
 	    update();
         }
@@ -4848,6 +4857,7 @@ public class StatusBar extends SystemUI implements DemoMode,
             setLockscreenMediaMetadata();
             setLockscreenDoubleTapToSleep();
             setStatusDoubleTapToSleep();
+            updateKeyguardStatusSettings();
         }
     }
 
@@ -4939,6 +4949,10 @@ public class StatusBar extends SystemUI implements DemoMode,
                 e.printStackTrace();
             }
         }
+    }
+
+    private void updateKeyguardStatusSettings() {
+        mNotificationPanel.updateKeyguardStatusSettings();
     }
 
     public int getWakefulnessState() {
