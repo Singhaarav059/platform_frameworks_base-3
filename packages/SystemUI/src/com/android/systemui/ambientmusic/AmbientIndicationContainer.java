@@ -43,13 +43,15 @@ public class AmbientIndicationContainer extends AutoReinflateContainer {
     private boolean mDozing;
     private String mLastInfo;
 
+    private boolean mNpInfoAvailable;
+
     public AmbientIndicationContainer(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
         mContext = context;
     }
 
     public void hideIndication() {
-        setIndication(null, null);
+        setIndication(null, null, false);
     }
 
     public void initializeView(StatusBar statusBar, Handler handler) {
@@ -63,7 +65,7 @@ public class AmbientIndicationContainer extends AutoReinflateContainer {
         mText = (TextView)findViewById(R.id.ambient_indication_text);
         mIcon = (ImageView)findViewById(R.id.ambient_indication_icon);
 	mTrackLenght = (TextView)findViewById(R.id.ambient_indication_track_lenght);
-        setIndication(mIndication);
+        setIndication(mMediaMetaData, mMediaText, false);
     }
 
     public void setDozing(boolean dozing) {
@@ -71,7 +73,7 @@ public class AmbientIndicationContainer extends AutoReinflateContainer {
 
         mDozing = dozing;
         setTickerMarquee(dozing, false);
-        if (dozing && mInfoAvailable) {
+        if (dozing && (mInfoAvailable || mNpInfoAvailable)) {
             mText.setText(mInfoToSet);
             mLastInfo = mInfoToSet;
             mTrackLenght.setText(mLengthInfo);
@@ -123,7 +125,14 @@ public class AmbientIndicationContainer extends AutoReinflateContainer {
         this.setLayoutParams(lp);
     }
 
-    public void setIndication(MediaMetadata mediaMetaData, String notificationText) {
+    public void setNowPlayingIndication(String trackInfo) {
+        // don't trigger this if we are already showing local/remote session track info
+        setIndication(null, trackInfo, true);
+    }
+
+    public void setIndication(MediaMetadata mediaMetaData, String notificationText, boolean nowPlaying) {
+        // never override local music ticker
+        if (nowPlaying && mInfoAvailable) return;
         CharSequence charSequence = null;
         mLengthInfo = null;
         mInfoToSet = null;
@@ -157,11 +166,16 @@ public class AmbientIndicationContainer extends AutoReinflateContainer {
             mLengthInfo = null;
         }
 
-        mInfoAvailable = mInfoToSet != null;
-        if (mInfoAvailable) {
+        if (nowPlaying) {
+            mNpInfoAvailable = mInfoToSet != null;
+        } else {
+            mInfoAvailable = mInfoToSet != null;
+        }
+
+        if (mInfoAvailable || mNpInfoAvailable) {
             mMediaMetaData = mediaMetaData;
             mMediaText = notificationText;
-            boolean isAnotherTrack = mInfoAvailable
+            boolean isAnotherTrack = (mInfoAvailable || mNpInfoAvailable)
                     && (TextUtils.isEmpty(mLastInfo) || (!TextUtils.isEmpty(mLastInfo) && !mLastInfo.equals(mInfoToSet)));
             if (!DozeParameters.getInstance(mContext).getAlwaysOn() && mStatusBar != null && isAnotherTrack) {
                 mStatusBar.triggerAmbientForMedia();
@@ -172,7 +186,7 @@ public class AmbientIndicationContainer extends AutoReinflateContainer {
         }
         mText.setText(mInfoToSet);
         mTrackLenght.setText(mLengthInfo);
-        mAmbientIndication.setVisibility(mDozing && mInfoAvailable ? View.VISIBLE : View.INVISIBLE);
+        mAmbientIndication.setVisibility(mDozing && (mInfoAvailable || mNpInfoAvailable) ? View.VISIBLE : View.INVISIBLE);
     }
 
     public View getIndication() {
