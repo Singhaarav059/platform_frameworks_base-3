@@ -42,6 +42,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.os.Handler;
+import android.os.UserHandle;
+import android.provider.Settings;
 
 import com.android.settingslib.Utils;
 import com.android.systemui.BatteryMeterView;
