@@ -29,6 +29,7 @@ import com.android.internal.util.UserIcons;
 import com.android.settingslib.drawable.UserIconDrawable;
 
 import java.text.NumberFormat;
+import com.android.internal.util.custom.thermal.ThermalController;
 
 import com.android.internal.util.custom.weather.WeatherClient;
 
@@ -288,6 +289,7 @@ public class Utils {
                 || pkg.packageName.equals(sSharedSystemSharedLibPackageName)
                 || pkg.packageName.equals(PrintManager.PRINT_SPOOLER_PACKAGE_NAME)
                 || pkg.packageName.equals(WeatherClient.SERVICE_PACKAGE)
+                || pkg.packageName.equals(ThermalController.SERVICE_PACKAGE)
                 || isDeviceProvisioningPackage(resources, pkg.packageName);
     }
 
