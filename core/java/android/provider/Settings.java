@@ -5162,13 +5162,6 @@ public final class Settings {
         private static final Validator TOAST_ICON_VALIDATOR =
               BOOLEAN_VALIDATOR;
 
-
-        /**
-         * Toast icon
-         * @hide
-         */
-        public static final String TOAST_ICON = "toast_icon";
-
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
