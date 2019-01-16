@@ -206,4 +206,6 @@
     <java-symbol type="id" name="shutdown_message" />
     <java-symbol type="id" name="shutdown_progress" />
     <java-symbol name="reboot_system_message" type="string" />
+
+   <java-symbol type="bool" name="config_waitForMpctlOnBoot" />
 </resources>
