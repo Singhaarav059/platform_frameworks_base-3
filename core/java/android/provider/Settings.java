@@ -4531,6 +4531,14 @@ public final class Settings {
         private static final Validator OMNI_QS_PANEL_BG_ALPHA_VALIDATOR =
                 ANY_INTEGER_VALIDATOR;
 
+
+        /**
+         * Transition effect in Colt tabs
+         *
+         * @hide
+         */
+         public static final String COLT_SETTINGS_TABS_EFFECT = "colt_settings_tabs_effect";
+
         /**
          * Disable dashboard conditions in settings
          * @hide
