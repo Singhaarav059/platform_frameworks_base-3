@@ -4758,9 +4758,68 @@ public final class Settings {
 	 **/
 
         /**
-         * 0 - fullscreen
-         * 1 - partial
+         * Whether to use the custom status bar header or not
          * @hide
+         */
+        public static final String OMNI_STATUS_BAR_CUSTOM_HEADER = "status_bar_custom_header";
+
+        private static final Validator OMNI_STATUS_BAR_CUSTOM_HEADER_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
+         * Whether to apply a shadow on top of the header image
+         * value is the alpha value of the shadow image is 0 -> no shadow -> 255 black
+         * @hide
+         */
+        public static final String OMNI_STATUS_BAR_CUSTOM_HEADER_SHADOW =
+                "status_bar_custom_header_shadow";
+
+        private static final Validator OMNI_STATUS_BAR_CUSTOM_HEADER_SHADOW_VALIDATOR =
+                ANY_INTEGER_VALIDATOR;
+
+        /**
+         * header image package to use for daylight header - package name - null if default
+         * @hide
+         */
+        public static final String OMNI_STATUS_BAR_DAYLIGHT_HEADER_PACK =
+                "status_bar_daylight_header_pack";
+
+        private static final Validator OMNI_STATUS_BAR_DAYLIGHT_HEADER_PACK_VALIDATOR =
+                ANY_STRING_VALIDATOR;
+
+        /**
+         * Current active provider - available currently "static" "daylight"
+         * @hide
+         */
+        public static final String OMNI_STATUS_BAR_CUSTOM_HEADER_PROVIDER =
+                "status_bar_custom_header_provider";
+
+        private static final Validator OMNI_STATUS_BAR_CUSTOM_HEADER_PROVIDER_VALIDATOR =
+                ANY_STRING_VALIDATOR;
+
+        /**
+         * Manual override picture to use
+         * @hide
+         */
+        public static final String OMNI_STATUS_BAR_CUSTOM_HEADER_IMAGE =
+                "status_bar_custom_header_image";
+
+        private static final Validator OMNI_STATUS_BAR_CUSTOM_HEADER_IMAGE_VALIDATOR =
+                ANY_STRING_VALIDATOR;
+
+        /**
+         * @hide
+         */
+        public static final String OMNI_STATUS_BAR_FILE_HEADER_IMAGE =
+                "status_bar_file_header_image";
+
+        private static final Validator OMNI_STATUS_BAR_FILE_HEADER_IMAGE_VALIDATOR =
+                ANY_STRING_VALIDATOR;
+
+        /**
+	 * 0 - fullscreen
+	 * 1 - partial
+	 * @hide
          */
         public static final String SCREENSHOT_DEFAULT_MODE = "screenshot_default_mode";
 
@@ -5620,7 +5679,13 @@ public final class Settings {
             STATUS_BAR_SHOW_TICKER,
             STATUS_BAR_TICKER_ANIMATION_MODE,
             STATUS_BAR_TICKER_TICK_DURATION,
-        };
+            OMNI_STATUS_BAR_CUSTOM_HEADER,
+            OMNI_STATUS_BAR_CUSTOM_HEADER_SHADOW,
+            OMNI_STATUS_BAR_DAYLIGHT_HEADER_PACK,
+            OMNI_STATUS_BAR_CUSTOM_HEADER_PROVIDER,
+            OMNI_STATUS_BAR_CUSTOM_HEADER_IMAGE,
+            OMNI_STATUS_BAR_FILE_HEADER_IMAGE,
+	};
 
         /**
          * Keys we no longer back up under the current schema, but want to continue to
@@ -5775,7 +5840,13 @@ public final class Settings {
             PRIVATE_SETTINGS.add(STATUS_BAR_TICKER_ANIMATION_MODE);
             PRIVATE_SETTINGS.add(STATUS_BAR_TICKER_TICK_DURATION);
 	    PRIVATE_SETTINGS.add(SCREENSHOT_DEFAULT_MODE);
-        }
+            PRIVATE_SETTINGS.add(OMNI_STATUS_BAR_CUSTOM_HEADER);
+            PRIVATE_SETTINGS.add(OMNI_STATUS_BAR_CUSTOM_HEADER_SHADOW);
+            PRIVATE_SETTINGS.add(OMNI_STATUS_BAR_DAYLIGHT_HEADER_PACK);
+            PRIVATE_SETTINGS.add(OMNI_STATUS_BAR_CUSTOM_HEADER_PROVIDER);
+            PRIVATE_SETTINGS.add(OMNI_STATUS_BAR_CUSTOM_HEADER_IMAGE);
+            PRIVATE_SETTINGS.add(OMNI_STATUS_BAR_FILE_HEADER_IMAGE);
+	}
 
         /**
          * Whether to display the torch option in the power menu
@@ -5911,6 +5982,18 @@ public final class Settings {
                     STATUS_BAR_TICKER_ANIMATION_MODE_VALIDATOR);
             VALIDATORS.put(STATUS_BAR_TICKER_TICK_DURATION,
                     STATUS_BAR_TICKER_TICK_DURATION_VALIDATOR);
+            VALIDATORS.put(OMNI_STATUS_BAR_CUSTOM_HEADER,
+                    OMNI_STATUS_BAR_CUSTOM_HEADER_VALIDATOR);
+            VALIDATORS.put(OMNI_STATUS_BAR_CUSTOM_HEADER_SHADOW,
+                    OMNI_STATUS_BAR_CUSTOM_HEADER_SHADOW_VALIDATOR);
+            VALIDATORS.put(OMNI_STATUS_BAR_DAYLIGHT_HEADER_PACK,
+                    OMNI_STATUS_BAR_DAYLIGHT_HEADER_PACK_VALIDATOR);
+            VALIDATORS.put(OMNI_STATUS_BAR_CUSTOM_HEADER_PROVIDER,
+                    OMNI_STATUS_BAR_CUSTOM_HEADER_PROVIDER_VALIDATOR);
+            VALIDATORS.put(OMNI_STATUS_BAR_CUSTOM_HEADER_IMAGE,
+                    OMNI_STATUS_BAR_CUSTOM_HEADER_IMAGE_VALIDATOR);
+            VALIDATORS.put(OMNI_STATUS_BAR_FILE_HEADER_IMAGE,
+                    OMNI_STATUS_BAR_FILE_HEADER_IMAGE_VALIDATOR);
         }
 
         /**
