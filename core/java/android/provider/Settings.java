@@ -4316,6 +4316,24 @@ public final class Settings {
          */
         public static final String NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD = "network_traffic_autohide_threshold";
 
+	/**
+         * Whether to hide the lockscreen clock
+         * @hide
+         */
+        public static final String LOCKSCREEN_CLOCK = "lockscreen_clock";
+
+        /**
+         * Whether to hide the items underneath the lockscreen clock
+         * @hide
+         */
+        public static final String LOCKSCREEN_INFO = "lockscreen_info";
+
+        /**
+         * Select which lockscreen clock style to display
+         * @hide
+         */
+        public static final String LOCKSCREEN_CLOCK_SELECTION = "lockscreen_clock_selection";
+
         /**
          * Whether to display advanced reboot in the power menu
          *
@@ -13390,24 +13408,6 @@ public final class Settings {
          * @hide
          */
         public static final String ALLOW_SIGNATURE_FAKE = "allow_signature_fake";
-
-	/**
-         * Whether to hide the lockscreen clock
-         * @hide
-         */
-        public static final String LOCKSCREEN_CLOCK = "lockscreen_clock";
-
-        /**
-         * Whether to hide the items underneath the lockscreen clock
-         * @hide
-         */
-        public static final String LOCKSCREEN_INFO = "lockscreen_info";
-
-	/**
-         * Select which lockscreen clock style to display
-         * @hide
-         */
-        public static final String LOCKSCREEN_CLOCK_SELECTION = "lockscreen_clock_selection";
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
