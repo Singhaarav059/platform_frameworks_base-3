@@ -1739,7 +1739,7 @@ public class StatusBar extends SystemUI implements DemoMode,
         Trace.beginSection("StatusBar#updateMediaMetaData");
 
         // ensure visualizer is visible regardless of artwork
-        mMediaManager.setMediaPlaying();
+        //mMediaManager.setMediaPlaying();
 
         if (!SHOW_LOCKSCREEN_MEDIA_ARTWORK) {
             Trace.endSection();

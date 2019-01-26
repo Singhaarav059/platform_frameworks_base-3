@@ -27,6 +27,7 @@ import android.util.Log;
 
 import com.android.systemui.Dumpable;
 import com.android.systemui.SysUiServiceProvider;
+import com.android.systemui.statusbar.phone.StatusBar;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
