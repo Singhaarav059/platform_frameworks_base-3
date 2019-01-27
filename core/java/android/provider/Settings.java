@@ -4679,6 +4679,13 @@ public final class Settings {
         private static final Validator OMNI_QS_PANEL_BG_ALPHA_VALIDATOR =
                 ANY_INTEGER_VALIDATOR;
 
+        /**
+         * Ambient screen settings
+         * "screen_brightness_array=0:1:2:3:4"
+         * @hide
+         */
+        public static final String ALWAYS_ON_DISPLAY_CONSTANTS_CUST = "always_on_display_constants_cust";
+
 	/**
          * Number of qs columns on landscape orientation
          * @hide
