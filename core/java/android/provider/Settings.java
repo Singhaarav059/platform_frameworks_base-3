@@ -5067,7 +5067,22 @@ public final class Settings {
          */
         public static final String BATTERY_BAR_USE_GRADIENT_COLOR = "battery_bar_use_gradient_color";
 
-	    /**
+	/**
+         * Whether to enable DOZE only when charging
+         * @hide
+         */
+        public static final String OMNI_DOZE_ON_CHARGE = "doze_on_charge";
+
+        private static final Validator OMNI_DOZE_ON_CHARGE_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
+         * hidden stting of the current atate of DOZE only when charging
+         * @hide
+         */
+        public static final String OMNI_DOZE_ON_CHARGE_NOW = "doze_on_charge_now";
+
+	 /**
          * show the membar in recents
          *  @hide
          */
@@ -5448,8 +5463,9 @@ public final class Settings {
             TOAST_ICON,
 	    THEMING_SETTINGS_DASHBOARD_ICONS,
             NOTIFICATION_LIGHT_PULSE,
-            LOCK_QS_DISABLED
-        };
+            LOCK_QS_DISABLED,
+	    OMNI_DOZE_ON_CHARGE,
+	};
 
         /**
          * Keys we no longer back up under the current schema, but want to continue to
@@ -5600,8 +5616,8 @@ public final class Settings {
             PRIVATE_SETTINGS.add(PROXIMITY_AUTO_SPEAKER);
             PRIVATE_SETTINGS.add(PROXIMITY_AUTO_SPEAKER_DELAY);
             PRIVATE_SETTINGS.add(PROXIMITY_AUTO_SPEAKER_INCALL_ONLY);
-        }
-
+	    PRIVATE_SETTINGS.add(OMNI_DOZE_ON_CHARGE);
+	}
 
         /**
          * Whether to display the torch option in the power menu
@@ -5732,6 +5748,7 @@ public final class Settings {
 	    VALIDATORS.put(THEMING_SETTINGS_DASHBOARD_ICONS, THEMING_SETTINGS_DASHBOARD_ICONS_VALIDATOR);
             VALIDATORS.put(NOTIFICATION_LIGHT_PULSE, BOOLEAN_VALIDATOR);
             VALIDATORS.put(LOCK_QS_DISABLED, LOCK_QS_DISABLED_VALIDATOR);
+	    VALIDATORS.put(OMNI_DOZE_ON_CHARGE, OMNI_DOZE_ON_CHARGE_VALIDATOR);
         }
 
         /**
