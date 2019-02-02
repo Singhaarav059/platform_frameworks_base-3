@@ -2559,7 +2559,7 @@ public final class ActiveServices {
                 }
 
                 // Retry.
-                if (!inDestroying) {
+                if (!inDestroying && !mRestartingServices.contains(r)) {
                     scheduleServiceRestartLocked(r, false);
                 }
             }
