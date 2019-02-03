@@ -4379,12 +4379,36 @@ public final class Settings {
          */
         public static final String BUTTON_EXTRA_KEY_MAPPING = "button_extra_mapping";
 
+	/** @hide */
+        private static final Validator BUTTON_EXTRA_KEY_MAPPING_VALIDATOR = ANY_STRING_VALIDATOR;
+
         /**
          * Enable proxi check for wake keys - must be implemented in a device
          * KeyHandler
          * @hide
          */
         public static final String DEVICE_PROXI_CHECK_ENABLED = "device_proxi_check_enabled";
+
+	/** @hide */
+        private static final Validator DEVICE_PROXI_CHECK_ENABLED_VALIDATOR = BOOLEAN_VALIDATOR;
+
+	/**
+         * Enable Gesture Haptic feedback
+         * KeyHandler
+         * @hide
+         */
+        public static final String DEVICE_GESTURE_FEEDBACK_ENABLED = "device_gesture_feedback_enabled";
+
+        /** @hide */
+        private static final Validator DEVICE_GESTURE_FEEDBACK_ENABLED_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
+         * @hide
+         */
+        public static final String DEVICE_FEATURE_SETTINGS = "device_feature_settings";
+
+        /** @hide */
+        private static final Validator DEVICE_FEATURE_SETTINGS_VALIDATOR = ANY_STRING_VALIDATOR;
 
         /**
          * Indicates whether ANBI (Accidental navigation button interaction) is enabled.
@@ -5564,6 +5588,10 @@ public final class Settings {
             VALIDATORS.put(STATUSBAR_SHOW_WIFI_ACTIVITY, STATUSBAR_SHOW_WIFI_ACTIVITY_VALIDATOR);
             VALIDATORS.put(USE_OLD_MOBILETYPE, USE_OLD_MOBILETYPE_VALIDATOR);
             VALIDATORS.put(TOAST_ICON,TOAST_ICON_VALIDATOR);
+	    VALIDATORS.put(BUTTON_EXTRA_KEY_MAPPING, BUTTON_EXTRA_KEY_MAPPING_VALIDATOR);
+            VALIDATORS.put(DEVICE_PROXI_CHECK_ENABLED, DEVICE_PROXI_CHECK_ENABLED_VALIDATOR);
+            VALIDATORS.put(DEVICE_GESTURE_FEEDBACK_ENABLED, DEVICE_GESTURE_FEEDBACK_ENABLED_VALIDATOR);
+            VALIDATORS.put(DEVICE_FEATURE_SETTINGS, DEVICE_FEATURE_SETTINGS_VALIDATOR);
         }
 
         /**
