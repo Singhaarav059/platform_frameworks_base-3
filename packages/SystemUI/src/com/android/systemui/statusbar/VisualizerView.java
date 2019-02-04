@@ -378,7 +378,6 @@ public class VisualizerView extends View
                 mPaint.setColor(mColor);
                 animate()
                         .alpha(1f)
-                        .withEndAction(null)
                         .setDuration(800);
             }
         } else {
