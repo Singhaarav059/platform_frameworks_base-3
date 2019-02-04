@@ -358,7 +358,6 @@ public class VisualizerView extends View
                 AsyncTask.execute(mLinkVisualizer);
                 animate()
                         .alpha(0.40f)
-                        .withEndAction(null)
                         .setDuration(800);
             } else {
                 mPaint.setColor(mColor);
@@ -374,7 +373,6 @@ public class VisualizerView extends View
                 AsyncTask.execute(mLinkVisualizer);
                 animate()
                         .alpha(1f)
-                        .withEndAction(null)
                         .setDuration(800);
             } else {
                 mPaint.setColor(mColor);
