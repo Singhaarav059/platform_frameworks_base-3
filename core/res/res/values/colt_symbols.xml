@@ -212,4 +212,7 @@
   <!-- Whether to enable oneplus cam hack -->
   <java-symbol type="bool" name="config_enableOPcamhack" />
 
+  <!-- Whether device supports an alt. ambient display -->
+  <java-symbol type="bool" name="config_alt_ambient_display"/>
+
 </resources>
