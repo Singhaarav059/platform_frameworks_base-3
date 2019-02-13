@@ -4792,6 +4792,17 @@ public final class Settings {
         public static final String LOCKSCREEN_PHONE_ICON_COLOR = "lockscreen_phone_icon_color";
 
         /**
+         * Settings dashboard icon style
+         * @hide
+         */
+        public static final String THEMING_SETTINGS_DASHBOARD_ICONS =
+                "theming_settings_dashboard_icons";
+
+        /** @hide */
+        public static final Validator THEMING_SETTINGS_DASHBOARD_ICONS_VALIDATOR =
+                ANY_INTEGER_VALIDATOR;
+
+	/**
          * Change the color of the lockscreen lock icon
 	/**
          * Whether to display clock while recents are in full screen
@@ -5318,6 +5329,7 @@ public final class Settings {
             STATUSBAR_SHOW_WIFI_ACTIVITY,
             USE_OLD_MOBILETYPE,
             TOAST_ICON,
+	    THEMING_SETTINGS_DASHBOARD_ICONS,
         };
 
         /**
@@ -5463,6 +5475,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(STATUS_BAR_LOGO);
             PRIVATE_SETTINGS.add(USE_OLD_MOBILETYPE);
 	    PRIVATE_SETTINGS.add(TOAST_ICON);
+	    PRIVATE_SETTINGS.add(THEMING_SETTINGS_DASHBOARD_ICONS);
         }
 
 
@@ -5592,6 +5605,7 @@ public final class Settings {
             VALIDATORS.put(DEVICE_PROXI_CHECK_ENABLED, DEVICE_PROXI_CHECK_ENABLED_VALIDATOR);
             VALIDATORS.put(DEVICE_GESTURE_FEEDBACK_ENABLED, DEVICE_GESTURE_FEEDBACK_ENABLED_VALIDATOR);
             VALIDATORS.put(DEVICE_FEATURE_SETTINGS, DEVICE_FEATURE_SETTINGS_VALIDATOR);
+	    VALIDATORS.put(THEMING_SETTINGS_DASHBOARD_ICONS, THEMING_SETTINGS_DASHBOARD_ICONS_VALIDATOR);
         }
 
         /**
