@@ -171,7 +171,6 @@ public class Clock extends TextView implements DemoMode, CommandQueue.Callbacks,
         bundle.putInt(CURRENT_USER_ID, mCurrentUserId);
         bundle.putBoolean(VISIBLE_BY_POLICY, mClockVisibleByPolicy);
         bundle.putBoolean(VISIBLE_BY_USER, mClockVisibleByUser);
-        bundle.putBoolean(SHOW_SECONDS, mShowSeconds);
         bundle.putInt(VISIBILITY, getVisibility());
 
         return bundle;
@@ -192,7 +191,6 @@ public class Clock extends TextView implements DemoMode, CommandQueue.Callbacks,
         }
         mClockVisibleByPolicy = bundle.getBoolean(VISIBLE_BY_POLICY, true);
         mClockVisibleByUser = bundle.getBoolean(VISIBLE_BY_USER, true);
-        mShowSeconds = bundle.getBoolean(SHOW_SECONDS, false);
         if (bundle.containsKey(VISIBILITY)) {
             setVisibility(bundle.getInt(VISIBILITY));
         }
