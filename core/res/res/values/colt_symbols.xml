@@ -208,4 +208,8 @@
     <java-symbol name="reboot_system_message" type="string" />
 
    <java-symbol type="bool" name="config_waitForMpctlOnBoot" />
+
+  <!-- Whether to enable oneplus cam hack -->
+  <java-symbol type="bool" name="config_enableOPcamhack" />
+
 </resources>
