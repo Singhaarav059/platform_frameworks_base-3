@@ -1168,6 +1168,9 @@ Navigator.OnVerticalChangedListener, KeyguardMonitor.Callback, NotificationMedia
     private void setFullGestureMode() {
         boolean fullModeEnabled = false;
         boolean dt2sEnabled = false;
+
+        if (!isUsingStockNav()) return;
+
         try {
             if (Settings.System.getIntForUser(mContentResolver,
                     Settings.System.FULL_GESTURE_NAVBAR,
