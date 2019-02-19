@@ -26,8 +26,6 @@ import android.os.UserHandle;
 import android.util.Log;
 
 import com.android.systemui.Dumpable;
-import com.android.systemui.SysUiServiceProvider;
-import com.android.systemui.statusbar.phone.StatusBar;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -44,8 +42,6 @@ public class NotificationMediaManager implements Dumpable {
 
     private final Context mContext;
     private final MediaSessionManager mMediaSessionManager;
-
-    private StatusBar mStatusBar;
 
     protected NotificationPresenter mPresenter;
     protected NotificationEntryManager mEntryManager;
@@ -102,10 +98,6 @@ public class NotificationMediaManager implements Dumpable {
 
     public String getMediaNotificationKey() {
         return mMediaNotificationKey;
-    }
-
-    public MediaController getMediaController() {
-        return mMediaController;
     }
 
     public MediaMetadata getMediaMetadata() {
@@ -233,10 +225,6 @@ public class NotificationMediaManager implements Dumpable {
             pw.print(" title=" + mMediaMetadata.getText(MediaMetadata.METADATA_KEY_TITLE));
         }
         pw.println();
-    }
-
-    public void addCallback(StatusBar statusBar) {
-        mStatusBar = statusBar;
     }
 
     private boolean isPlaybackActive(int state) {

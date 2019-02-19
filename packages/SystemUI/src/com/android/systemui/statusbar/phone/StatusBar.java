@@ -86,7 +86,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.AudioAttributes;
 import android.media.MediaMetadata;
-import android.media.session.PlaybackState;
 import android.metrics.LogMaker;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -226,7 +225,6 @@ import com.android.systemui.statusbar.RemoteInputController;
 import com.android.systemui.statusbar.ScrimView;
 import com.android.systemui.statusbar.StatusBarState;
 import com.android.systemui.statusbar.VibratorHelper;
-import com.android.systemui.statusbar.VisualizerView;
 import com.android.systemui.statusbar.notification.AboveShelfObserver;
 import com.android.systemui.statusbar.notification.ActivityLaunchAnimator;
 import com.android.systemui.statusbar.notification.VisualStabilityManager;
@@ -577,13 +575,6 @@ public class StatusBar extends SystemUI implements DemoMode,
     protected NotificationLockscreenUserManager mLockscreenUserManager;
     protected NotificationRemoteInputManager mRemoteInputManager;
 
-    private VisualizerView mVisualizerView;
-    private boolean mScreenOn;
-    private boolean mKeyguardShowingMedia;
-
-    // LS visualizer on Ambient Display
-    private boolean mAmbientVisualizer;
-
     private BroadcastReceiver mWallpaperChangedReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -721,7 +712,6 @@ public class StatusBar extends SystemUI implements DemoMode,
         mLockscreenUserManager = Dependency.get(NotificationLockscreenUserManager.class);
         mGutsManager = Dependency.get(NotificationGutsManager.class);
         mMediaManager = Dependency.get(NotificationMediaManager.class);
-        mMediaManager.addCallback(this);
         mEntryManager = Dependency.get(NotificationEntryManager.class);
         mViewHierarchyManager = Dependency.get(NotificationViewHierarchyManager.class);
         mAppOpsListener = Dependency.get(AppOpsListener.class);
@@ -1083,8 +1073,6 @@ public class StatusBar extends SystemUI implements DemoMode,
         mDozeScrimController = new DozeScrimController(mScrimController, context,
                 DozeParameters.getInstance(context));
 
-        mVisualizerView = (VisualizerView) mStatusBarWindow.findViewById(R.id.visualizerview);
-
         // Other icons
         mVolumeComponent = getComponent(VolumeComponent.class);
 
@@ -1153,8 +1141,9 @@ public class StatusBar extends SystemUI implements DemoMode,
         }
 
         PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
-        mBroadcastReceiver.onReceive(mContext,
-                new Intent(pm.isScreenOn() ? Intent.ACTION_SCREEN_ON : Intent.ACTION_SCREEN_OFF));
+        if (!pm.isScreenOn()) {
+            mBroadcastReceiver.onReceive(mContext, new Intent(Intent.ACTION_SCREEN_OFF));
+        }
         mGestureWakeLock = pm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK,
                 "GestureWakeLock");
         mVibrator = mContext.getSystemService(Vibrator.class);
@@ -1169,7 +1158,6 @@ public class StatusBar extends SystemUI implements DemoMode,
         IntentFilter filter = new IntentFilter();
         filter.addAction(Intent.ACTION_CLOSE_SYSTEM_DIALOGS);
         filter.addAction(Intent.ACTION_SCREEN_OFF);
-        filter.addAction(Intent.ACTION_SCREEN_ON);
         filter.addAction(DevicePolicyManager.ACTION_SHOW_DEVICE_MONITORING_DIALOG);
         filter.addAction("com.android.systemui.ACTION_DISMISS_KEYGUARD");
         context.registerReceiverAsUser(mBroadcastReceiver, UserHandle.ALL, filter, null, null);
@@ -1754,10 +1742,6 @@ public class StatusBar extends SystemUI implements DemoMode,
     @Override
     public void updateMediaMetaData(boolean metaDataChanged, boolean allowEnterAnimation) {
         Trace.beginSection("StatusBar#updateMediaMetaData");
-
-        // ensure visualizer is visible regardless of artwork
-        //mMediaManager.setMediaPlaying();
-
         if (!SHOW_LOCKSCREEN_MEDIA_ARTWORK) {
             Trace.endSection();
             return;
@@ -1797,8 +1781,6 @@ public class StatusBar extends SystemUI implements DemoMode,
                 artworkDrawable = new BitmapDrawable(mBackdropBack.getResources(), artworkBitmap);
             }
         }
-        mKeyguardShowingMedia = artworkDrawable != null;
-
         boolean allowWhenShade = false;
         if (ENABLE_LOCKSCREEN_WALLPAPER && artworkDrawable == null) {
             Bitmap lockWallpaper = mLockscreenWallpaper.getBitmap();
@@ -1815,17 +1797,10 @@ public class StatusBar extends SystemUI implements DemoMode,
         boolean hideBecauseOccluded = mStatusBarKeyguardViewManager != null
                 && mStatusBarKeyguardViewManager.isOccluded();
 
-        final boolean keyguardVisible = (mState != StatusBarState.SHADE);
         final boolean hasArtwork = artworkDrawable != null;
         mColorExtractor.setHasBackdrop(hasArtwork);
         if (mScrimController != null) {
             mScrimController.setHasBackdrop(hasArtwork);
-        }
-
-        if (keyguardVisible && mKeyguardShowingMedia &&
-                (artworkDrawable instanceof BitmapDrawable)) {
-            // always use current backdrop to color eq
-            mVisualizerView.setBitmap(((BitmapDrawable)artworkDrawable).getBitmap());
         }
 
         if ((hasArtwork || DEBUG_MEDIA_FAKE_ARTWORK)
@@ -3264,12 +3239,8 @@ public class StatusBar extends SystemUI implements DemoMode,
                 }
             }
             else if (Intent.ACTION_SCREEN_OFF.equals(action)) {
-                mScreenOn = false;
                 finishBarAnimations();
                 resetUserExpandedStates();
-            }
-            else if (Intent.ACTION_SCREEN_ON.equals(action)) {
-                mScreenOn = true;
             }
             else if (DevicePolicyManager.ACTION_SHOW_DEVICE_MONITORING_DIALOG.equals(action)) {
                 mQSPanel.showDeviceMonitoringDialog();
@@ -4207,7 +4178,6 @@ public class StatusBar extends SystemUI implements DemoMode,
         mDozeScrimController.setDozing(mDozing);
         mKeyguardIndicationController.setDozing(mDozing);
         mNotificationPanel.setDozing(mDozing, animate);
-        mVisualizerView.setDozing(mDozing);
         updateQsExpansionEnabled();
         Trace.endSection();
     }
@@ -4351,7 +4321,6 @@ public class StatusBar extends SystemUI implements DemoMode,
             maybeEscalateHeadsUp();
         }
         mState = state;
-        mVisualizerView.setStatusBarState(state);
         mGroupManager.setStatusBarState(state);
         mHeadsUpManager.setStatusBarState(state);
         mFalsingManager.setStatusBarState(state);
@@ -4832,14 +4801,12 @@ public class StatusBar extends SystemUI implements DemoMode,
         @Override
         public void onScreenTurnedOn() {
             mScrimController.onScreenTurnedOn();
-            mVisualizerView.setVisible(true);
         }
 
         @Override
         public void onScreenTurnedOff() {
             mFalsingManager.onScreenOff();
             mScrimController.onScreenTurnedOff();
-            mVisualizerView.setVisible(false);
             // If we pulse in from AOD, we turn the screen off first. However, updatingIsKeyguard
             // in that case destroys the HeadsUpManager state, so don't do it in that case.
             if (!isPulsing()) {
@@ -4889,10 +4856,7 @@ public class StatusBar extends SystemUI implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                    Settings.System.LOCKSCREEN_CLOCK_SELECTION),
                    false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.Secure.AMBIENT_VISUALIZER_ENABLED),
-                    false, this, UserHandle.USER_ALL);
-        }
+	    }
 
          @Override
          public void onChange(boolean selfChange, Uri uri) {
@@ -4908,9 +4872,6 @@ public class StatusBar extends SystemUI implements DemoMode,
                 uri.equals(Settings.System.getUriFor(Settings.System.LOCKSCREEN_INFO)) ||
                 uri.equals(Settings.System.getUriFor(Settings.System.LOCKSCREEN_CLOCK_SELECTION))) {
                 updateKeyguardStatusSettings();
-            } else if (uri.equals(Settings.Secure.getUriFor(
-                    Settings.Secure.AMBIENT_VISUALIZER_ENABLED))) {
-                setAmbientVis();
             }
 	    update();
         }
@@ -5023,12 +4984,6 @@ public class StatusBar extends SystemUI implements DemoMode,
 
     private void updateKeyguardStatusSettings() {
         mNotificationPanel.updateKeyguardStatusSettings();
-    }
-
-    private void setAmbientVis() {
-        mAmbientVisualizer = Settings.Secure.getIntForUser(
-                mContext.getContentResolver(), Settings.Secure.AMBIENT_VISUALIZER_ENABLED, 0,
-                UserHandle.USER_CURRENT) == 1;
     }
 
     public int getWakefulnessState() {
@@ -5196,9 +5151,6 @@ public class StatusBar extends SystemUI implements DemoMode,
             mEntryManager.updateNotifications();
             updateDozingState();
             updateReportRejectedTouchVisibility();
-            if (mAmbientVisualizer && mDozing) {
-                mVisualizerView.setVisible(true);
-            }
         }
         Trace.endSection();
     }
@@ -5243,10 +5195,6 @@ public class StatusBar extends SystemUI implements DemoMode,
             mScrimController.transitionTo(ScrimState.UNLOCKED, mUnlockScrimCallback);
         }
         Trace.endSection();
-    }
-
-    public VisualizerView getVisualizer() {
-        return mVisualizerView;
     }
 
     public boolean isKeyguardShowing() {
