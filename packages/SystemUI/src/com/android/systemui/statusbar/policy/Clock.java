@@ -414,7 +414,7 @@ public class Clock extends TextView implements DemoMode, CommandQueue.Callbacks,
             // Do nothing
         }
         setVisibility(visibility);
-        if (mClockAutoHide && visible && mScreenOn) {
+        if (!mQsHeader && mClockAutoHide && visible && mScreenOn) {
             autoHideHandler.postDelayed(()->autoHideClock(), mShowDuration * 1000);
         }
     }
@@ -550,7 +550,7 @@ public class Clock extends TextView implements DemoMode, CommandQueue.Callbacks,
         String timeResult = sdf.format(mCalendar.getTime());
         String dateResult = "";
 
-        if (mClockDateDisplay != CLOCK_DATE_DISPLAY_GONE) {
+        if (!mQsHeader && mClockDateDisplay != CLOCK_DATE_DISPLAY_GONE) {
             Date now = new Date();
 
             if (mClockDateFormat == null || mClockDateFormat.isEmpty()) {
