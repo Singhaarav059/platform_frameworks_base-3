@@ -2189,6 +2189,10 @@ public class StatusBar extends SystemUI implements DemoMode,
             }
             return false;
         }
+        
+                if (mEntryManager.shouldSkipHeadsUp(sbn)) {
+            return false;
+        }
 
         if (sbn.getNotification().fullScreenIntent != null) {
             if (mAccessibilityManager.isTouchExplorationEnabled()) {
@@ -5096,6 +5100,9 @@ public class StatusBar extends SystemUI implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.SCREEN_BRIGHTNESS_MODE),
                     false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.LESS_BORING_HEADS_UP),
+                    false, this, UserHandle.USER_ALL);
 	    update();
 	    }
 
@@ -5122,6 +5129,9 @@ public class StatusBar extends SystemUI implements DemoMode,
                     Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL)) ||
                 uri.equals(Settings.System.getUriFor(Settings.System.SCREEN_BRIGHTNESS_MODE))) {
                 setBrightnessSlider();
+            } else if (uri.equals(Settings.System.getUriFor(
+                    Settings.System.LESS_BORING_HEADS_UP))) {
+                setUseLessBoringHeadsUp();
             }
 	    update();
         }
@@ -5141,6 +5151,7 @@ public class StatusBar extends SystemUI implements DemoMode,
             updateKeyguardStatusSettings();
 	    setPulseBlacklist();
 	    setBrightnessSlider();
+            setUseLessBoringHeadsUp();
         }
     }
 
@@ -5246,6 +5257,12 @@ public class StatusBar extends SystemUI implements DemoMode,
         }
     }
 
+    private void setUseLessBoringHeadsUp() {
+        boolean lessBoringHeadsUp = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.LESS_BORING_HEADS_UP, 0,
+                UserHandle.USER_CURRENT) == 1;
+        mEntryManager.setUseLessBoringHeadsUp(lessBoringHeadsUp);
+    }
     private void updateKeyguardStatusSettings() {
         mNotificationPanel.updateKeyguardStatusSettings();
     }
