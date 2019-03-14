@@ -77,6 +77,19 @@ public class CarrierLabel extends TextView implements DarkReceiver {
     public static final int FONT_MEDIUM_ITALIC = 15;
     public static final int FONT_BLACK = 16;
     public static final int FONT_BLACK_ITALIC = 17;
+    public static final int FONT_DANCINGSCRIPT = 18;
+    public static final int FONT_DANCINGSCRIPT_BOLD = 19;
+    public static final int FONT_COMINGSOON = 20;
+    public static final int FONT_NOTOSERIF = 21;
+    public static final int FONT_NOTOSERIF_ITALIC = 22;
+    public static final int FONT_NOTOSERIF_BOLD = 23;
+    public static final int FONT_NOTOSERIF_BOLD_ITALIC = 24;
+    public static final int GOBOLD_LIGHT = 25;
+    public static final int ROADRAGE = 26;
+    public static final int SNOWSTORM = 27;
+    public static final int GOOGLESANS = 28;
+    public static final int NEONEON = 29;
+    public static final int THEMEABLE = 30;
 
     Handler mHandler;
 
@@ -213,7 +226,7 @@ public class CarrierLabel extends TextView implements DarkReceiver {
 
     public void getFontStyle(int font) {
         switch (font) {
-            case FONT_NORMAL:
+	    case FONT_NORMAL:
             default:
                 setTypeface(Typeface.create("sans-serif",
                     Typeface.NORMAL));
@@ -285,6 +298,58 @@ public class CarrierLabel extends TextView implements DarkReceiver {
             case FONT_BLACK_ITALIC:
                 setTypeface(Typeface.create("sans-serif-black",
                     Typeface.ITALIC));
+                break;
+            case FONT_DANCINGSCRIPT:
+                setTypeface(Typeface.create("cursive",
+                    Typeface.NORMAL));
+                break;
+            case FONT_DANCINGSCRIPT_BOLD:
+                setTypeface(Typeface.create("cursive",
+                    Typeface.BOLD));
+                break;
+            case FONT_COMINGSOON:
+                setTypeface(Typeface.create("casual",
+                    Typeface.NORMAL));
+                break;
+            case FONT_NOTOSERIF:
+                setTypeface(Typeface.create("serif",
+                    Typeface.NORMAL));
+                break;
+            case FONT_NOTOSERIF_ITALIC:
+                setTypeface(Typeface.create("serif",
+                    Typeface.ITALIC));
+                break;
+            case FONT_NOTOSERIF_BOLD:
+                setTypeface(Typeface.create("serif",
+                    Typeface.BOLD));
+                break;
+            case FONT_NOTOSERIF_BOLD_ITALIC:
+                setTypeface(Typeface.create("serif",
+                    Typeface.BOLD_ITALIC));
+                break;
+            case GOBOLD_LIGHT:
+                setTypeface(Typeface.create("gobold-light-sys",
+                    Typeface.NORMAL));
+                break;
+            case ROADRAGE:
+                setTypeface(Typeface.create("roadrage-sys",
+		   Typeface.NORMAL));
+                break;
+            case SNOWSTORM:
+                setTypeface(Typeface.create("snowstorm-sys",
+                    Typeface.NORMAL));
+                break;
+            case GOOGLESANS:
+                setTypeface(Typeface.create("googlesans-sys",
+                    Typeface.NORMAL));
+                break;
+            case NEONEON:
+                setTypeface(Typeface.create("neoneon-sys",
+                    Typeface.NORMAL));
+                break;
+            case THEMEABLE:
+                setTypeface(Typeface.create("themeable-sys",
+                    Typeface.NORMAL));
                 break;
         }
     }
