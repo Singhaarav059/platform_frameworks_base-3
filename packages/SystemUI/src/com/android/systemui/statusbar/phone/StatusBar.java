@@ -4315,7 +4315,7 @@ public class StatusBar extends SystemUI implements DemoMode,
      */
      public void updateTileStyle() {
          int qsTileStyle = Settings.System.getIntForUser(mContext.getContentResolver(),
-                 Settings.System.QS_TILE_STYLE, 0, mLockscreenUserManager.getCurrentUserId());
+                 Settings.System.QS_TILE_STYLE, 5, mLockscreenUserManager.getCurrentUserId());
         updateNewTileStyle(mOverlayManager, mLockscreenUserManager.getCurrentUserId(), qsTileStyle);
      }
 
