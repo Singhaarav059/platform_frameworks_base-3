@@ -315,7 +315,7 @@ public class QSFooterImpl extends FrameLayout implements Tunable, QSFooter,
         }
     }
 
-    private boolean showUserSwitcher(boolean isDemo) {
+     private boolean showUserSwitcher() {
 	if (!UserManager.supportsMultipleUsers() || !isUserEnabled()) {
             return false;
         }
