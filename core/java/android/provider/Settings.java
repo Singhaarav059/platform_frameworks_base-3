@@ -5881,9 +5881,9 @@ public final class Settings {
         public static final String NETWORK_TRAFFIC_STATE = "network_traffic_state";
 
         /**
-	 ** What to show in network traffic indicator in statusbar
-	 ** @hide
-	 **/
+         ** What to show in network traffic indicator in statusbar
+         ** @hide
+         **/
         public static final String NETWORK_TRAFFIC_TYPE = "network_traffic_type";
 
         /**
@@ -5899,10 +5899,19 @@ public final class Settings {
         public static final String NETWORK_TRAFFIC_HIDEARROW = "network_traffic_hidearrow";
 
         /**
- 	 ** What size to show for network traffic indicator in statusbar
-	 ** @hide
-	 **/
+         ** What size to show for network traffic indicator in statusbar
+         ** @hide
+         **/
          public static final String NETWORK_TRAFFIC_FONT_SIZE = "network_traffic_font_size";
+
+        /**
+         * Show network traffic indicator
+         * 0 - Statusbar (default)
+         * 1 - QS Header
+         * @hide
+         */
+        public static final String NETWORK_TRAFFIC_VIEW_LOCATION = "network_traffic_view_location";
+
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
@@ -6170,6 +6179,12 @@ public final class Settings {
             PRIVATE_SETTINGS.add(BUTTON_BACKLIGHT_ONLY_WHEN_PRESSED);
             PRIVATE_SETTINGS.add(BUTTON_BRIGHTNESS);
             PRIVATE_SETTINGS.add(ANBI_ENABLED_OPTION);
+            PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_STATE);
+            PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_TYPE);
+            PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD);
+            PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_HIDEARROW);
+            PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_FONT_SIZE);
+            PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_VIEW_LOCATION);
             PRIVATE_SETTINGS.add(ALLOW_INCALL_HOME);
             PRIVATE_SETTINGS.add(VOLUME_ROCKER_WAKE);
             PRIVATE_SETTINGS.add(VOLUME_BUTTON_MUSIC_CONTROL);
