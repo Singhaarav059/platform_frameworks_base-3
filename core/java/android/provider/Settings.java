@@ -5819,6 +5819,16 @@ public final class Settings {
         /** @hide */
         public static final Validator LIVE_DISPLAY_HINTED_VALIDATOR =
                 new SettingsValidators.InclusiveIntegerRangeValidator(-3, 1);
+	
+	/**
+         * @hide
+         */
+        public static final String SMART_CHARGING = "smart_charging";
+
+        /**
+         * @hide
+         */
+        public static final String SMART_CHARGING_LEVEL = "smart_charging_level";
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
