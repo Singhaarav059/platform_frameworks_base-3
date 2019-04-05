@@ -1408,6 +1408,28 @@ public class StatusBarManagerService extends IStatusBarService.Stub implements D
     }
 
     @Override
+    public void showInDisplayFingerprintView() {
+        if (mBar != null) {
+            try {
+                mBar.showInDisplayFingerprintView();
+            } catch (RemoteException ex) {
+                // do nothing
+            }
+        }
+    }
+
+    @Override
+    public void hideInDisplayFingerprintView() {
+        if (mBar != null) {
+            try {
+                mBar.hideInDisplayFingerprintView();
+            } catch (RemoteException ex) {
+                // do nothing
+            }
+        }
+    }
+
+    @Override
     public void onNotificationBubbleChanged(String key, boolean isBubble) {
         enforceStatusBarService();
         long identity = Binder.clearCallingIdentity();
