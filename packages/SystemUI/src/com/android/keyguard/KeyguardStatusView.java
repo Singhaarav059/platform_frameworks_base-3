@@ -454,12 +454,12 @@ public class KeyguardStatusView extends GridLayout implements
 
     private int getLockClockSize() {
         return Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.LOCKCLOCK_FONT_SIZE, 78);
+                Settings.System.LOCKCLOCK_FONT_SIZE, 64);
     }
 
     private int getLockDateSize() {
         return Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.LOCKDATE_FONT_SIZE, 14);
+                Settings.System.LOCKDATE_FONT_SIZE, 16);
     }
 
     private int getOwnerInfoFont() {
