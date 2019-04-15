@@ -1434,17 +1434,17 @@ public class KeyguardStatusView extends GridLayout implements
 				mSpectrumClockView.setVisibility(View.GONE);
 		mTextClock.setVisibility(View.GONE);
                 break;
-            case 9: // custom text clock
+            case 15: // custom text clock
                 mTextClock.setVisibility(mDarkAmount != 1 ? (mShowClock ? View.VISIBLE :
                        View.GONE) : View.VISIBLE);
                 mClockView.setVisibility(View.GONE);
-		mKeyguardSlice.setVisibility(View.GONE);
 		mCustomClockView.setVisibility(View.GONE);
                                 mSpideyClockView.setVisibility(View.GONE);
                                 mCustomNumClockView.setVisibility(View.GONE);
                                 mDotClockView.setVisibility(View.GONE);
                                 mSpectrumClockView.setVisibility(View.GONE);
 				mSneekyClockView.setVisibility(View.GONE);
+		mKeyguardSlice.setVisibility(mShowInfo ? View.VISIBLE : View.GONE);
 		break;
 	}
     }
@@ -1522,8 +1522,8 @@ public class KeyguardStatusView extends GridLayout implements
             case 14: // sneeky analog
                 params.addRule(RelativeLayout.BELOW, R.id.sneeky_clock_view);
                 break;
-	    case 9: // custom Text Clock View
-		params.addRule(RelativeLayout.BELOW, R.id.clock_view);
+	    case 15: // custom Text Clock View
+		params.addRule(RelativeLayout.BELOW, R.id.custom_textclock_view);
 		break;
         }
 
