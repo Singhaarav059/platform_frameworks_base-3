@@ -5478,6 +5478,12 @@ public final class Settings {
                 ANY_INTEGER_VALIDATOR;
 
         /**
+         * Select alignment for text clock on lockscreen
+         * @hide
+         */
+        public static final String LOCKSCREEN_TEXT_CLOCK_ALIGN = "lockscreen_text_clock_align";
+
+        /**
          * Whether to enable charge battery warning
          * @hide
          */
