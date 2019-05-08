@@ -4186,7 +4186,7 @@ public final class Settings {
 
         /** @hide */
         public static final Validator SHOW_BATTERY_PERCENT_VALIDATOR =
-                new SettingsValidators.InclusiveIntegerRangeValidator(0, 2);
+                new SettingsValidators.InclusiveIntegerRangeValidator(0, 3);
 
         /**
          * IMPORTANT: If you add a new public settings you also have to add it to
