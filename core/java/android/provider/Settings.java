@@ -6071,6 +6071,11 @@ public final class Settings {
         public static final String SHOW_BATTERY_ESTIMATE = "show_battery_estimate";
 
 	/**
+         * @hide
+         */
+        public static final String POCKET_JUDGE_ALLOW_FP = "pocket_judge_allow_fp";
+
+	/**
          * Wheter to play notification sound and vibration if screen is ON
          * 0 - never
          * 1 - always

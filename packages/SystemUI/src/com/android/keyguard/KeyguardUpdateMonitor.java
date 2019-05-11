@@ -243,6 +243,7 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener {
     private boolean mIsDreaming;
     private final DevicePolicyManager mDevicePolicyManager;
     private boolean mLogoutEnabled;
+    private boolean mPocketJudgeAllowFP;
 
     /**
      * Short delay before restarting fingerprint authentication after a successful try
@@ -1363,11 +1364,21 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener {
     }
 
     private boolean shouldListenForFingerprint() {
-        return (mKeyguardIsVisible || !mDeviceInteractive ||
-                (mBouncer && !mKeyguardGoingAway) || mGoingToSleep ||
-                shouldListenForFingerprintAssistant() || (mKeyguardOccluded && mIsDreaming))
-                && !mSwitchingUser && !isFingerprintDisabled(getCurrentUser())
-                && !mKeyguardGoingAway;
+        mPocketJudgeAllowFP = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.POCKET_JUDGE_ALLOW_FP, 0, UserHandle.USER_CURRENT) == 1;
+        if (!mPocketJudgeAllowFP) {
+            return (mKeyguardIsVisible || !mDeviceInteractive ||
+                    (mBouncer && !mKeyguardGoingAway) || mGoingToSleep ||
+                    shouldListenForFingerprintAssistant() || (mKeyguardOccluded && mIsDreaming))
+                    && !mSwitchingUser && !isFingerprintDisabled(getCurrentUser())
+                    && !mKeyguardGoingAway && !mIsDeviceInPocket;
+        } else {
+            return (mKeyguardIsVisible || !mDeviceInteractive ||
+                    (mBouncer && !mKeyguardGoingAway) || mGoingToSleep ||
+                    shouldListenForFingerprintAssistant() || (mKeyguardOccluded && mIsDreaming))
+                    && !mSwitchingUser && !isFingerprintDisabled(getCurrentUser())
+                    && !mKeyguardGoingAway;
+        }
     }
 
     private void startListeningForFingerprint() {

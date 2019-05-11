@@ -689,6 +689,9 @@ public class StatusBar extends SystemUI implements DemoMode,
     // LS visualizer on Ambient Display
     private boolean mAmbientVisualizer;
 
+
+    private boolean mPocketJudgeAllowFP;
+
     private BroadcastReceiver mWallpaperChangedReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -5416,8 +5419,10 @@ public class StatusBar extends SystemUI implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.LOCKSCREEN_DATE_SELECTION),
                     false, this, UserHandle.USER_ALL);
-          update();
-
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.POCKET_JUDGE_ALLOW_FP),
+                    false, this, UserHandle.USER_ALL);
+	    update();
 	    }
 
          @Override
@@ -5461,8 +5466,11 @@ public class StatusBar extends SystemUI implements DemoMode,
             } else if (uri.equals(Settings.System.getUriFor(
                 Settings.System.FORCE_AMBIENT_FOR_MEDIA))) {
                 setForceAmbient();
-	    }
-            update();
+            } else if (uri.equals(Settings.System.getUriFor(
+                    Settings.System.POCKET_JUDGE_ALLOW_FP))) {
+                updatePocketJudgeFP();
+            }
+	    update();
         }
 
          public void update() {
@@ -5484,6 +5492,7 @@ public class StatusBar extends SystemUI implements DemoMode,
 	    setBrightnessSlider();
             setUseLessBoringHeadsUp();
 	    setForceAmbient();
+            updatePocketJudgeFP();
         }
     }
 
@@ -5622,6 +5631,11 @@ public class StatusBar extends SystemUI implements DemoMode,
     }
     private void updateKeyguardStatusSettings() {
         mNotificationPanel.updateKeyguardStatusSettings();
+    }
+
+    private void updatePocketJudgeFP() {
+        mPocketJudgeAllowFP = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.POCKET_JUDGE_ALLOW_FP, 0, UserHandle.USER_CURRENT) == 1;
     }
 
     public int getWakefulnessState() {
