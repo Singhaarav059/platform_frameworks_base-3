@@ -264,4 +264,12 @@
     <string name="keyguard_indication_turbo_power_time">TurboPower connected (<xliff:g id="charging_time_left">%s</xliff:g> until full)</string>
     <string name="keyguard_plugged_in_turbo_power_charging">TurboPower connected</string>
 
+    <!-- Skeleton string format for displaying the date with number. -->
+    <string name="abbrev_wday_day_no_year">eeeedd</string>
+
+    <!-- Skeleton string format for displaying the date. -->
+    <string name="abbrev_wday_no_year">eeee</string>
+
+    <!-- Skeleton string format for displaying the day of the month. -->
+    <string name="abbrev_wday_month_no_year">MMMMd</string>
 </resources>
