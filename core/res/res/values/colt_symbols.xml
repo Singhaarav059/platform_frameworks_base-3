@@ -267,6 +267,7 @@
     <java-symbol type="bool" name="config_defaultColorEnhancement" />
     <java-symbol type="bool" name="config_defaultCABC" />
     <java-symbol type="bool" name="config_filterDisplayModes" />
+    <java-symbol type="bool" name="config_outdoorCapable" />
     <java-symbol type="array" name="config_displayModeMappings" />
 
     <!-- Smart charging battery percentage -->
@@ -283,4 +284,6 @@
 
    <!-- Whether the device supports Smart Pixels -->
     <java-symbol type="bool" name="config_enableSmartPixels" />
+
+   
 </resources>

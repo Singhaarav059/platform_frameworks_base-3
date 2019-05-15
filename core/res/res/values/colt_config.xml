@@ -195,4 +195,7 @@
 
     <!-- Whether the device supports Smart Pixels -->
     <bool name="config_enableSmartPixels">false</bool>
+
+    <!-- Value for overriding outdoor capable mode for LiveDisplay tile -->
+    <bool name="config_outdoorCapable">false</bool>
 </resources>
