@@ -6190,6 +6190,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(DISPLAY_PICTURE_ADJUSTMENT);
             PRIVATE_SETTINGS.add(LIVE_DISPLAY_HINTED);
             PRIVATE_SETTINGS.add(HIDE_NOTCH);
+	    PRIVATE_SETTINGS.add(LOCK_HIDE_STATUS_BAR);
         }
 
         /**
