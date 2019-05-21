@@ -278,7 +278,6 @@ public class NetworkTraffic extends TextView {
 
         mTrafficInHeaderView = Settings.System.getIntForUser(resolver,
                 Settings.System.NETWORK_TRAFFIC_VIEW_LOCATION, 1, UserHandle.USER_CURRENT) == 0;
-        updateVisibility();
         updateTextSize();
         if (mIsEnabled) {
             if (mAttached) {
