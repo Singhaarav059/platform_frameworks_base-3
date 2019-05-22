@@ -4704,6 +4704,12 @@ public final class Settings {
          */
         public static final String ENABLE_SUGGESTIONS = "enable_suggestions";
 
+	/**
+         * Enable/Disable Syberia OS brand and user name in Settings dashboard.
+         * @hide
+         */
+        public static final String SHOW_BRAND_TOOLBAR = "show_brand_toolbar";
+
         /**
          * Volume rocker wake
          * @hide
