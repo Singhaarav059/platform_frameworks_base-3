@@ -110,6 +110,7 @@ public class NetworkTraffic extends TextView {
                 }
                 // Update view if there's anything new to show
                 if (!output.contentEquals(getText())) {
+		    setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
                     setText(output);
                 }
 		updateTextSize();
