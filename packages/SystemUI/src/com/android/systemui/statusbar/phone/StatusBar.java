@@ -376,8 +376,16 @@ public class StatusBar extends SystemUI implements DemoMode,
         "com.android.systemui.qstile.inkdrop", // 15
 	"com.android.systemui.qstile.ink", //16
 	"com.android.systemui.qstile.teardrop", // 17
-        "com.android.systemui.qstile.cookie", // 16
-        "com.android.systemui.qstile.circleoutline", //17
+        "com.android.systemui.qstile.cookie", // 18
+        "com.android.systemui.qstile.circleoutline", //19
+	"com.android.systemui.qstile.hexagon", // 20
+        "com.android.systemui.qstile.star", // 21
+        "com.android.systemui.qstile.square", // 22
+	"com.android.systemui.qstile.gear", // 23
+	"com.android.systemui.qstile.badge", // 24
+        "com.android.systemui.qstile.badgetwo", // 25
+	"com.android.systemui.qstile.squircle", // 26
+	"com.android.systemui.qstile.diamond", // 27
     };
 
     // QS header themes
