@@ -95,6 +95,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     // custom carrier label
     private View mCustomCarrierLabel;
     private int mShowCarrierLabel;
+    private boolean mHasCarrierLabel;
 
     private View mBatteryBar;
 
@@ -263,7 +264,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
             if ((state1 & DISABLE_NOTIFICATION_ICONS) != 0) {
                 hideNotificationIconArea(animate);
                 hideCarrierName(animate);
-                animateHide(mClockView, animate, false);
+		animateHide(mClockView, animate, mClockStyle == 0);
             } else {
                 showNotificationIconArea(animate);
                 showCarrierName(animate);
@@ -473,6 +474,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
                 UserHandle.USER_CURRENT);
         } catch (Exception e) {
         }
+	mHasCarrierLabel = (mShowCarrierLabel == 2 || mShowCarrierLabel == 3);
 	setCarrierLabel(animate);
 	initTickerView();
     }
@@ -626,7 +628,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     }
 
     private void setCarrierLabel(boolean animate) {
-        if (mShowCarrierLabel == 2 || mShowCarrierLabel == 3) {
+	if (mHasCarrierLabel) {
             animateShow(mCustomCarrierLabel, animate);
         } else {
             animateHide(mCustomCarrierLabel, animate, false);
