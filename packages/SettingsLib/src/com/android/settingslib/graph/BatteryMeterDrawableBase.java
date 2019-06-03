@@ -599,7 +599,11 @@ public class BatteryMeterDrawableBase extends Drawable {
 
         // draw colored arc representing charge level
         if (level > 0) {
-            c.drawArc(mFrame, 270, 3.6f * level, false, mBatteryPaint);
+            if (!mCharging && mPowerSaveEnabled && mPowerSaveAsColorError) {
+                c.drawArc(mFrame, 270, 3.6f * level, false, mPowersavePaint);
+            } else {
+                c.drawArc(mFrame, 270, 3.6f * level, false, mBatteryPaint);
+            }
         }
 
         final int height = mHeight;
@@ -622,12 +626,6 @@ public class BatteryMeterDrawableBase extends Drawable {
             pctY = (mHeight + mTextHeight) * 0.47f;
 
             c.drawText(pctText, pctX, pctY, mTextPaint);
-        }
-        // Draw the powersave outline last
-        if (!mCharging && mPowerSaveEnabled && mPowerSaveAsColorError) {
-            if (level > 0) {
-                c.drawArc(mFrame, 270, 3.6f * level, false, mPowersavePaint);
-            }
         }
         // Draw the powersave outline last
         if (!mCharging && mPowerSaveEnabled && mPowerSaveAsColorError) {
