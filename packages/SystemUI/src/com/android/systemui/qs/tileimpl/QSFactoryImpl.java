@@ -44,7 +44,6 @@ import com.android.systemui.qs.tiles.CalcTile;
 import com.android.systemui.qs.tiles.CallTile;
 import com.android.systemui.qs.tiles.FlashlightTile;
 import com.android.systemui.qs.tiles.ColtTile;
-import com.android.systemui.qs.tiles.GamingModeTile;
 import com.android.systemui.qs.tiles.HeadsUpTile;
 import com.android.systemui.qs.tiles.FontTile;
 import com.android.systemui.qs.tiles.HotspotTile;
@@ -142,8 +141,6 @@ public class QSFactoryImpl implements QSFactory {
                 return new LiveDisplayTile(mHost);
             case "reading_mode":
                 return new ReadingModeTile(mHost);
-            case "gaming":
-                return new GamingModeTile(mHost);
             case "hwkeys":
                 return new HWKeysTile(mHost);
             case "usb_tether":
