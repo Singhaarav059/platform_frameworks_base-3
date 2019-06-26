@@ -31,7 +31,7 @@
     <dimen name="lock_text_clock_font_size_45">45dp</dimen>
 
     <!-- padding for date view -->
-    <dimen name="widget_clock_normal_clock_padding">4dp</dimen>
+    <dimen name="widget_clock_normal_clock_padding">2dp</dimen>
 
     <!-- Date styles padding-->
     <dimen name="widget_date_box_padding_hor">12dp</dimen>
