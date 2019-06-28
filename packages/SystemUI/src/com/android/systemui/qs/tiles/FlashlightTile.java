@@ -40,6 +40,7 @@ public class FlashlightTile extends QSTileImpl<BooleanState> implements
     private final AnimationIcon mDisable
             = new AnimationIcon(R.drawable.ic_signal_flashlight_disable_animation,
             R.drawable.ic_signal_flashlight_enable);
+
     private final FlashlightController mFlashlightController;
 
     public FlashlightTile(QSHost host) {
