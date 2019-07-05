@@ -587,6 +587,8 @@ public class StatusBar extends SystemUI implements DemoMode,
 
     private SmartPackageMonitor mPackageMonitor;
 
+    private boolean mHeadsUpDisabled, mGamingModeActivated;
+
     // XXX: gesture research
     private final GestureRecorder mGestureRec = DEBUG_GESTURES
         ? new GestureRecorder("/sdcard/statusbar_gestures.dat")
@@ -5443,6 +5445,12 @@ public class StatusBar extends SystemUI implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.STOCK_STATUSBAR_IN_HIDE),
                     false, this, UserHandle.USER_ALL);
+	   resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.GAMING_MODE_ACTIVE),
+                    false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.GAMING_MODE_HEADSUP_TOGGLE),
+                    false, this, UserHandle.USER_ALL);
 	    update();
 	    }
 
@@ -5493,6 +5501,10 @@ public class StatusBar extends SystemUI implements DemoMode,
 	     } else if (uri.equals(Settings.System.getUriFor(Settings.System.DISPLAY_CUTOUT_MODE)) ||
                     uri.equals(Settings.System.getUriFor(Settings.System.STOCK_STATUSBAR_IN_HIDE))) {
                 handleCutout(null);
+	    } else if (uri.equals(Settings.System.getUriFor(
+                    Settings.System.GAMING_MODE_ACTIVE)) ||
+                    uri.equals(Settings.System.getUriFor(Settings.System.GAMING_MODE_HEADSUP_TOGGLE))) {
+                updateGamingPeekMode();
             }
 	    update();
         }
@@ -5518,6 +5530,7 @@ public class StatusBar extends SystemUI implements DemoMode,
 	    setForceAmbient();
             updatePocketJudgeFP();
             handleCutout(null);
+	    updateGamingPeekMode();
         }
     }
 
@@ -6255,6 +6268,14 @@ public class StatusBar extends SystemUI implements DemoMode,
             ((AmbientIndicationContainer)mAmbientIndicationContainer).setIndication(
                     notificationText, nowPlaying);
         }
+    }
+
+    private void updateGamingPeekMode() {
+        mGamingModeActivated = Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.GAMING_MODE_ACTIVE, 1) == 1;
+        mHeadsUpDisabled = Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.GAMING_MODE_HEADSUP_TOGGLE, 1) == 1;
+        mEntryManager.setGamingPeekMode(mGamingModeActivated && mHeadsUpDisabled);
     }
 
     private boolean isAmbientContainerAvailable() {
