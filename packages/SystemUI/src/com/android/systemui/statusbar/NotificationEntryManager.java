@@ -990,7 +990,9 @@ public class NotificationEntryManager implements Dumpable, NotificationInflater.
     public boolean shouldSkipHeadsUp(StatusBarNotification sbn) {
         boolean isImportantHeadsUp = false;
         String notificationPackageName = sbn.getPackageName().toLowerCase();
-        isImportantHeadsUp = notificationPackageName.contains("dialer");
+	isImportantHeadsUp = notificationPackageName.contains("dialer") ||
+                notificationPackageName.contains("messaging") ||
+                notificationPackageName.contains("clock");
         return !mPresenter.isDozing() && mLessBoringHeadsUp && !isImportantHeadsUp;
     }
 
