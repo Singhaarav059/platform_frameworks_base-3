@@ -7555,6 +7555,20 @@ public class WindowManagerService extends IWindowManager.Stub
                 return UserHandle.USER_NULL;
             }
         }
+
+        @Override
+        public boolean isMinimizedDock() {
+            boolean isMinimizedDock;
+            synchronized (mWindowMap) {
+                try {
+                    boostPriorityForLockedSection();
+                    isMinimizedDock = getDefaultDisplayContentLocked().getDockedDividerController().isMinimizedDock();
+                } finally {
+                    resetPriorityAfterLockedSection();
+                }
+            }
+            return isMinimizedDock;
+        }
     }
 
     void registerAppFreezeListener(AppFreezeListener listener) {
@@ -7734,5 +7748,14 @@ public class WindowManagerService extends IWindowManager.Stub
 
     public void screenRecordAction(int mode) {
         mPolicy.screenRecordAction(mode);
+    }
+
+    public void stopLongshotConnection() {
+        mPolicy.stopLongshotConnection();
+    }
+
+    @Override
+    public void takeOPScreenshot(int type, int reason) {
+        mPolicy.takeOPScreenshot(type, reason);
     }
 }
