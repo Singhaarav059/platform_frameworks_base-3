@@ -517,7 +517,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executor;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
-import com.android.internal.util.aospextended.GamingModeController;
+import com.android.internal.util.colt.GamingModeController;
 
 import com.android.internal.util.custom.cutout.CutoutFullscreenController;
 

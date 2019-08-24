@@ -90,7 +90,6 @@ public class NotificationChannels extends SystemUI {
                         SCREENRECORDS,
                         context.getString(R.string.notification_channel_screenrecord),
                         NotificationManager.IMPORTANCE_LOW)));
-        ));
 
         // Delete older SS channel if present.
         // Screenshots promoted to heads-up in P, this cleans up the lower priority channel from O.
