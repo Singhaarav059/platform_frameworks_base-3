@@ -53,6 +53,7 @@ import android.os.PowerManager;
 import android.os.Process;
 import android.os.RemoteException;
 import android.os.ServiceManager;
+import android.os.IBinder;
 import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.os.UserManager;
@@ -1790,6 +1791,9 @@ class GlobalActionsDialog implements DialogInterface.OnDismissListener,
     private static final int MESSAGE_REFRESH = 1;
     private static final int MESSAGE_SHOW = 2;
     private static final int MESSAGE_SHOW_ADVANCED_TOGGLES = 3;
+    private static final int MESSAGE_SCREENSHOT = 4;
+    private static final int MESSAGE_SCREENRECORD = 5;
+
     private static final int DIALOG_DISMISS_DELAY = 200; // ms
     private static final int MESSAGE_SHOW_ADVANCED_TOGGLES_SHOW = 6;
 
