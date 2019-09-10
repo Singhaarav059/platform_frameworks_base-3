@@ -17,120 +17,123 @@
     <java-symbol type="integer" name="config_buttonBrightnessSettingDefault" />
     <java-symbol type="bool" name="config_deviceHasVariableButtonBrightness" />
 
-  <!-- HW keys binding -->
-  <java-symbol type="anim" name="custom_app_in" />
-  <java-symbol type="anim" name="custom_app_out" />
-  <java-symbol type="integer" name="config_deviceHardwareKeys" />
+    <!-- HW keys binding -->
+    <java-symbol type="anim" name="custom_app_in" />
+    <java-symbol type="anim" name="custom_app_out" />
+    <java-symbol type="integer" name="config_deviceHardwareKeys" />
 
-  <!-- Package Manager -->
-  <java-symbol type="array" name="config_disabledComponents" />
-  <java-symbol type="array" name="config_forceEnabledComponents" />
+    <!-- Package Manager -->
+    <java-symbol type="array" name="config_disabledComponents" />
+    <java-symbol type="array" name="config_forceEnabledComponents" />
 
-  <!-- Whether device has dash charging support -->
-  <java-symbol type="bool" name="config_hasDashCharger" />
+    <!-- Whether device has dash charging support -->
+    <java-symbol type="bool" name="config_hasDashCharger" />
 
-  <!-- Toast animation -->
-  <java-symbol type="style" name="Animation.Toast.Material" />
+    <!-- Toast animation -->
+    <java-symbol type="style" name="Animation.Toast.Material" />
 
-  <!-- Emergency button in power menu -->
-  <java-symbol type="bool" name="config_showEmergencyButtonInPowerMenu" />
+    <!-- Emergency button in power menu -->
+    <java-symbol type="bool" name="config_showEmergencyButtonInPowerMenu" />
 
-  <!-- Advanced reboot -->
-  <java-symbol type="array" name="config_custom_globalActionsList" />
-  <java-symbol type="string" name="reboot_to_recovery_title" />
-  <java-symbol type="string" name="reboot_to_recovery_message" />
-  <java-symbol type="string" name="reboot_to_bootloader_title" />
-  <java-symbol type="string" name="reboot_to_bootloader_message" />
-  <java-symbol type="string" name="reboot_title" />
-  <java-symbol type="string" name="reboot_message" />
+    <!-- Advanced reboot -->
+    <java-symbol type="array" name="config_custom_globalActionsList" />
+    <java-symbol type="string" name="reboot_to_recovery_title" />
+    <java-symbol type="string" name="reboot_to_recovery_message" />
+    <java-symbol type="string" name="reboot_to_bootloader_title" />
+    <java-symbol type="string" name="reboot_to_bootloader_message" />
+    <java-symbol type="string" name="reboot_title" />
+    <java-symbol type="string" name="reboot_message" />
 
-  <!-- App error dialog -->
-  <java-symbol type="id" name="aerr_copy" />
-  <java-symbol type="string" name="url_copy_success" />
-  <java-symbol type="string" name="url_copy_failed" />
+    <!-- App error dialog -->
+    <java-symbol type="id" name="aerr_copy" />
+    <java-symbol type="string" name="url_copy_success" />
+    <java-symbol type="string" name="url_copy_failed" />
 
-  <java-symbol type="array" name="config_vendorPlatformSignatures" />  
+    <java-symbol type="array" name="config_vendorPlatformSignatures" />  
 
-  <!-- Whether device has a physical display cutout -->
-  <java-symbol type="bool" name="config_physicalDisplayCutout" />
+    <!-- Whether device has a physical display cutout -->
+    <java-symbol type="bool" name="config_physicalDisplayCutout" />
 
-  <!-- Whether device has a big physical display cutout -->
-  <java-symbol type="bool" name="config_bigPhysicalDisplayCutout" />
+    <!-- Whether device has a big physical display cutout -->
+    <java-symbol type="bool" name="config_bigPhysicalDisplayCutout" />
 
-  <!-- Whether notify fingerprint client of successful cancelled authentication -->
-  <java-symbol type="bool" name="config_notifyClientOnFingerprintCancelSuccess" />
+    <!-- Whether notify fingerprint client of successful cancelled authentication -->
+    <java-symbol type="bool" name="config_notifyClientOnFingerprintCancelSuccess" />
 
-  <!-- Whether to cleanup fingerprints upon connection to the daemon and when user switches -->
-  <java-symbol type="bool" name="config_cleanupUnusedFingerprints" />
+    <!-- Whether to cleanup fingerprints upon connection to the daemon and when user switches -->
+    <java-symbol type="bool" name="config_cleanupUnusedFingerprints" />
 
-  <!-- Whether the device supports Smart Pixels -->
-  <java-symbol type="bool" name="config_enableSmartPixels" />
+    <!-- Whether the device supports Smart Pixels -->
+    <java-symbol type="bool" name="config_enableSmartPixels" />
 
-  <!-- Alternative keyhandler -->
-  <java-symbol type="string" name="config_alternativeDeviceKeyHandlerLib" />
-  <java-symbol type="string" name="config_alternativeDeviceKeyHandlerClass" />
+    <!-- Alternative keyhandler -->
+    <java-symbol type="string" name="config_alternativeDeviceKeyHandlerLib" />
+    <java-symbol type="string" name="config_alternativeDeviceKeyHandlerClass" />
 
-  <!-- Device keyhandlers -->
-  <java-symbol type="array" name="config_deviceKeyHandlerLibs" />
-  <java-symbol type="array" name="config_deviceKeyHandlerClasses" />
+    <!-- Device keyhandlers -->
+    <java-symbol type="array" name="config_deviceKeyHandlerLibs" />
+    <java-symbol type="array" name="config_deviceKeyHandlerClasses" />
 
-  <!-- Whether to use old mobile type icons as default -->
-  <java-symbol type="bool" name="config_useOldMobileIcons" />
+    <!-- Whether to use old mobile type icons as default -->
+    <java-symbol type="bool" name="config_useOldMobileIcons" />
 
-  <java-symbol type="array" name="config_customPermissionsList" />
+    <java-symbol type="array" name="config_customPermissionsList" />
 
-  <!-- Whether device supports an alt. ambient display -->
-  <java-symbol type="bool" name="config_alt_ambient_display"/>
+    <!-- Whether device supports an alt. ambient display -->
+    <java-symbol type="bool" name="config_alt_ambient_display"/>
 
-  <!-- Full screen aspect ratio -->
-  <java-symbol type="bool" name="config_haveHigherAspectRatioScreen" />
-  <java-symbol type="dimen" name="config_screenAspectRatio" />
+    <!-- Full screen aspect ratio -->
+    <java-symbol type="bool" name="config_haveHigherAspectRatioScreen" />
+    <java-symbol type="dimen" name="config_screenAspectRatio" />
 
-  <!-- Whether device ignores the RSSNR signal implementation -->
-  <java-symbol type="bool" name="config_ignoreRssnrSignalLevel" />
+    <!-- Whether device ignores the RSSNR signal implementation -->
+    <java-symbol type="bool" name="config_ignoreRssnrSignalLevel" />
 
-  <!-- Device has OnePlus haptic motor -->
-  <java-symbol type="bool" name="config_hasOnePlusHapticMotor" />
+    <!-- Device has OnePlus haptic motor -->
+    <java-symbol type="bool" name="config_hasOnePlusHapticMotor" />
 
-  <!-- Themes -->
-  <java-symbol type="color" name="theme_generic_semi_transparent_color" />
+    <!-- Themes -->
+    <java-symbol type="color" name="theme_generic_semi_transparent_color" />
 
-  <!-- Pulse brightness -->
-  <java-symbol type="integer" name="config_screenBrightnessPulse" />
+    <!-- Pulse brightness -->
+    <java-symbol type="integer" name="config_screenBrightnessPulse" />
 
-  <!-- Whether device supports internal audio recording -->
-  <java-symbol type="bool" name="config_hasInternalAudioRecordingSupport" />
+    <!-- Whether device supports internal audio recording -->
+    <java-symbol type="bool" name="config_hasInternalAudioRecordingSupport" />
 
-  <!-- Smart charging -->
-  <java-symbol type="integer" name="config_smartChargingBatteryLevel" />
-  <java-symbol type="integer" name="config_smartChargingBatteryResumeLevel" />
-  <java-symbol type="string" name="config_SmartChargingSysfsNode" />
-  <java-symbol type="string" name="config_SmartChargingSupspendValue" />
-  <java-symbol type="string" name="config_SmartChargingResumeValue" />
+    <!-- Smart charging -->
+    <java-symbol type="integer" name="config_smartChargingBatteryLevel" />
+    <java-symbol type="integer" name="config_smartChargingBatteryResumeLevel" />
+    <java-symbol type="string" name="config_SmartChargingSysfsNode" />
+    <java-symbol type="string" name="config_SmartChargingSupspendValue" />
+    <java-symbol type="string" name="config_SmartChargingResumeValue" />
 
-  <!-- Pocket Lock -->
-  <java-symbol type="layout" name="pocket_lock_view_layout" />
-  <java-symbol type="id" name="pocket_hint_container" />
-  <java-symbol type="id" name="pocket_hint_image" />
-  <java-symbol type="id" name="pocket_hint_message" />
+    <!-- Pocket Lock -->
+    <java-symbol type="layout" name="pocket_lock_view_layout" />
+    <java-symbol type="id" name="pocket_hint_container" />
+    <java-symbol type="id" name="pocket_hint_image" />
+    <java-symbol type="id" name="pocket_hint_message" />
 
-  <!-- Pocket bridge -->
-  <java-symbol type="string" name="config_pocketBridgeSysfsInpocket" />
+    <!-- Pocket bridge -->
+    <java-symbol type="string" name="config_pocketBridgeSysfsInpocket" />
 
-  <!-- Gaming mode -->
-  <java-symbol type="drawable" name="ic_gaming_notif" />
-  <java-symbol type="string" name="notification_channel_gaming" />
-  <java-symbol type="string" name="gaming_mode_notification_title" />
-  <java-symbol type="string" name="gaming_mode_notification_content" />
-  <java-symbol type="string" name="gaming_mode_enabled_toast" />
-  <java-symbol type="string" name="gaming_mode_disabled_toast" />
+    <!-- Gaming mode -->
+    <java-symbol type="drawable" name="ic_gaming_notif" />
+    <java-symbol type="string" name="notification_channel_gaming" />
+    <java-symbol type="string" name="gaming_mode_notification_title" />
+    <java-symbol type="string" name="gaming_mode_notification_content" />
+    <java-symbol type="string" name="gaming_mode_enabled_toast" />
+    <java-symbol type="string" name="gaming_mode_disabled_toast" />
 
-  <!-- Whether to show a custom view for FOD -->
-  <java-symbol type="bool" name="config_needCustomFODView" /> 
+    <!-- Whether to show a custom view for FOD -->
+    <java-symbol type="bool" name="config_needCustomFODView" /> 
  
-  <java-symbol type="bool" name="config_hasNotificationLed" />
-  <java-symbol type="bool" name="config_intrusiveBatteryLed" />
-  <java-symbol type="bool" name="config_multiColorBatteryLed" />
-  <java-symbol type="bool" name="config_ledCanPulse" />
+    <java-symbol type="bool" name="config_hasNotificationLed" />
+    <java-symbol type="bool" name="config_intrusiveBatteryLed" />
+    <java-symbol type="bool" name="config_multiColorBatteryLed" />
+    <java-symbol type="bool" name="config_ledCanPulse" />
+
+    <!-- Post reset runnable for all clients -->
+    <java-symbol type="bool" name="config_fingerprintPostResetRunnableForAllClients" />
 
 </resources>
