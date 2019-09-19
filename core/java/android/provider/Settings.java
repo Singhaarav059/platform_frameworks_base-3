@@ -4617,6 +4617,31 @@ public final class Settings {
         private static final Validator OMNI_QS_PANEL_BG_ALPHA_VALIDATOR =
                 ANY_INTEGER_VALIDATOR;
 
+	/**
+         * Number of qs columns on landscape orientation
+         * @hide
+         */
+        public static final String OMNI_QS_LAYOUT_COLUMNS_LANDSCAPE = "qs_layout_columns_landscape";
+         /** @hide */
+        private static final Validator OMNI_QS_LAYOUT_COLUMNS_LANDSCAPE_VALIDATOR =
+                ANY_INTEGER_VALIDATOR;
+         /**
+         * @hide
+         */
+        public static final String OMNI_QS_LAYOUT_COLUMNS = "qs_layout_columns";
+         /** @hide */
+        private static final Validator OMNI_QS_LAYOUT_COLUMNS_VALIDATOR =
+                ANY_INTEGER_VALIDATOR;
+
+	/**
+         * @hide
+         */
+        public static final String OMNI_QS_LAYOUT_ROWS = "qs_layout_rows";
+
+        /** @hide */
+        private static final Validator OMNI_QS_LAYOUT_ROWS_VALIDATOR =
+                ANY_INTEGER_VALIDATOR;
+
         /**
  	 * Enable/Disable screenshot sound
          * @hide
