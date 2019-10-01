@@ -102,7 +102,6 @@
 
     <!-- StatusBar tuner icons -->
     <string name="status_bar_volte">VoLTE</string>
-    <string name="status_bar_roaming">Roaming</string>
     <string name="status_bar_data_disabled">Crosses when data is disabled</string>
 
     <!-- Sound QS Tile -->
@@ -115,4 +114,8 @@
     <string name="status_bar_nfc">NFC</string>
     <!-- Accessibility label for nfc icon (not shown on screen) [CHAR LIMIT=NONE] -->
     <string name="accessibility_status_bar_nfc">Nfc</string>
+
+    <string name="status_bar_data_saver">Data saver</string>
+    <string name="status_bar_vpn">VPN</string>
+    <string name="status_bar_roaming">Roaming</string>
 </resources>
