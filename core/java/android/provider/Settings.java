@@ -5524,6 +5524,14 @@ public final class Settings {
                 ANY_STRING_VALIDATOR;
 
         /**
+        * @hide
+        */
+        public static final String QS_LAYOUT_ROWS_LANDSCAPE = "qs_layout_rows_landscape";
+
+        /** @hide */
+        private static final Validator QS_LAYOUT_ROWS_LANDSCAPE_VALIDATOR = ANY_INTEGER_VALIDATOR;
+
+	/**
          * modify how the album art shows up on lockscreen
          * 0 - normal
          * 1 - grayscale
@@ -5751,6 +5759,7 @@ public final class Settings {
             OMNI_QS_LAYOUT_COLUMNS,
             OMNI_QS_LAYOUT_ROWS,
             OMNI_QS_PANEL_BG_ALPHA,
+            QS_LAYOUT_ROWS_LANDSCAPE,
             OMNIJAWS_WEATHER_ICON_PACK,
             OMNI_LOCKSCREEN_WEATHER_ENABLED,
             AICP_LOCKSCREEN_WEATHER_STYLE,
@@ -5951,6 +5960,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(HEADS_UP_STOPLIST_VALUES);
             PRIVATE_SETTINGS.add(HEADS_UP_BLACKLIST_VALUES);
             PRIVATE_SETTINGS.add(OMNI_QS_QUICKBAR_COLUMNS);
+	    PRIVATE_SETTINGS.add(QS_LAYOUT_ROWS_LANDSCAPE);
             PRIVATE_SETTINGS.add(DOUBLE_TAP_SLEEP_GESTURE);
             PRIVATE_SETTINGS.add(DOUBLE_TAP_SLEEP_LOCKSCREEN);
             PRIVATE_SETTINGS.add(LOCKSCREEN_WEATHER_SHOW_TEMP);
@@ -6124,6 +6134,7 @@ public final class Settings {
                     DOUBLE_TAP_SLEEP_GESTURE_VALIDATOR);
             VALIDATORS.put(DOUBLE_TAP_SLEEP_LOCKSCREEN,
                     DOUBLE_TAP_SLEEP_LOCKSCREEN_VALIDATOR);
+            VALIDATORS.put(QS_LAYOUT_ROWS_LANDSCAPE, QS_LAYOUT_ROWS_LANDSCAPE_VALIDATOR);
             VALIDATORS.put(LOCKSCREEN_WEATHER_SHOW_TEMP, LOCKSCREEN_WEATHER_SHOW_TEMP_VALIDATOR);
             VALIDATORS.put(LOCKSCREEN_WEATHER_SHOW_CITY, LOCKSCREEN_WEATHER_SHOW_CITY_VALIDATOR);
             VALIDATORS.put(STATUS_BAR_CLOCK, STATUS_BAR_CLOCK_VALIDATOR);
