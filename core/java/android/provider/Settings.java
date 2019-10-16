@@ -5845,6 +5845,7 @@ public final class Settings {
             QS_BLUR_ALPHA,
             PULSE_BRIGHTNESS,
             DOZE_BRIGHTNESS,
+            OMNI_DOZE_ON_CHARGE,
         };
 
         /**
@@ -6040,6 +6041,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(QS_PANEL_BG_USE_ACCENT);
             PRIVATE_SETTINGS.add(PULSE_BRIGHTNESS);
             PRIVATE_SETTINGS.add(DOZE_BRIGHTNESS);
+            PRIVATE_SETTINGS.add(OMNI_DOZE_ON_CHARGE);
         }
 
         /**
@@ -6219,6 +6221,7 @@ public final class Settings {
             VALIDATORS.put(QS_BLUR_ALPHA, QS_BLUR_ALPHA_VALIDATOR);
             VALIDATORS.put(PULSE_BRIGHTNESS, PULSE_BRIGHTNESS_VALIDATOR);
             VALIDATORS.put(DOZE_BRIGHTNESS, DOZE_BRIGHTNESS_VALIDATOR);
+            VALIDATORS.put(OMNI_DOZE_ON_CHARGE, OMNI_DOZE_ON_CHARGE_VALIDATOR);
         }
 
         /**
