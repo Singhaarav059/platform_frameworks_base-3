@@ -4763,6 +4763,15 @@ public final class Settings {
         private static final Validator OMNI_QS_QUICKBAR_COLUMNS_VALIDATOR =
                 ANY_INTEGER_VALIDATOR;
 
+	 /**
+         * Whether footer #DerpFest text shows
+         * @hide
+         */
+        public static final String OMNI_FOOTER_TEXT_SHOW = "omni_footer_text_show";
+         /** @hide */
+        private static final Validator OMNI_FOOTER_TEXT_SHOW_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
         /**
  	 * Enable/Disable screenshot sound
          * @hide
