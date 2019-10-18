@@ -6059,7 +6059,10 @@ public class NotificationManagerService extends SystemService {
         if (isInCall() || mScreenOn) {
             return false;
         }
-
+        // Omni Lights
+        if (!record.isIntercepted() || record.isIntercepted() && record.shouldLightOnZen()) {
+            return false;
+        }
         return true;
     }
 
