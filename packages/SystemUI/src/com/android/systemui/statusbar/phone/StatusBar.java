@@ -3855,6 +3855,7 @@ public class StatusBar extends SystemUI implements DemoMode,
     private void setStatusDoubleTapToSleep() {
         if (mStatusBarWindow != null) {
             mStatusBarWindow.updateSettings();
+    	}
     }
 
     private void updateNavigationBarVisibility() {
@@ -3873,6 +3874,7 @@ public class StatusBar extends SystemUI implements DemoMode,
                     mNavigationBarController.onDisplayRemoved(mDisplayId);
                 }
             }
+    	}
     }
 
     public int getWakefulnessState() {
