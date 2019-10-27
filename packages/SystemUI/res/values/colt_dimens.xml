@@ -21,4 +21,8 @@
     <dimen name="net_traffic_txt_img_padding">5dp</dimen>
 
     <dimen name="qs_temperatur_icon_size">16sp</dimen>
+
+    <!-- Width of the battery icon in the status bar when set to circle style. -->
+    <dimen name="status_bar_battery_icon_circle_width">14.5dp</dimen>
+
 </resources>
