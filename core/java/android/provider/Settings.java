@@ -5881,6 +5881,18 @@ public final class Settings {
         public static final String AUTO_ANSWER_CALL_KEY = "auto_answer_call_key";
 
         /**
+         * Whether allowing pocket service to register sensors and dispatch informations.
+         *   0 = disabled
+         *   1 = enabled
+         * @author Carlo Savignano
+         * @hide
+         */
+        public static final String POCKET_JUDGE = "pocket_judge";
+
+        /** @hide */
+        public static final Validator POCKET_JUDGE_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -6227,6 +6239,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(CLOCK_SHOW_STATUS_AREA);
             PRIVATE_SETTINGS.add(HIDE_SMART_REPLIES);
             PRIVATE_SETTINGS.add(GESTURE_PILL_TOGGLE);
+            PRIVATE_SETTINGS.add(POCKET_JUDGE);
         }
 
         /**
@@ -6416,6 +6429,7 @@ public final class Settings {
             VALIDATORS.put(CLOCK_SHOW_STATUS_AREA, CLOCK_SHOW_STATUS_AREA_VALIDATOR);
             VALIDATORS.put(HIDE_SMART_REPLIES, HIDE_SMART_REPLIES_VALIDATOR);
             VALIDATORS.put(GESTURE_PILL_TOGGLE, GESTURE_PILL_TOGGLE_VALIDATOR);
+            VALIDATORS.put(POCKET_JUDGE, POCKET_JUDGE_VALIDATOR);
         }
 
         /**
