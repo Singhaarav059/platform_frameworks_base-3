@@ -168,4 +168,8 @@
 
     <!-- Nav Bar Swipe -->
     <string name="nav_bar_layout_inverse">Swap back and recents</string>
+
+    <!--Screenrecord Tile-->
+    <string name="screenrecorder_title_tile">Screenrecord</string>
+
 </resources>
