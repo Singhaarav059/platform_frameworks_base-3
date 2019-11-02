@@ -4858,17 +4858,6 @@ public final class Settings {
         public static final String STATUS_BAR_CLOCK_FONT_STYLE = "status_bar_clock_font_style";
 
         /**
-        * 0: OmniJaws Style
-        * 1: KeyguardSlice Style
-        * @hide
-        */
-        public static final String AICP_LOCKSCREEN_WEATHER_STYLE = "lockscreen_weather_style";
-
-        /** @hide */
-        private static final Validator AICP_LOCKSCREEN_WEATHER_STYLE_VALIDATOR =
-	        new SettingsValidators.InclusiveIntegerRangeValidator(0, 1);;
-
-        /**
          * Whether to display the power menu reboot option on a secured lockscreen
          *
          * @hide

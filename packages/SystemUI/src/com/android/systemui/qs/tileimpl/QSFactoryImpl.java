@@ -122,6 +122,7 @@ public class QSFactoryImpl implements QSFactory {
             Provider<AODTile> aodTileProvider,
             Provider<WeatherTile> weatherTileProvider,
             Provider<SoundTile> soundTileProvider,
+	    Provider<CaffeineTile> caffeineTileProvider,
             Provider<ScreenshotTile> screenshotTileProvider,
             Provider<HeadsUpTile> headsUpTileProvider,
             Provider<HWKeysTile> hWKeysTileProvider,

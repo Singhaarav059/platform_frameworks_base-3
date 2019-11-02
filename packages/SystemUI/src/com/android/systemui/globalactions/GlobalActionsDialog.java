@@ -2021,7 +2021,7 @@ public class GlobalActionsDialog implements DialogInterface.OnDismissListener,
                     .translationX(mGlobalActionsLayout.getAnimationOffsetX())
                     .translationY(mGlobalActionsLayout.getAnimationOffsetY())
                     .setDuration(DIALOG_DISMISS_DELAY)
-                    .withEndAction(this::completeDismiss)
+		    .withEndAction(super::dismiss)
                     .setInterpolator(new LogAccelerateInterpolator())
                     .setUpdateListener(animation -> {
                         int alpha = (int) ((1f - (Float) animation.getAnimatedValue())

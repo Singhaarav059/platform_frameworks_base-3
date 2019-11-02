@@ -751,6 +751,7 @@ public final class DefaultPermissionGrantPolicy {
             grantPermissionsToPackage(themePickerPackage, userId, false /* ignoreSystemPackage */,
                     true /*whitelistRestrictedPermissions*/, STORAGE_PERMISSIONS);
         }
+    }
 
     private String getDefaultSystemHandlerActivityPackageForCategory(String category, int userId) {
         return getDefaultSystemHandlerActivityPackage(
