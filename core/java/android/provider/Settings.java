@@ -4606,6 +4606,13 @@ public final class Settings {
         private static final Validator ALLOW_INCALL_HOME_VALIDATOR =
                 BOOLEAN_VALIDATOR;
 
+        /** Whether to show ambient or lockscreen if AoD is disabled
+         * and we do a wake gesture like lift to wake or double tap
+         *
+         * @hide
+         */
+        public static final String AMBIENT_WAKE_GESTURES = "ambient_wake_gestures";
+
         /**
          * Volume rocker wake
          * @hide
