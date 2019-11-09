@@ -102,6 +102,7 @@ import com.android.systemui.plugins.ActivityStarter;
 import com.android.systemui.plugins.GlobalActions.GlobalActionsManager;
 import com.android.systemui.plugins.GlobalActionsPanelPlugin;
 import com.android.systemui.statusbar.phone.ScrimController;
+import com.android.systemui.statusbar.phone.StatusBarWindowController;
 import com.android.systemui.statusbar.phone.UnlockMethodCache;
 import com.android.systemui.statusbar.policy.ConfigurationController;
 import com.android.systemui.util.EmergencyDialerConstants;
@@ -1803,6 +1804,8 @@ public class GlobalActionsDialog implements DialogInterface.OnDismissListener,
         private boolean mShowing;
         private float mScrimAlpha;
         private ResetOrientationData mResetOrientationData;
+        private boolean mHadTopUi;
+        private final StatusBarWindowController mStatusBarWindowController;
 
         ActionsDialog(Context context, MyAdapter adapter,
                 GlobalActionsPanelPlugin.PanelViewController plugin) {
@@ -1811,6 +1814,7 @@ public class GlobalActionsDialog implements DialogInterface.OnDismissListener,
             mAdapter = adapter;
             mColorExtractor = Dependency.get(SysuiColorExtractor.class);
             mStatusBarService = Dependency.get(IStatusBarService.class);
+            mStatusBarWindowController = Dependency.get(StatusBarWindowController.class);
 
             // Window initialization
             Window window = getWindow();
@@ -1990,6 +1994,8 @@ public class GlobalActionsDialog implements DialogInterface.OnDismissListener,
         public void show() {
             super.show();
             mShowing = true;
+            mHadTopUi = mStatusBarWindowController.getForceHasTopUi();
+            mStatusBarWindowController.setForceHasTopUi(true);
             mBackgroundDrawable.setAlpha(0);
             mGlobalActionsLayout.setTranslationX(mGlobalActionsLayout.getAnimationOffsetX());
             mGlobalActionsLayout.setTranslationY(mGlobalActionsLayout.getAnimationOffsetY());
@@ -2022,7 +2028,7 @@ public class GlobalActionsDialog implements DialogInterface.OnDismissListener,
                     .translationX(mGlobalActionsLayout.getAnimationOffsetX())
                     .translationY(mGlobalActionsLayout.getAnimationOffsetY())
                     .setDuration(DIALOG_DISMISS_DELAY)
-		    .withEndAction(super::dismiss)
+                    .withEndAction(this::completeDismiss)
                     .setInterpolator(new LogAccelerateInterpolator())
                     .setUpdateListener(animation -> {
                         int alpha = (int) ((1f - (Float) animation.getAnimatedValue())
@@ -2035,10 +2041,15 @@ public class GlobalActionsDialog implements DialogInterface.OnDismissListener,
         }
 
         void dismissImmediately() {
-            super.dismiss();
             mShowing = false;
             dismissPanel();
             resetOrientation();
+            completeDismiss();
+        }
+
+        private void completeDismiss() {
+            mStatusBarWindowController.setForceHasTopUi(mHadTopUi);
+            super.dismiss();
         }
 
         private void dismissPanel() {
