@@ -480,7 +480,7 @@ public class RecentsAnimationController implements DeathRecipient {
                 mService.getStableInsets(mDisplayId, mTmpRect);
                 contentInsets = mTmpRect;
             }
-            if (mRunner != null) mRunner.onAnimationStart(mController, appTargets, contentInsets, minimizedHomeBounds);
+            mRunner.onAnimationStart(mController, appTargets, contentInsets, minimizedHomeBounds);
             if (DEBUG_RECENTS_ANIMATIONS) {
                 Slog.d(TAG, "startAnimation(): Notify animation start:");
                 for (int i = 0; i < mPendingAnimations.size(); i++) {
@@ -540,7 +540,7 @@ public class RecentsAnimationController implements DeathRecipient {
                 }
                 mCallbacks.onAnimationFinished(reorderMode, runSynchronously,
                         false /* sendUserLeaveHint */);
-            }
+	    }
         }
     }
 
@@ -653,14 +653,14 @@ public class RecentsAnimationController implements DeathRecipient {
 
     private void linkToDeathOfRunner() throws RemoteException {
         if (!mLinkedToDeathOfRunner) {
-            if (mRunner != null) mRunner.asBinder().linkToDeath(this, 0);
+            mRunner.asBinder().linkToDeath(this, 0);
             mLinkedToDeathOfRunner = true;
         }
     }
 
     private void unlinkToDeathOfRunner() {
         if (mLinkedToDeathOfRunner) {
-            if (mRunner != null) mRunner.asBinder().unlinkToDeath(this, 0);
+            mRunner.asBinder().unlinkToDeath(this, 0);
             mLinkedToDeathOfRunner = false;
         }
     }
