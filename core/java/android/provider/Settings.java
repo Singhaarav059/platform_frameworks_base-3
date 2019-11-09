@@ -5524,6 +5524,18 @@ public final class Settings {
                 ANY_STRING_VALIDATOR;
 
         /**
+         * modify how the album art shows up on lockscreen
+         * 0 - normal
+         * 1 - grayscale
+         * 2 - accent tint
+         * 3 - blurry
+         * 4 - grayscale and blurry
+         * 5 - gradient blur (default)
+         * @hide
+         */
+        public static final String LOCKSCREEN_ALBUM_ART_FILTER = "lockscreen_album_art_filter";
+
+        /**
          * Custom Ambient tilt gesture
          * @hide
          */
