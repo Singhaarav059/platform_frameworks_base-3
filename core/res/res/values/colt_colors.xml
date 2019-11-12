@@ -16,6 +16,20 @@
 -->
 <resources>
 
+    <!-- Colt bottom navigation -->
+    <color name="BottomBarBackground">#FAFAFA</color>
+    <color name="bottom_nav_icon_active">#5A5A5A</color>
+    <color name="bottom_nav_icon_inactive">#9C9C9C</color>
+    <color name="accent_device_default_light_alpha">#9C9C9C</color>
+    <color name="floating_action_dismiss_all">@android:color/white</color>
+    <color name="about_text_color_primary">#ff000000</color>
+    <color name="about_text_color_secondary">#212121</color>
+    <color name="about_civ_border_color">#40FFFFFF</color>
+    <color name="colt_icon">@android:color/white</color>
+
+    <!-- Resolver -->
+    <color name="resolver_list_bg">@android:color/white</color>
+
     <color name="toast_bg">@color/white</color>
     <color name="toast_text">@color/black</color>
 
