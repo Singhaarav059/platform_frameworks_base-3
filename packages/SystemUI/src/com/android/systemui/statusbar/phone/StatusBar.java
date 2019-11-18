@@ -4372,6 +4372,9 @@ public class StatusBar extends SystemUI implements DemoMode,
                     false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.LOCKSCREEN_CHARGING_ANIMATION),
+		    false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.Secure.getUriFor(
+                    Settings.Secure.SHOW_BACK_ARROW_GESTURE),
                     false, this, UserHandle.USER_ALL);
         }
 
@@ -4428,6 +4431,7 @@ public class StatusBar extends SystemUI implements DemoMode,
             updateCorners();
 	    setMaxKeyguardNotifConfig();
             updateChargingAnimation();
+	    setHideArrowForBackGesture();
        }
     }
 
@@ -4546,6 +4550,12 @@ public class StatusBar extends SystemUI implements DemoMode,
                 Settings.System.LOCKSCREEN_CHARGING_ANIMATION, 1, UserHandle.USER_CURRENT);
         if (mKeyguardIndicationController != null) {
             mKeyguardIndicationController.updateChargingIndication();
+        }
+    }
+
+    private void setHideArrowForBackGesture() {
+        if (getNavigationBarView() != null) {
+            getNavigationBarView().updateBackArrowForGesture();
         }
     }
 
