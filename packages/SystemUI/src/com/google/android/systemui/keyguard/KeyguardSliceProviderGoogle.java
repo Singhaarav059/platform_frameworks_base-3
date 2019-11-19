@@ -1,6 +1,7 @@
 package com.google.android.systemui.keyguard;
 
 import android.app.PendingIntent;
+import android.database.ContentObserver;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BlurMaskFilter;
@@ -10,6 +11,8 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff.Mode;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.UserHandle;
 import android.os.Trace;
 import android.provider.Settings;
 import android.text.TextUtils;
@@ -32,6 +35,10 @@ public class KeyguardSliceProviderGoogle extends KeyguardSliceProvider implement
     private final Uri mCalendarUri = Uri.parse("content://com.android.systemui.keyguard/smartSpace/calendar");
     private SmartSpaceData mSmartSpaceData;
     private final Uri mWeatherUri = Uri.parse("content://com.android.systemui.keyguard/smartSpace/weather");
+
+    private final Handler mHandler;
+    private boolean mWeatherEnabled;
+    private boolean mOmniWeather;
 
     private static class AddShadowTask extends AsyncTask<Bitmap, Void, Bitmap> {
         private final float mBlurRadius;
@@ -78,12 +85,24 @@ public class KeyguardSliceProviderGoogle extends KeyguardSliceProvider implement
             return createBitmap;
         }
     }
+	
+    public KeyguardSliceProviderGoogle() {
+        this(new Handler());
+    }
+
+    KeyguardSliceProviderGoogle(Handler handler) {
+        mHandler = handler;
+    }
 
     @Override
     public boolean onCreateSliceProvider() {
         boolean onCreateSliceProvider = super.onCreateSliceProvider();
         SmartSpaceController.get(getContext()).addListener(this);
         mSmartSpaceData = new SmartSpaceData();
+        mSettingsObserver = new SettingsObserver(mHandler);
+        mSettingsObserver.updateLockscreenWeatherStyle();
+        mSettingsObserver.updateLockscreenWeather();
+        mSettingsObserver.observe();
         return onCreateSliceProvider;
     }
 
@@ -156,6 +175,9 @@ public class KeyguardSliceProviderGoogle extends KeyguardSliceProvider implement
 
     @Override
     public void addWeather(ListBuilder listBuilder) {
+        if (!mWeatherEnabled || !mOmniWeather) {
+            return;
+        }
         SmartSpaceCard weatherCard = mSmartSpaceData.getWeatherCard();
         if (weatherCard != null && !weatherCard.isExpired()) {
             RowBuilder rowBuilder = new RowBuilder(mWeatherUri);
@@ -167,6 +189,44 @@ public class KeyguardSliceProviderGoogle extends KeyguardSliceProvider implement
                 rowBuilder.addEndItem(createWithBitmap, 1);
             }
             listBuilder.addRow(rowBuilder);
+        }
+    }
+
+    private SettingsObserver mSettingsObserver;
+
+    private class SettingsObserver extends ContentObserver {
+        SettingsObserver(Handler handler) {
+            super(handler);
+        }
+
+        void observe() {
+            mContentResolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.OMNI_LOCKSCREEN_WEATHER_ENABLED),
+                    false, this, UserHandle.USER_ALL);
+
+            mContentResolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.AICP_LOCKSCREEN_WEATHER_STYLE),
+                    false, this, UserHandle.USER_ALL);
+        }
+
+        @Override
+        public void onChange(boolean selfChange, Uri uri) {
+            super.onChange(selfChange, uri);
+            if (uri.equals(Settings.System.getUriFor(Settings.System.OMNI_LOCKSCREEN_WEATHER_ENABLED))) {
+                updateLockscreenWeather();
+                mContentResolver.notifyChange(mSliceUri, null /* observer */);
+            } else if (uri.equals(Settings.System.getUriFor(Settings.System.AICP_LOCKSCREEN_WEATHER_STYLE))) {
+                updateLockscreenWeatherStyle();
+                mContentResolver.notifyChange(mSliceUri, null /* observer */);
+            }
+        }
+
+        public void updateLockscreenWeather() {
+            mWeatherEnabled = Settings.System.getIntForUser(mContentResolver, Settings.System.OMNI_LOCKSCREEN_WEATHER_ENABLED, 0, UserHandle.USER_CURRENT) != 0;
+        }
+
+        public void updateLockscreenWeatherStyle() {
+            mOmniWeather = Settings.System.getIntForUser(mContentResolver, Settings.System.AICP_LOCKSCREEN_WEATHER_STYLE, 0, UserHandle.USER_CURRENT) != 0;
         }
     }
 
