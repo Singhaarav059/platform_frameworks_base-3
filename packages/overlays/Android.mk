@@ -47,6 +47,8 @@ LOCAL_REQUIRED_MODULES := \
 	FontArvoLatoOverlay \
 	FontNotoSerifSourceOverlay \
 	FontRubikRubikOverlay \
+	FontCircularStdOverlay \
+	FontOnePlusSlateOverlay \
 	IconPackCircularAndroidOverlay \
 	IconPackCircularPixelLauncherOverlay \
 	IconPackCircularPixelThemePickerOverlay \
