@@ -4754,6 +4754,12 @@ public final class Settings {
         private static final Validator OMNI_QS_TILE_TITLE_VISIBILITY_VALIDATOR =
                 BOOLEAN_VALIDATOR;
 
+        /**
+         * QS footer text
+         * @hide
+         */
+        public static final String X_FOOTER_TEXT_STRING = "x_footer_text_string";
+
 	/**
          * @hide
          */
@@ -15571,10 +15577,8 @@ public final class Settings {
         private static final Validator POWER_BUTTON_VERY_LONG_PRESS_VALIDATOR =
                 new SettingsValidators.InclusiveIntegerRangeValidator(0, 1);
 
-        /**
-         * @hide
-         */
-        public static final String SHOW_CPU_OVERLAY = "show_cpu_overlay";
+	/**
+         */ public static final String SHOW_CPU_OVERLAY = "show_cpu_overlay";
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
