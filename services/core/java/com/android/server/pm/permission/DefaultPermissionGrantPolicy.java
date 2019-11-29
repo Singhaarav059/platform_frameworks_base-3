@@ -752,11 +752,6 @@ public final class DefaultPermissionGrantPolicy {
             grantPermissionsToPackage(themePickerPackage, userId, false /* ignoreSystemPackage */,
                     true /*whitelistRestrictedPermissions*/, STORAGE_PERMISSIONS);
         }
-        // Google App
-        grantSystemFixedPermissionsToSystemPackage("com.google.android.googlequicksearchbox", userId,
-                CALENDAR_PERMISSIONS, CAMERA_PERMISSIONS, CONTACTS_PERMISSIONS, ALWAYS_LOCATION_PERMISSIONS,
-                MICROPHONE_PERMISSIONS, PHONE_PERMISSIONS, SMS_PERMISSIONS, STORAGE_PERMISSIONS);
-
         // Google Play Services
         grantSystemFixedPermissionsToSystemPackage("com.google.android.gms", userId, SENSORS_PERMISSIONS,
                 CALENDAR_PERMISSIONS, CAMERA_PERMISSIONS, CONTACTS_PERMISSIONS, ALWAYS_LOCATION_PERMISSIONS,
