@@ -223,11 +223,6 @@
     <!-- Name of the microphone status bar icon. -->
     <string name="status_bar_microphone">Microphone</string>
 
-    <string name="tuner_keyguard_show_battery_bar_title">Show battery bar</string>
-    <string name="tuner_keyguard_show_battery_bar_summary">Show battery bar on charging in always on display</string>
-    <string name="tuner_keyguard_show_battery_bar_always_title">Always show battery bar</string>
-    <string name="tuner_keyguard_show_battery_bar_always_summary">Always show battery bar on charging</string>
-
     <!-- Navbar editor -->
     <string name="preview">Preview</string>
     <string name="keycode">Keycode</string>

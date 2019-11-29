@@ -4735,6 +4735,7 @@ public final class Settings {
          /** @hide */
         private static final Validator OMNI_QS_LAYOUT_COLUMNS_LANDSCAPE_VALIDATOR =
                 ANY_INTEGER_VALIDATOR;
+
          /**
          * @hide
          */
@@ -4751,6 +4752,26 @@ public final class Settings {
         /** @hide */
         private static final Validator OMNI_QS_LAYOUT_ROWS_VALIDATOR =
                 ANY_INTEGER_VALIDATOR;
+
+	 /**
+         * whether to enable or disable battery bar on lock screen
+         *
+         * @hide
+         */
+        public static final String SYSUI_KEYGUARD_SHOW_BATTERY_BAR = "sysui_keyguard_show_battery_bar";
+        /** @hide */
+        private static final Validator SYSUI_KEYGUARD_SHOW_BATTERY_BAR_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
+         * whether to always show battery bar on lock screen
+         *
+         * @hide
+         */
+        public static final String SYSUI_KEYGUARD_SHOW_BATTERY_BAR_ALWAYS = "sysui_keyguard_show_battery_bar_always";
+        /** @hide */
+        private static final Validator SYSUI_KEYGUARD_SHOW_BATTERY_BAR_ALWAYS_VALIDATOR =
+                BOOLEAN_VALIDATOR;
 
 	/**
          * Whether to display qs tile titles in the qs panel
@@ -6417,6 +6438,8 @@ public final class Settings {
             OMNI_QS_LAYOUT_COLUMNS,
             OMNI_QS_LAYOUT_ROWS,
             OMNI_QS_PANEL_BG_ALPHA,
+            SYSUI_KEYGUARD_SHOW_BATTERY_BAR,
+            SYSUI_KEYGUARD_SHOW_BATTERY_BAR_ALWAYS,
             QS_LAYOUT_ROWS_LANDSCAPE,
             OMNIJAWS_WEATHER_ICON_PACK,
             OMNI_LOCKSCREEN_WEATHER_ENABLED,
@@ -6859,6 +6882,8 @@ public final class Settings {
             VALIDATORS.put(QS_LAYOUT_ROWS_LANDSCAPE, QS_LAYOUT_ROWS_LANDSCAPE_VALIDATOR);
             VALIDATORS.put(LOCKSCREEN_WEATHER_SHOW_TEMP, LOCKSCREEN_WEATHER_SHOW_TEMP_VALIDATOR);
             VALIDATORS.put(LOCKSCREEN_WEATHER_SHOW_CITY, LOCKSCREEN_WEATHER_SHOW_CITY_VALIDATOR);
+            VALIDATORS.put(SYSUI_KEYGUARD_SHOW_BATTERY_BAR, SYSUI_KEYGUARD_SHOW_BATTERY_BAR_VALIDATOR);
+            VALIDATORS.put(SYSUI_KEYGUARD_SHOW_BATTERY_BAR_ALWAYS, SYSUI_KEYGUARD_SHOW_BATTERY_BAR_ALWAYS_VALIDATOR);
             VALIDATORS.put(STATUS_BAR_CLOCK, STATUS_BAR_CLOCK_VALIDATOR);
             VALIDATORS.put(STATUSBAR_CLOCK_STYLE, STATUSBAR_CLOCK_STYLE_VALIDATOR);
             VALIDATORS.put(STATUS_BAR_CLOCK_SECONDS, STATUS_BAR_CLOCK_SECONDS_VALIDATOR);
