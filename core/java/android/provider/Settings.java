@@ -5295,10 +5295,19 @@ public final class Settings {
          * Whether to show VoLTE icon or not
          * @hide
          */
-        public static final String SHOW_VOLTE_ICON = "volte_icon";
+        public static final String SHOW_VOLTE_ICON = "show_volte_icon";
 
         /** @hide */
         public static final Validator SHOW_VOLTE_ICON_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
+         * VoLTE icon style
+         * @hide
+         */
+        public static final String VOLTE_ICON_STYLE = "volte_icon_style";
+
+        /** @hide */
+        public static final Validator VOLTE_ICON_STYLE_VALIDATOR = ANY_INTEGER_VALIDATOR;
 
         /** @hide */
         private static final Validator BATTERY_LEVEL_CHARGE_ALARM_ENABLED_VALIDATOR = BOOLEAN_VALIDATOR;
@@ -6017,6 +6026,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(VIBRATE_ON_CALLWAITING);
             PRIVATE_SETTINGS.add(VIBRATE_ON_DISCONNECT);
             PRIVATE_SETTINGS.add(SHOW_VOLTE_ICON);
+            PRIVATE_SETTINGS.add(VOLTE_ICON_STYLE);
             PRIVATE_SETTINGS.add(HEADS_UP_STOPLIST_VALUES);
             PRIVATE_SETTINGS.add(HEADS_UP_BLACKLIST_VALUES);
             PRIVATE_SETTINGS.add(OMNI_QS_QUICKBAR_COLUMNS);
@@ -6164,6 +6174,7 @@ public final class Settings {
             VALIDATORS.put(WIFI_STATIC_DNS1, WIFI_STATIC_DNS1_VALIDATOR);
             VALIDATORS.put(WIFI_STATIC_DNS2, WIFI_STATIC_DNS2_VALIDATOR);
             VALIDATORS.put(SHOW_VOLTE_ICON, SHOW_VOLTE_ICON_VALIDATOR);
+            VALIDATORS.put(VOLTE_ICON_STYLE, VOLTE_ICON_STYLE_VALIDATOR);
             VALIDATORS.put(NOTIFICATION_LIGHT_PULSE, BOOLEAN_VALIDATOR);
             VALIDATORS.put(BUTTON_BACKLIGHT_TIMEOUT, BUTTON_BACKLIGHT_TIMEOUT_VALIDATOR);
             VALIDATORS.put(BUTTON_BRIGHTNESS, BUTTON_BRIGHTNESS_VALIDATOR);
