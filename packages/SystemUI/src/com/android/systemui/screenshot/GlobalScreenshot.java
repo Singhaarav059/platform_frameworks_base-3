@@ -100,6 +100,7 @@ import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.config.sysui.SystemUiDeviceConfigFlags;
 import com.android.internal.messages.nano.SystemMessageProto.SystemMessage;
 import com.android.internal.statusbar.IStatusBarService;
+import com.android.internal.util.hwkeys.ActionUtils;
 import com.android.systemui.R;
 import com.android.systemui.SysUiServiceProvider;
 import com.android.systemui.SystemUI;
@@ -784,6 +785,7 @@ class GlobalScreenshot {
             final boolean navBarVisible) {
         setBlockedGesturalNavigation(true);
         mWindowManager.addView(mScreenshotLayout, mWindowLayoutParams);
+        ActionUtils.setPartialScreenshot(true);
         mScreenshotSelectorView.setSelectionListener(
                 new ScreenshotSelectorView.OnSelectionListener() {
             @Override
@@ -832,6 +834,7 @@ class GlobalScreenshot {
     }
 
     void hideScreenshotSelector() {
+        ActionUtils.setPartialScreenshot(false);
         mWindowManager.removeView(mScreenshotLayout);
         mScreenshotSelectorView.stopSelection();
         mScreenshotSelectorView.setVisibility(View.GONE);
@@ -851,8 +854,9 @@ class GlobalScreenshot {
             } catch (IllegalArgumentException ignored) {
             }
         }
-
         setBlockedGesturalNavigation(false);
+        // called when unbinding screenshot service
+        ActionUtils.setPartialScreenshot(false);
     }
 
     /**
