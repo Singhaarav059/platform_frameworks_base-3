@@ -6060,7 +6060,7 @@ public class NotificationManagerService extends SystemService {
             return false;
         }
         // Omni Lights
-        if (!record.isIntercepted() || record.isIntercepted() && record.shouldLightOnZen()) {
+        if (record.isIntercepted() && !record.shouldLightOnZen()) {
             return false;
         }
         return true;
