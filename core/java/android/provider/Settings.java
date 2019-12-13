@@ -4979,6 +4979,15 @@ public final class Settings {
         /** @hide */
         public static final String AUDIO_PANEL_VIEW_NOTIFICATION = "audio_panel_view_notification";
 
+        /**
+         * Enable\Disable visibility of smart replies in notifications
+         * @hide
+         */
+        public static final String HIDE_SMART_REPLIES = "hide_smart_replies";
+
+        /** @hide */
+        private static final Validator HIDE_SMART_REPLIES_VALIDATOR = BOOLEAN_VALIDATOR;
+
         /** @hide */
         public static final String AUDIO_PANEL_VIEW_ALARM = "audio_panel_view_alarm";
 
@@ -5980,6 +5989,7 @@ public final class Settings {
             QS_BLUR_INTENSITY,
             FINGERPRINT_SUCCESS_VIB,
             CLOCK_SHOW_STATUS_AREA,
+            HIDE_SMART_REPLIES,
         };
 
         /**
@@ -6182,6 +6192,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(OMNI_DOZE_ON_CHARGE);
             PRIVATE_SETTINGS.add(FINGERPRINT_SUCCESS_VIB);
             PRIVATE_SETTINGS.add(CLOCK_SHOW_STATUS_AREA);
+            PRIVATE_SETTINGS.add(HIDE_SMART_REPLIES);
         }
 
         /**
@@ -6369,6 +6380,7 @@ public final class Settings {
             VALIDATORS.put(QS_BLUR_INTENSITY, QS_BLUR_INTENSITY_VALIDATOR);
             VALIDATORS.put(FINGERPRINT_SUCCESS_VIB, FINGERPRINT_SUCCESS_VIB_VALIDATOR);
             VALIDATORS.put(CLOCK_SHOW_STATUS_AREA, CLOCK_SHOW_STATUS_AREA_VALIDATOR);
+            VALIDATORS.put(HIDE_SMART_REPLIES, HIDE_SMART_REPLIES_VALIDATOR);
         }
 
         /**
