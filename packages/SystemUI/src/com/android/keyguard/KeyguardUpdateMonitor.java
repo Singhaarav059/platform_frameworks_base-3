@@ -96,6 +96,7 @@ import com.android.internal.telephony.TelephonyIntents;
 import com.android.internal.util.Preconditions;
 import com.android.internal.widget.LockPatternUtils;
 import com.android.settingslib.WirelessUtils;
+import com.android.systemui.R;
 import com.android.systemui.shared.system.ActivityManagerWrapper;
 import com.android.systemui.shared.system.TaskStackChangeListener;
 import com.android.systemui.statusbar.phone.KeyguardBypassController;
@@ -846,11 +847,6 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener {
                     getCurrentUser());
         }
 
-        // The face timeout message is not very actionable, let's ask the user to
-        // manually retry.
-        if (msgId == FaceManager.FACE_ERROR_TIMEOUT) {
-            errString = mContext.getString(R.string.keyguard_unlock);
-        }
         for (int i = 0; i < mCallbacks.size(); i++) {
             KeyguardUpdateMonitorCallback cb = mCallbacks.get(i).get();
             if (cb != null) {
@@ -1425,6 +1421,7 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener {
     }
 
     protected void handleStartedGoingToSleep(int arg1) {
+        mLockIconPressed = false;
         clearBiometricRecognized();
         final int count = mCallbacks.size();
         for (int i = 0; i < count; i++) {
@@ -1460,7 +1457,6 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener {
     }
 
     private void handleScreenTurnedOff() {
-        mLockIconPressed = false;
         mHardwareFingerprintUnavailableRetryCount = 0;
         mHardwareFaceUnavailableRetryCount = 0;
         final int count = mCallbacks.size();
@@ -1663,6 +1659,13 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener {
         updateFaceListeningState();
     }
 
+    /**
+     * In case face auth is running, cancel it.
+     */
+    public void cancelFaceAuth() {
+        stopListeningForFace();
+    }
+
     private void updateFaceListeningState() {
         // If this message exists, we should not authenticate again until this message is
         // consumed by the handler
@@ -1702,7 +1705,10 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener {
         return shouldListen;
     }
 
-    private boolean shouldListenForFace() {
+    /**
+     * If face auth is allows to scan on this exact moment.
+     */
+    public boolean shouldListenForFace() {
         final boolean awakeKeyguard = mKeyguardIsVisible && mDeviceInteractive && !mGoingToSleep;
         final int user = getCurrentUser();
         final int strongAuth = mStrongAuthTracker.getStrongAuthForUser(user);
