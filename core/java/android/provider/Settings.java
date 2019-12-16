@@ -6057,7 +6057,12 @@ public final class Settings {
          * @hide
          */
         public static final String GAMING_MODE_DYNAMIC_STATE = "gaming_mode_dynamic_state";
-
+        
+        /**
+        * FOD icon picker
+        * @hide
+        */
+        public static final String FOD_ICON = "fod_icon";
 
         /**
          * Whether to use new QS panel bg tint or not
