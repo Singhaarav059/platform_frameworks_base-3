@@ -15,6 +15,7 @@ package com.android.systemui.qs.tileimpl;
 
 import static com.android.systemui.qs.tileimpl.QSIconViewImpl.QS_ANIM_LENGTH;
 
+import android.annotation.ColorInt;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -65,7 +66,8 @@ public class QSTileBaseView extends com.android.systemui.plugins.qs.QSTileView {
     private boolean mShowRippleEffect = true;
 
     private final ImageView mBg;
-    private final int mColorActive;
+    private int mColorActive;
+    private int mColorActiveAlpha;
     private final int mColorInactive;
     private final int mColorDisabled;
     private int mCircleColor;
@@ -118,6 +120,8 @@ public class QSTileBaseView extends com.android.systemui.plugins.qs.QSTileView {
 
         mColorActive = Utils.getColorAttrDefaultColor(context, android.R.attr.colorAccent);
         mColorDisabled = context.getResources().getColor(R.color.qs_tile_background_color_disabled);
+        mColorActiveAlpha = adjustAlpha(mColorActive, 0.2f);
+        mColorActive = mColorActiveAlpha;
         mColorInactive = Utils.getColorAttrDefaultColor(context, android.R.attr.textColorSecondary);
 
         setPadding(0, 0, 0, 0);
@@ -195,6 +199,15 @@ public class QSTileBaseView extends com.android.systemui.plugins.qs.QSTileView {
 
     public void onStateChanged(QSTile.State state) {
         mHandler.obtainMessage(H.STATE_CHANGED, state).sendToTarget();
+    }
+
+    @ColorInt
+    private static int adjustAlpha(@ColorInt int color, float factor) {
+        int alpha = Math.round(Color.alpha(color) * factor);
+        int red = Color.red(color);
+        int green = Color.green(color);
+        int blue = Color.blue(color);
+        return Color.argb(alpha, red, green, blue);
     }
 
     protected void handleStateChanged(QSTile.State state) {
