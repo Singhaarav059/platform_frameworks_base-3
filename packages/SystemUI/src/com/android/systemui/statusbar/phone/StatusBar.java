@@ -1029,10 +1029,8 @@ public class StatusBar extends SystemUI implements DemoMode,
 
         ScrimView scrimBehind = mStatusBarWindow.findViewById(R.id.scrim_behind);
         ScrimView scrimInFront = mStatusBarWindow.findViewById(R.id.scrim_in_front);
-        ScrimView scrimForBubble = mStatusBarWindow.findViewById(R.id.scrim_for_bubble);
-
         mScrimController = SystemUIFactory.getInstance().createScrimController(
-                scrimBehind, scrimInFront, scrimForBubble, mLockscreenWallpaper,
+                scrimBehind, scrimInFront, mLockscreenWallpaper,
                 (state, alpha, color) -> mLightBarController.setScrimState(state, alpha, color),
                 scrimsVisible -> {
                     if (mStatusBarWindowController != null) {
