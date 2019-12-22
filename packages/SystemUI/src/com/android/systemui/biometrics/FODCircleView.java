@@ -32,6 +32,7 @@ import android.os.RemoteException;
 import android.os.SystemProperties;
 import android.provider.Settings;
 import android.view.Display;
+import android.hardware.display.DisplayManager;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.Surface;
