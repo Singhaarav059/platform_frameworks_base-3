@@ -226,4 +226,5 @@
   <java-symbol type="style" name="GlobalActionsAnimationCard" />
   <java-symbol type="style" name="GlobalActionsAnimationRotate" />
 
+  <java-symbol type="bool" name="config_has_Soli" />
 </resources>
