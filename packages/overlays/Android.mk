@@ -32,6 +32,8 @@ LOCAL_REQUIRED_MODULES := \
         FontSurferSourceOverlay \
 	FontArbutusSourceOverlay \
 	FontArvoLatoOverlay \
+	FontComicSansSourceOverlay \
+	FontGoogleSansSourceOverlay \
 	FontNotoSerifSourceOverlay \
 	FontRubikRubikOverlay \
 	FontCircularStdOverlay \
