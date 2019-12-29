@@ -38,4 +38,10 @@ android_app {
     // Create package-export.apk, which other packages can use to get
     // PRODUCT-agnostic resource data like IDs and type definitions.
     export_package_resources: true,
+
+    //move ColtOS res to specific folder.
+    resource_dirs: [
+        "res-coltos",
+        "res",
+    ],
 }
