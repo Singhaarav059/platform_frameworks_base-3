@@ -36,6 +36,7 @@ LOCAL_REQUIRED_MODULES := \
 	FontRubikRubikOverlay \
 	FontCircularStdOverlay \
 	FontOnePlusSlateOverlay \
+	FontSamsungOneSourceOverlay \
 	IconPackCircularAndroidOverlay \
 	IconPackCircularPixelLauncherOverlay \
 	IconPackCircularThemePickerOverlay \
