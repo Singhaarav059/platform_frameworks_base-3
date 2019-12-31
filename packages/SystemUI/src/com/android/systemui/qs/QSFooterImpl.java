@@ -47,6 +47,9 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 
+import android.content.ComponentName;
+import android.os.Vibrator;
+
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.keyguard.KeyguardUpdateMonitor;
@@ -64,6 +67,8 @@ import com.android.systemui.statusbar.policy.DeviceProvisionedController;
 import com.android.systemui.statusbar.policy.UserInfoController;
 import com.android.systemui.statusbar.policy.UserInfoController.OnUserInfoChangedListener;
 import com.android.systemui.tuner.TunerService;
+
+import static android.content.Context.VIBRATOR_SERVICE;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -103,6 +108,8 @@ public class QSFooterImpl extends FrameLayout implements QSFooter,
 
     private OnClickListener mExpandClickListener;
 
+    private Vibrator mVibrator;
+
     /*private final ContentObserver mDeveloperSettingsObserver = new ContentObserver(
             new Handler(mContext.getMainLooper())) {
         @Override
@@ -120,6 +127,7 @@ public class QSFooterImpl extends FrameLayout implements QSFooter,
         mActivityStarter = activityStarter;
         mUserInfoController = userInfoController;
         mDeviceProvisionedController = deviceProvisionedController;
+	mVibrator = (Vibrator) getContext().getSystemService(VIBRATOR_SERVICE);
     }
 
     @VisibleForTesting
@@ -359,6 +367,7 @@ public class QSFooterImpl extends FrameLayout implements QSFooter,
     public boolean onLongClick(View v) {
         if (v == mSettingsButton) {
             startColtActivity();
+	    mVibrator.vibrate(20);
         }
         return false;
     }
