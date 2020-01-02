@@ -20,6 +20,7 @@ LOCAL_REQUIRED_MODULES := \
 	AccentColorSluttyPinkOverlay \
 	AccentColorBlueMondayOverlay \
 	AccentColorGoldenShowerOverlay \
+	AccentColorPornhubOverlay \
 	AccentColorMIUIOverlay \
 	AccentColorTealOverlay \
 	AccentColorRedOverlay \
