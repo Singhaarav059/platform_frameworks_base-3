@@ -22,4 +22,10 @@
     <string name="screen_zoom_summary_smaller">Мельче</string>
     <!-- Description for the screen zoom level that makes interface elements smallest. [CHAR LIMIT=24] -->
     <string name="screen_zoom_summary_smallest">Наименьший</string>
+
+
+    <string name="clock_title_binary" translatable="false">Binary</string>
+    <string name="clock_title_two_line_digital" translatable="false">Vertical</string>
+    <string name="clock_title_one_line_digital" translatable="false">Digital</string>
+
 </resources>
