@@ -35,4 +35,7 @@
 
     <!-- Power menu -->
     <color name="power_menu_icon_color">#FF494E53</color>
+
+    <!-- QS Accent -->
+    <color name="qs_accent">@color/accent_device_default_light</color>
 </resources>
