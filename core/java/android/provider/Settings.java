@@ -4895,6 +4895,12 @@ public final class Settings {
         public static final Validator STATUSBAR_CLOCK_DATE_STYLE_VALIDATOR =
                 new SettingsValidators.InclusiveIntegerRangeValidator(0, 2);
 
+       /**
+        * Whether to persist settings icon on non-expanded panel or not
+        * @hide
+        */
+        public static final String SETTING_BUTTON_TOGGLE = "setting_button_toggle";
+
         /**
          * Stores the java DateFormat string for the date
          * @hide
