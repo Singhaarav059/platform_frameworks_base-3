@@ -415,7 +415,7 @@
 
     <dimen name="volume_dialog_ringer_icon_padding">8dp</dimen>
 
-    <dimen name="volume_dialog_caption_size">64dp</dimen>
+    <dimen name="volume_dialog_caption_size">@dimen/volume_dialog_ringer_size</dimen>
 
     <dimen name="volume_dialog_tap_target_size">46dip</dimen>
 
@@ -1197,4 +1197,5 @@
     <dimen name="config_rounded_mask_size">@*android:dimen/rounded_corner_radius</dimen>
     <dimen name="config_rounded_mask_size_top">@*android:dimen/rounded_corner_radius_top</dimen>
     <dimen name="config_rounded_mask_size_bottom">@*android:dimen/rounded_corner_radius_top</dimen>
+
 </resources>
