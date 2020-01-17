@@ -5794,6 +5794,16 @@ public final class Settings {
                 BOOLEAN_VALIDATOR;
 
         /**
+         * Whether to display status area (date & weather information) on the cLock
+         * @hide
+         */
+        public static final String CLOCK_SHOW_STATUS_AREA = "clock_show_status_area";
+
+        /** @hide */
+        private static final Validator CLOCK_SHOW_STATUS_AREA_VALIDATOR =
+               BOOLEAN_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -6134,6 +6144,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(DOZE_BRIGHTNESS);
             PRIVATE_SETTINGS.add(OMNI_DOZE_ON_CHARGE);
             PRIVATE_SETTINGS.add(FINGERPRINT_SUCCESS_VIB);
+            PRIVATE_SETTINGS.add(CLOCK_SHOW_STATUS_AREA);
         }
 
         /**
@@ -6320,6 +6331,7 @@ public final class Settings {
             VALIDATORS.put(OMNI_DOZE_ON_CHARGE, OMNI_DOZE_ON_CHARGE_VALIDATOR);
             VALIDATORS.put(QS_BLUR_INTENSITY, QS_BLUR_INTENSITY_VALIDATOR);
             VALIDATORS.put(FINGERPRINT_SUCCESS_VIB, FINGERPRINT_SUCCESS_VIB_VALIDATOR);
+            VALIDATORS.put(CLOCK_SHOW_STATUS_AREA, CLOCK_SHOW_STATUS_AREA_VALIDATOR);
         }
 
         /**
