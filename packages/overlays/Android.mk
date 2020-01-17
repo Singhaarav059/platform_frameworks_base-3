@@ -33,6 +33,9 @@ LOCAL_REQUIRED_MODULES := \
 	FontArbutusSourceOverlay \
 	FontArvoLatoOverlay \
 	FontComfortaaSourceOverlay \
+	FontExotwoSourceOverlay \
+	FontStoropiaSourceOverlay \
+	FontUbuntuSourceOverlay \
 	FontComicSansSourceOverlay \
 	FontGoogleSansSourceOverlay \
 	FontNotoSerifSourceOverlay \
