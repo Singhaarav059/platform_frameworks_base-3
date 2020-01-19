@@ -17,19 +17,6 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE := frameworks-base-overlays
 LOCAL_REQUIRED_MODULES := \
-	AccentColorSluttyPinkOverlay \
-	AccentColorBlueMondayOverlay \
-	AccentColorGoldenShowerOverlay \
-	AccentColorMIUIOverlay \
-	AccentColorTealOverlay \
-	AccentColorRedOverlay \
-	AccentColorQGreenOverlay \
-	AccentColorPinkOverlay \
-	AccentColorLightPurpleOverlay \
-	AccentColorIndigoOverlay \
-	AccentColorFlatPinkOverlay \
-	AccentColorCyanOverlay \
-	AccentColorBlueGrayOverlay \
 	DisplayCutoutEmulationCornerOverlay \
 	DisplayCutoutEmulationDoubleOverlay \
 	DisplayCutoutEmulationTallOverlay \
