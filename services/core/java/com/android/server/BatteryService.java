@@ -176,11 +176,9 @@ public final class BatteryService extends SystemService {
     private boolean mBatteryLevelLow;
 
     private boolean mDashCharger;
-    private boolean mHasDashCharger;
     private boolean mLastDashCharger;
 
     private boolean mWarpCharger;
-    private boolean mHasWarpCharger;
     private boolean mLastWarpCharger;
 
     private long mDischargeStartTime;
@@ -224,11 +222,6 @@ public final class BatteryService extends SystemService {
         mLed = new Led(context, getLocalService(LightsManager.class));
         mBatteryStats = BatteryStatsService.getService();
         mActivityManagerInternal = LocalServices.getService(ActivityManagerInternal.class);
-
-        mHasDashCharger = mContext.getResources().getBoolean(
-                com.android.internal.R.bool.config_hasDashCharger);
-        mHasWarpCharger = mContext.getResources().getBoolean(
-                com.android.internal.R.bool.config_hasWarpCharger);
 
         mCriticalBatteryLevel = mContext.getResources().getInteger(
                 com.android.internal.R.integer.config_criticalBatteryWarningLevel);
@@ -600,8 +593,8 @@ public final class BatteryService extends SystemService {
         shutdownIfNoPowerLocked();
         shutdownIfOverTempLocked();
 
-        mDashCharger = mHasDashCharger && isDashCharger();
-        mWarpCharger = mHasWarpCharger && isWarpCharger();
+        mDashCharger = isDashCharger();
+        mWarpCharger = isWarpCharger();
 
         if (force || (mHealthInfo.batteryStatus != mLastBatteryStatus ||
                 mHealthInfo.batteryHealth != mLastBatteryHealth ||

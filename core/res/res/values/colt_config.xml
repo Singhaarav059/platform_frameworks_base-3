@@ -44,12 +44,6 @@
     <string-array name="config_globallyDisabledComponents" translatable="false">
     </string-array>
 
-    <!-- Whether device has dash charging support -->
-    <bool name="config_hasDashCharger">false</bool>
-
-    <!-- Whether device has warp charging support -->
-    <bool name="config_hasWarpCharger">false</bool>
-
     <!-- Whether to show emergency button in power menu -->
     <bool name="config_showEmergencyButtonInPowerMenu">false</bool>
 
