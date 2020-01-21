@@ -221,6 +221,7 @@ import com.android.systemui.statusbar.StatusBarState;
 import com.android.systemui.statusbar.SysuiStatusBarStateController;
 import com.android.systemui.statusbar.VibratorHelper;
 import com.android.systemui.statusbar.VisualizerView;
+import com.android.systemui.statusbar.info.DataUsageView;
 import com.android.systemui.statusbar.notification.ActivityLaunchAnimator;
 import com.android.systemui.statusbar.notification.BypassHeadsUpNotifier;
 import com.android.systemui.statusbar.notification.DynamicPrivacyController;
@@ -514,6 +515,8 @@ public class StatusBar extends SystemUI implements DemoMode,
             mLinger = BRIGHTNESS_CONTROL_LINGER_THRESHOLD + 1;
         }
     };
+
+    private boolean dataupdated = false;
 
     // ensure quick settings is disabled until the current user makes it through the setup wizard
     @VisibleForTesting
@@ -1179,6 +1182,11 @@ public class StatusBar extends SystemUI implements DemoMode,
         float QSBlurAlpha = mNotificationPanel.getExpandedFraction() * (float)((float) QSUserAlpha / 100.0);
         boolean enoughBlurData = (QSBlurAlpha > 0 && qsBlurIntensity() > 0);
 
+        if (QSBlurAlpha > 0 && !dataupdated && !mIsKeyguard) {
+            DataUsageView.updateUsage();
+            dataupdated = true;
+        }
+
         if (enoughBlurData && !blurperformed && !mIsKeyguard && isQSBlurEnabled()) {
             drawBlurView();
             blurperformed = true;
@@ -1186,6 +1194,7 @@ public class StatusBar extends SystemUI implements DemoMode,
         } else if (!enoughBlurData || mState == StatusBarState.KEYGUARD) {
             blurperformed = false;
             mQSBlurView.setVisibility(View.GONE);
+            dataupdated = false;
         }
         mQSBlurView.setAlpha(QSBlurAlpha);
     }
