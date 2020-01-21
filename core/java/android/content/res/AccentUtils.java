@@ -11,8 +11,11 @@ public class AccentUtils {
     private static final String TAG = "AccentUtils";
 
     private static ArrayList<String> accentResources = new ArrayList<>(
-            Arrays.asList("accent_device_default_light",
-                    "accent_device_default_dark"));
+            Arrays.asList("accent_device_default",
+                    "accent_device_default_light",
+                    "accent_device_default_dark",
+                    "material_pixel_blue_dark",
+                    "material_pixel_blue_bright"));
 
     private static final String ACCENT_COLOR_PROP = "persist.sys.theme.accentcolor";
 
