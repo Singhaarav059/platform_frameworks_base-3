@@ -139,9 +139,10 @@ public class AmbientDisplayConfiguration {
         return mContext.getResources().getString(R.string.config_dozeLongPressSensorType);
     }
 
-    /** (@hide} */
+    /** {@hide} */
     private boolean pulseOnCustomDozeEventEnabled(int user) {
-        return (Settings.System.getInt(mContext.getContentResolver(), Settings.System.CUSTOM_AMBIENT_POCKETMODE_GESTURE, 0) != 0
+        return (Settings.System.getInt(mContext.getContentResolver(), Settings.System.CUSTOM_AMBIENT_TILT_GESTURE, 0) != 0
+                || Settings.System.getInt(mContext.getContentResolver(), Settings.System.CUSTOM_AMBIENT_POCKETMODE_GESTURE, 0) != 0
                 || Settings.System.getInt(mContext.getContentResolver(), Settings.System.CUSTOM_AMBIENT_HANDWAVE_GESTURE, 0) != 0)
                 && pulseOnNotificationAvailable();
     }
