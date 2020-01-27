@@ -6073,7 +6073,6 @@ public final class Settings {
         /** @hide */
         private static final Validator QS_PANEL_BG_USE_NEW_TINT_VALIDATOR = BOOLEAN_VALIDATOR;
 
-
 	/**
          * Whether to enable the pixel navbar animation
          * @hide
@@ -6090,6 +6089,12 @@ public final class Settings {
                 BOOLEAN_VALIDATOR;
 
         /**
+         * FOD recognizing animation
+         * @hide
+         */
+        public static final String FOD_RECOGNIZING_ANIMATION = "fod_recognizing_animation";
+
+         /**
          * FOD pressed state
          * @hide
          */
