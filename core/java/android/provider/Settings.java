@@ -5943,6 +5943,7 @@ public final class Settings {
             OMNI_DOZE_ON_CHARGE,
             QS_BLUR_INTENSITY,
             FINGERPRINT_SUCCESS_VIB,
+            CLOCK_SHOW_STATUS_AREA,
         };
 
         /**
