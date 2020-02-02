@@ -4809,8 +4809,23 @@ public final class Settings {
                 ANY_INTEGER_VALIDATOR;
 
         /**
+         * Miui like Brightness Slider
+         * @hide
+         */
+        public static final String BRIGHTNESS_SLIDER_QS_UNEXPANDED = "brightness_slider_qs_unexpanded";
+
+        /** @hide */
+        private static final Validator BRIGHTNESS_SLIDER_QS_UNEXPANDED_VALIDATOR = new
+                SettingsValidators.InclusiveIntegerRangeValidator(0, 1);
+
+	/**
+         * Bottom brightness slider
+         * @hide
+         */
+        public static final String QS_BOTTOM_BRIGHTNESS = "qs_bottom_brightness";
+
+        /**
          * Show Settings icon in QS Footer
-         *
          * @hide
          */
         public static final String QS_FOOTER_SHOW_SETTINGS = "qs_footer_show_settings";
@@ -6986,6 +7001,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(FLASHLIGHT_ON_CALL_RATE);
             PRIVATE_SETTINGS.add(THEMING_SETTINGS_DASHBOARD_ICONS);
             PRIVATE_SETTINGS.add(NAVIGATION_HANDLE_HEIGHT);
+            PRIVATE_SETTINGS.add(BRIGHTNESS_SLIDER_QS_UNEXPANDED);
         }
 
         /**
@@ -7205,6 +7221,7 @@ public final class Settings {
             VALIDATORS.put(SHOW_MEDIA_HEADS_UP, SHOW_MEDIA_HEADS_UP_VALIDATOR);
             VALIDATORS.put(THEMING_SETTINGS_DASHBOARD_ICONS, THEMING_SETTINGS_DASHBOARD_ICONS_VALIDATOR);
             VALIDATORS.put(NAVIGATION_HANDLE_HEIGHT, NAVIGATION_HANDLE_HEIGHT_VALIDATOR);
+            VALIDATORS.put(BRIGHTNESS_SLIDER_QS_UNEXPANDED, BRIGHTNESS_SLIDER_QS_UNEXPANDED_VALIDATOR);
         }
 
         /**
