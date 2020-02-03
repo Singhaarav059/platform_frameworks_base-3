@@ -5557,6 +5557,17 @@ public final class Settings {
         private static final Validator PULSE_AMBIENT_LIGHT_DURATION_VALIDATOR = ANY_INTEGER_VALIDATOR;
 
         /**
+         * Number of times to repeat animations of Ambient edge light
+         * 0 is infinite
+         * @hide
+         */
+        public static final String PULSE_AMBIENT_LIGHT_REPEAT_COUNT = "pulse_ambient_light_repeat_count";
+
+        /** @hide */
+        private static final Validator PULSE_AMBIENT_LIGHT_REPEAT_COUNT_VALIDATOR =
+                ANY_INTEGER_VALIDATOR;
+
+        /**
          * Whether to change the transparency of the qs panel
          * @hide
          * Whether to use the custom status bar header or not
@@ -6578,6 +6589,7 @@ public final class Settings {
             PULSE_AMBIENT_LIGHT_COLOR,
             PULSE_AMBIENT_LIGHT_AUTO_COLOR,
             PULSE_AMBIENT_LIGHT_DURATION,
+            PULSE_AMBIENT_LIGHT_REPEAT_COUNT,
             OMNI_STATUS_BAR_CUSTOM_HEADER,
             OMNI_STATUS_BAR_CUSTOM_HEADER_SHADOW,
             OMNI_STATUS_BAR_DAYLIGHT_HEADER_PACK,
@@ -6810,6 +6822,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(PULSE_AMBIENT_LIGHT_COLOR);
             PRIVATE_SETTINGS.add(PULSE_AMBIENT_LIGHT_AUTO_COLOR);
             PRIVATE_SETTINGS.add(PULSE_AMBIENT_LIGHT_DURATION);
+            PRIVATE_SETTINGS.add(PULSE_AMBIENT_LIGHT_REPEAT_COUNT);
             PRIVATE_SETTINGS.add(OMNI_STATUS_BAR_CUSTOM_HEADER);
             PRIVATE_SETTINGS.add(OMNI_STATUS_BAR_CUSTOM_HEADER_SHADOW);
             PRIVATE_SETTINGS.add(OMNI_STATUS_BAR_DAYLIGHT_HEADER_PACK);
@@ -7021,6 +7034,7 @@ public final class Settings {
             VALIDATORS.put(PULSE_AMBIENT_LIGHT_COLOR, PULSE_AMBIENT_LIGHT_COLOR_VALIDATOR);
             VALIDATORS.put(PULSE_AMBIENT_LIGHT_AUTO_COLOR, PULSE_AMBIENT_LIGHT_AUTO_COLOR_VALIDATOR);
             VALIDATORS.put(PULSE_AMBIENT_LIGHT_DURATION, PULSE_AMBIENT_LIGHT_DURATION_VALIDATOR);
+            VALIDATORS.put(PULSE_AMBIENT_LIGHT_REPEAT_COUNT, PULSE_AMBIENT_LIGHT_REPEAT_COUNT_VALIDATOR);
             VALIDATORS.put(OMNI_STATUS_BAR_CUSTOM_HEADER, OMNI_STATUS_BAR_CUSTOM_HEADER_VALIDATOR);
             VALIDATORS.put(OMNI_STATUS_BAR_CUSTOM_HEADER_SHADOW, OMNI_STATUS_BAR_CUSTOM_HEADER_SHADOW_VALIDATOR);
             VALIDATORS.put(OMNI_STATUS_BAR_DAYLIGHT_HEADER_PACK, OMNI_STATUS_BAR_DAYLIGHT_HEADER_PACK_VALIDATOR);
