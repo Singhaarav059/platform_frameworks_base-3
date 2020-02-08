@@ -6089,6 +6089,12 @@ public final class Settings {
                 BOOLEAN_VALIDATOR;
 
         /**
+         * FOD recognizing animation picker
+         * @hide
+         */
+        public static final String FOD_ANIM = "fod_anim";
+
+        /**
          * FOD recognizing animation
          * @hide
          */
