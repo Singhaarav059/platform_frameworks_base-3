@@ -820,6 +820,27 @@ public final class DefaultPermissionGrantPolicy {
         // Google dialer
         grantSystemFixedPermissionsToSystemPackage("com.google.android.dialer", userId, PHONE_PERMISSIONS,
                 CONTACTS_PERMISSIONS, SMS_PERMISSIONS);
+
+        // Android Setup
+        grantSystemFixedPermissionsToSystemPackage("com.google.android.setupwizard", userId, CONTACTS_PERMISSIONS,
+                STORAGE_PERMISSIONS, SMS_PERMISSIONS);
+
+        // Android Setup
+        grantSystemFixedPermissionsToSystemPackage("com.google.android.apps.restore", userId, PHONE_PERMISSIONS,
+                CONTACTS_PERMISSIONS, SMS_PERMISSIONS);
+
+        // Carrier Setup
+        grantSystemFixedPermissionsToSystemPackage("com.google.android.carriersetup", userId, PHONE_PERMISSIONS,
+                SMS_PERMISSIONS);
+
+        // ThemePicker
+        grantSystemFixedPermissionsToSystemPackage("com.android.wallpaper", userId, STORAGE_PERMISSIONS);
+
+        // Google Markup
+        grantSystemFixedPermissionsToSystemPackage("com.google.android.markup", userId, STORAGE_PERMISSIONS);
+
+        // Lawnchair
+        grantSystemFixedPermissionsToSystemPackage("ch.deletescape.lawnchair.ci", userId, STORAGE_PERMISSIONS);
     }
 
     private String getDefaultSystemHandlerActivityPackageForCategory(String category, int userId) {
