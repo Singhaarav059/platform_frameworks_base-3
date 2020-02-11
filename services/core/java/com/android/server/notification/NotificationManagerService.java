@@ -6159,10 +6159,17 @@ public class NotificationManagerService extends SystemService {
         if (record.sbn.isGroup() && record.getNotification().suppressAlertingDueToGrouping()) {
             return false;
         }
+
         // not if in call or the screen's on
         if (isInCall() || mScreenOn) {
             return false;
+	}
+
+        // check current user
+        if (!isNotificationForCurrentUser(record)) {
+            return false;
         }
+
         // Omni Lights
         if (record.isIntercepted() && !record.shouldLightOnZen()) {
             return false;
