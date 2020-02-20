@@ -6616,6 +6616,9 @@ public final class Settings {
 
         private static final Validator SYNTHOS_CENTER_NOTIFICATION_HEADERS_VALIDATOR = BOOLEAN_VALIDATOR;
 
+        /** @hide */
+        public static final String BACK_GESTURE_HAPTIC = "back_gesture_haptic";
+
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
