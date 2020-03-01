@@ -356,4 +356,8 @@
 
     <!-- Colt Analog clock -->
     <string name="clock_title_colt" translatable="false">ColtOS Clock</string>
+
+    <string name="recents_app_killed">App killed</string>
+    <string name="nope_cant_kill">Launcher cannot be killed</string>
+
 </resources>

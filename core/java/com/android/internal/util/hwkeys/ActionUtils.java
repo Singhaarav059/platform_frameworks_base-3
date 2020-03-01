@@ -193,6 +193,17 @@ public final class ActionUtils {
         return !TextUtils.isEmpty(name);
     }
 
+    public static void killForegroundApp() {
+        IStatusBarService service = getStatusBarService();
+        if (service != null) {
+            try {
+                service.killForegroundApp();
+            } catch (RemoteException e) {
+                // do nothing.
+            }
+        }
+    }
+
     /**
      * This method converts dp unit to equivalent pixels, depending on device
      * density.
