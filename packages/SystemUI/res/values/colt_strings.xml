@@ -172,9 +172,6 @@
     <!-- Nav Bar Swipe -->
     <string name="nav_bar_layout_inverse">Swap back and recents</string>
 
-    <!--Screenrecord Tile-->
-    <string name="screenrecorder_title_tile">Screenrecord</string>
-
     <!-- Compass QS Tile -->
     <string name="quick_settings_compass_label">Compass</string>
     <string name="quick_settings_compass_value"><xliff:g id="degrees">%1$.0f</xliff:g>\u00b0 <xliff:g id="direction">%2$s</xliff:g></string>
