@@ -133,6 +133,8 @@ public class NavigationBarEdgePanel extends View {
     private final float mBaseTranslation;
     private final float mArrowLength;
     private final float mArrowThickness;
+    private float mLongSwipeThreshold;
+    private boolean mTriggerLongSwipe;
 
     /**
      * The minimum delta needed in movement for the arrow to change direction / stop triggering back
@@ -399,6 +401,7 @@ public class NavigationBarEdgePanel extends View {
         mVelocityTracker.addMovement(event);
         switch (event.getActionMasked()) {
             case MotionEvent.ACTION_DOWN : {
+                mTriggerLongSwipe = false;
                 mDragSlopPassed = false;
                 resetOnDown();
                 mStartX = event.getX();
@@ -448,6 +451,9 @@ public class NavigationBarEdgePanel extends View {
         float x = (polarToCartX(mCurrentAngle) * mArrowLength);
         float y = (polarToCartY(mCurrentAngle) * mArrowLength);
         Path arrowPath = calculatePath(x,y);
+        if (mTriggerLongSwipe) {
+            arrowPath.addPath(calculatePath(x,y), mArrowThickness * 2.0f * (mIsLeftPanel ? 1 : -1), 0.0f);
+        }
         if (mShowProtection) {
             canvas.drawPath(arrowPath, mProtectionPaint);
         }
@@ -468,6 +474,7 @@ public class NavigationBarEdgePanel extends View {
                 R.dimen.navigation_edge_panel_padding);
         DisplayMetrics metrics = getResources().getDisplayMetrics();
         mScreenSize = Math.min(metrics.widthPixels, metrics.heightPixels);
+        mLongSwipeThreshold = metrics.widthPixels * 0.45f;
     }
 
     private void updateArrowDirection() {
@@ -611,6 +618,7 @@ public class NavigationBarEdgePanel extends View {
         float x = event.getX();
         float y = event.getY();
         float touchTranslation = MathUtils.abs(x - mStartX);
+        mTriggerLongSwipe = touchTranslation > mLongSwipeThreshold;
         float yOffset = y - mStartY;
         float delta = touchTranslation - mPreviousTouchTranslation;
         if (Math.abs(delta) > 0) {
