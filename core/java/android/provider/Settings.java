@@ -5052,24 +5052,6 @@ public final class Settings {
 	        new SettingsValidators.InclusiveIntegerRangeValidator(0, 1);;
 
         /**
-         * Wheter to show network traffic indicator
-         * @hide
-         */
-        public static final String NETWORK_TRAFFIC_LOCATION = "network_traffic_location";
-
-        /**
-         * Network traffic inactivity threshold (default is 1 kBs)
-         * @hide
-         */
-        public static final String NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD = "network_traffic_autohide_threshold";
-
-        /**
-         * Whether to disable showing arrows in statusbar network traffic indicators
-         * @hide
-         */
-        public static final String NETWORK_TRAFFIC_ARROW = "network_traffic_arrow";
-
-        /**
          * Whether the phone vibrates on call connect
          * @hide
          */
