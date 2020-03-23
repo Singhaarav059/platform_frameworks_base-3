@@ -119,10 +119,11 @@
   <java-symbol type="string" name="config_pocketBridgeSysfsInpocket" />
 
   <!-- Gaming mode -->
-  <string name="notification_channel_gaming">Gaming mode</string>
-  <string name="gaming_mode_notification_title">Gaming mode enabled</string>
-  <string name="gaming_mode_notification_content">Tap to turn off Gaming mode</string>
-  <string name="gaming_mode_enabled_toast">Gaming mode turned on</string>
-  <string name="gaming_mode_disabled_toast">Gaming mode turned off</string>
+  <java-symbol type="drawable" name="ic_gaming_notif" />
+  <java-symbol type="string" name="notification_channel_gaming" />
+  <java-symbol type="string" name="gaming_mode_notification_title" />
+  <java-symbol type="string" name="gaming_mode_notification_content" />
+  <java-symbol type="string" name="gaming_mode_enabled_toast" />
+  <java-symbol type="string" name="gaming_mode_disabled_toast" />
 
 </resources>
