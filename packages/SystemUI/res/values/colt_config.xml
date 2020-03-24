@@ -46,18 +46,20 @@
     <!-- Whether SystemUI ignores notch -->
     <bool name="hide_view_behind_notch">false</bool>
 
-   <!-- Whether to use the mask for the quicksettings icons-->
+    <!-- Whether to use the mask for the quicksettings icons-->
     <bool name="config_useMaskForQs">true</bool>
   
-   <!-- FPSInfoService Fps file path -->
+    <!-- FPSInfoService Fps file path -->
     <string name="config_fpsInfoSysNode" translatable="false"></string>
 
-   <!-- Navbar -->
+    <!-- Navbar -->
     <string name="config_navBarLayoutHandleArrows" translatable="false">back[1.7WC];home_handle;ime_switcher[1.7WC]</string>
 
     <!-- Whether the binned brightness sensor reports a value of 0 on proximity
          near events -->
     <bool name="doze_brightness_sensor_reports_proximity" translatable="false">true</bool>
 
-</resources>
+    <!-- Whether to show biometric help only when failed -->
+    <bool name="config_biometricHelpShowOnlyWhenFailed">false</bool>
 
+</resources>
