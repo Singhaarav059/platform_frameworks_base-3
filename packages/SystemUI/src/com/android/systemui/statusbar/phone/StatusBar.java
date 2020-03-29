@@ -4304,7 +4304,6 @@ public class StatusBar extends SystemUI implements DemoMode,
 
         @Override
         public void onScreenTurnedOff() {
-            updateDozing();
             mFalsingManager.onScreenOff();
             mScrimController.onScreenTurnedOff();
             mVisualizerView.setVisible(false);
@@ -4407,6 +4406,9 @@ public class StatusBar extends SystemUI implements DemoMode,
 	    resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.SWITCH_STYLE),
                     false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.SHOW_MEDIA_HEADS_UP),
+                    false, this, UserHandle.USER_ALL);
         }
 
         @Override
@@ -4467,6 +4469,7 @@ public class StatusBar extends SystemUI implements DemoMode,
 	    setMaxKeyguardNotifConfig();
             updateChargingAnimation();
 	    setHideArrowForBackGesture();
+            setMediaHeadsup();
        }
     }
 
@@ -4834,8 +4837,6 @@ public class StatusBar extends SystemUI implements DemoMode,
                 DozeLog.traceDozing(mContext, mDozing);
                 updateDozing();
                 updateIsKeyguard();
-            }else{
-                mDozingRequested = true;
             }
         }
 
@@ -5457,6 +5458,12 @@ public class StatusBar extends SystemUI implements DemoMode,
 
     public @TransitionMode int getStatusBarMode() {
         return mStatusBarMode;
+    }
+
+    private void setMediaHeadsup() {
+        if (mMediaManager != null) {
+            mMediaManager.setMediaHeadsup();
+        }
     }
 
 }
