@@ -6107,6 +6107,9 @@ public final class Settings {
          */
         public static final String BATTERY_BAR_USE_GRADIENT_COLOR = "battery_bar_use_gradient_color";
 
+       /** @hide */
+        public static final String OMNI_NAVIGATION_BAR_RECENTS = "navigation_bar_recents";
+
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
