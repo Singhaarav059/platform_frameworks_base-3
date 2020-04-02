@@ -34,6 +34,8 @@ import android.view.View;
 import android.view.animation.Interpolator;
 import android.view.animation.PathInterpolator;
 
+import android.os.UserHandle;
+import android.provider.Settings;
 import com.android.settingslib.Utils;
 import com.android.systemui.Dependency;
 import com.android.systemui.Interpolators;
