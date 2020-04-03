@@ -4777,8 +4777,21 @@ public final class Settings {
         private static final Validator OMNI_QS_QUICKBAR_COLUMNS_VALIDATOR =
                 ANY_INTEGER_VALIDATOR;
 
-	 /**
-         * Whether footer #DerpFest text shows
+        /**
+         * Show Settings icon in QS Footer
+         *
+         * @hide
+         */
+        public static final String QS_FOOTER_SHOW_SETTINGS = "qs_footer_show_settings";
+
+        /**
+         * Show User switcher icon in QS Footer.
+         *
+         * @hide
+         */
+        public static final String QS_FOOTER_SHOW_USER = "qs_footer_show_user";
+
+	/**
          * @hide
          */
         public static final String OMNI_FOOTER_TEXT_SHOW = "omni_footer_text_show";

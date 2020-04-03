@@ -64,7 +64,6 @@ import com.android.systemui.statusbar.phone.SettingsButton;
 import com.android.systemui.statusbar.policy.DeviceProvisionedController;
 import com.android.systemui.statusbar.policy.UserInfoController;
 import com.android.systemui.statusbar.policy.UserInfoController.OnUserInfoChangedListener;
-import com.android.systemui.tuner.TunerService;
 
 import static android.content.Context.VIBRATOR_SERVICE;
 
@@ -336,9 +335,10 @@ public class QSFooterImpl extends FrameLayout implements QSFooter,
     }
 
     private void updateVisibilities() {
-        mSettingsContainer.setVisibility(mQsDisabled ? View.GONE : View.VISIBLE);
         final boolean isDemo = UserManager.isDeviceInDemoMode(mContext);
-        mMultiUserSwitch.setVisibility(showUserSwitcher() ? View.VISIBLE : View.INVISIBLE);
+        mSettingsContainer.setVisibility(!isSettingsEnabled() || mQsDisabled ? View.GONE : View.VISIBLE);
+        mSettingsButton.setVisibility(isSettingsEnabled() ? (isDemo || !mExpanded ? View.INVISIBLE : View.VISIBLE) : View.GONE);
+        mMultiUserSwitch.setVisibility(isUserEnabled() ? (showUserSwitcher() ? View.VISIBLE : View.INVISIBLE) : View.GONE);
         mEditContainer.setVisibility(isDemo || !mExpanded ? View.INVISIBLE : View.VISIBLE);
         mSettingsButton.setVisibility(isSettingButtonEnabled() ? isDemo || !mExpanded ? View.INVISIBLE : View.VISIBLE : View.VISIBLE);
         mRunningServicesButton.setVisibility(isRunningServicesEnabled() ? !isDemo && mExpanded ? View.VISIBLE : View.INVISIBLE : View.GONE);
@@ -371,9 +371,19 @@ public class QSFooterImpl extends FrameLayout implements QSFooter,
             Settings.System.SETTING_BUTTON_TOGGLE, 0) == 1;
     }
 
+    public boolean isSettingsEnabled() {
+        return Settings.System.getInt(mContext.getContentResolver(),
+            Settings.System.QS_FOOTER_SHOW_SETTINGS, 1) == 1;
+    }
+
     public boolean isRunningServicesEnabled() {
         return Settings.System.getInt(mContext.getContentResolver(),
             Settings.System.QS_RUNNING_SERVICES_TOGGLE, 0) == 1;
+    }
+
+    public boolean isUserEnabled() {
+        return Settings.System.getInt(mContext.getContentResolver(),
+            Settings.System.QS_FOOTER_SHOW_USER, 1) == 1;
     }
 
     @Override
