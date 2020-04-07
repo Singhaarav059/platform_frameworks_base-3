@@ -197,5 +197,5 @@
     <dimen name="lock_clock_font_size_107">107dp</dimen>
     <dimen name="lock_clock_font_size_108">108dp</dimen>
 
-    
+    <color name="clock_sf_system_background_dark">@*android:color/background_device_default_dark</color>    
 </resources>
