@@ -6111,6 +6111,14 @@ public final class Settings {
         public static final String OMNI_NAVIGATION_BAR_RECENTS = "navigation_bar_recents";
 
         /**
+         * Controls whether to show R style notification headers
+         * @hide
+         */
+        public static final String NOTIFICATION_HEADERS = "notification_headers";
+
+        private static final Validator NOTIFICATION_HEADERS_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -6256,6 +6264,7 @@ public final class Settings {
             LESS_BORING_HEADS_UP,
             QS_PANEL_BG_USE_NEW_TINT,
             NAVIGATION_BAR_ARROW_KEYS,
+            NOTIFICATION_HEADERS,
         };
 
         /**
@@ -6669,6 +6678,7 @@ public final class Settings {
             VALIDATORS.put(QS_PANEL_BG_USE_NEW_TINT, QS_PANEL_BG_USE_NEW_TINT_VALIDATOR);
             VALIDATORS.put(NAVIGATION_BAR_ARROW_KEYS,
                     NAVIGATION_BAR_ARROW_KEYS_VALIDATOR);
+            VALIDATORS.put(NOTIFICATION_HEADERS, NOTIFICATION_HEADERS_VALIDATOR);
         }
 
         /**
