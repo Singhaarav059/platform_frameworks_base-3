@@ -6174,6 +6174,12 @@ public class NotificationManagerService extends SystemService {
         if (record.isIntercepted() && !record.shouldLightOnZen()) {
             return false;
         }
+        // Check for phone missed calls
+        if (record.getChannel().getId().equals("phone_missed_call")) {
+            if (DBG) Slog.w(TAG, "canShowLightsLocked phone_missed_call return true!!!");
+            return true;
+        }
+
         return true;
     }
 
