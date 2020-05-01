@@ -71,4 +71,8 @@
 
     <!-- Whether to dim the FOD icon -->
     <bool name="config_fodIconDim">false</bool>
+
+    <!-- Allow devices to enforce the H265 encoder for screen recordings -->
+    <bool name="config_useNewScreenRecEncoder">true</bool>
+
 </resources>
