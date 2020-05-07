@@ -232,4 +232,6 @@
    
    <color name="qs_drag_handle_color">#66e5e5e5</color>
 
+    <color name="anci_tint_custom">#ff000000</color>
+
 </resources>
