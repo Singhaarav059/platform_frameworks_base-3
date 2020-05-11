@@ -35,7 +35,7 @@
     <integer name="hardware_ui_align">53</integer>
 
     <!-- Max visible system icons -->
-    <integer name="config_maxVisibleStatusIconContainer">6</integer>
+    <integer name="config_maxVisibleStatusIconContainer">9</integer>
 
     <!-- The CPU temperature sensor path, defaults to empty -->
     <string name="config_cpuTempSensor" translatable="false"></string>
