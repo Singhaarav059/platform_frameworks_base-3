@@ -79,4 +79,8 @@
     <dimen name="dismiss_all_fab_src_size">24dp</dimen>
 
     <dimen name="qs_brightness_slider_height">36dp</dimen>
+
+    <!-- Biometric Prompt -->
+    <dimen name="biometric_dialog_fod_margin">44dp</dimen>
+
 </resources>
