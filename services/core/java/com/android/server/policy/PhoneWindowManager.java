@@ -432,6 +432,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     private boolean mDoubleTapToDoze;
     private boolean mNativeDoubleTapToDozeAvailable;
 
+    private boolean mHomeButtonWake = false;
+
     // Assigned on main thread, accessed on UI thread
     volatile VrManagerInternal mVrManagerInternal;
 
@@ -1962,6 +1964,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         // Double-tap-to-doze
         mNativeDoubleTapToDozeAvailable = !TextUtils.isEmpty(
                 mContext.getResources().getString(R.string.config_dozeDoubleTapSensorType));
+        // Home button Wake Check
+        mHomeButtonWake = mContext.getResources().getBoolean(R.bool.config_enableHomeButtonWake);
         // Init display burn-in protection
         boolean burnInProtectionEnabled = context.getResources().getBoolean(
                 com.android.internal.R.bool.config_enableBurnInProtection);
@@ -4109,7 +4113,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         }
 
         // Disable hw keys in Ambient and when screen off
-        if ((isDozeMode() || !isScreenOn()) && (appSwitchKey || menuKey || backKey)) {
+        if ((isDozeMode() || !isScreenOn()) && (appSwitchKey || (homeKey && !mHomeButtonWake) || menuKey || backKey)) {
             return 0;
         }
 
@@ -4424,7 +4428,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             }
 
             case KeyEvent.KEYCODE_HOME:
-                if (down && !interactive) {
+                if (down && !interactive && mHomeButtonWake) {
                     isWakeKey = true;
                 }
                 break;
