@@ -6051,12 +6051,6 @@ public final class Settings {
          */
         public static final String FOD_RECOGNIZING_ANIMATION = "fod_recognizing_animation";
 
-         /**
-         * FOD pressed state
-         * @hide
-         */
-        public static final String FOD_PRESSED_STATE = "fod_pressed_state";
-
         /**
          * Show data usage in QS header
          * @hide
