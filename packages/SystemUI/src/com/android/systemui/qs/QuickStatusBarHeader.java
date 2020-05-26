@@ -148,6 +148,11 @@ public class QuickStatusBarHeader extends RelativeLayout implements
     private boolean mHeaderImageEnabled;
     private int mHeaderImageHeight;
 
+    // Data Usage
+    private View mDataUsageLayout;
+    private ImageView mDataUsageImage;
+    private DataUsageView mDataUsageView;
+
     private ImageView mNextAlarmIcon;
     /** {@link TextView} containing the actual text indicating when the next alarm will go off. */
     private TextView mNextAlarmTextView;
@@ -161,8 +166,8 @@ public class QuickStatusBarHeader extends RelativeLayout implements
     private OngoingPrivacyChip mPrivacyChip;
     private Space mSpace;
     private BatteryMeterView mBatteryRemainingIcon;
-    private DataUsageView mDataUsageView;
     private BatteryMeterView mBatteryRemainingIconQsH;
+
     private boolean mPermissionsHubEnabled;
 
     private PrivacyItemController mPrivacyItemController;
@@ -327,6 +332,8 @@ public class QuickStatusBarHeader extends RelativeLayout implements
         mDateView = findViewById(R.id.date);
         mDateView.setOnClickListener(this);
         mSpace = findViewById(R.id.space);
+        mDataUsageLayout = findViewById(R.id.daily_data_usage_layout);
+        mDataUsageImage = findViewById(R.id.daily_data_usage_icon);
         mDataUsageView = findViewById(R.id.data_sim_usage);
 
         // Tint for the battery icons are handled in setupHost()
@@ -378,6 +385,7 @@ public class QuickStatusBarHeader extends RelativeLayout implements
     private void updateSystemInfoText() {
         mSystemInfoText.setVisibility(View.GONE);
         mSystemInfoIcon.setVisibility(View.GONE);
+        mSystemInfoLayout.setVisibility(View.GONE);
         if (mSystemInfoMode == 0) return;
         int defaultMultiplier = 1;
         String systemInfoText = "";
@@ -400,6 +408,7 @@ public class QuickStatusBarHeader extends RelativeLayout implements
                 break;
         }
         if (systemInfoText != null && !systemInfoText.isEmpty()) {
+            mSystemInfoLayout.setVisibility(View.VISIBLE);
             mSystemInfoText.setText(systemInfoText);
             mSystemInfoIcon.setVisibility(View.VISIBLE);
             mSystemInfoText.setVisibility(View.VISIBLE);
@@ -616,11 +625,16 @@ public class QuickStatusBarHeader extends RelativeLayout implements
         mBatteryRemainingIconQsH.updateVisibility();
      }
 
-    private void updateDataUsageView() {
-        if (mDataUsageView.isDataUsageEnabled() != 0)
+     private void updateDataUsageView() {
+        if (mDataUsageView.isDataUsageEnabled() != 0) {
+            mDataUsageLayout.setVisibility(View.VISIBLE);
+            mDataUsageImage.setVisibility(View.VISIBLE);
             mDataUsageView.setVisibility(View.VISIBLE);
-        else
+        } else {
             mDataUsageView.setVisibility(View.GONE);
+            mDataUsageImage.setVisibility(View.GONE);
+            mDataUsageLayout.setVisibility(View.GONE);
+        }
     }
 
      private void updateSBBatteryStyle() {

@@ -69,17 +69,33 @@
              android:lineSpacingMultiplier="1.2"
              systemui:showDark="false"/>
 
+        <LinearLayout
+            android:id="@+id/daily_data_usage_layout"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_marginStart="4dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical|end"
+            android:clipChildren="false" >
+
+            <ImageView
+                android:id="@+id/daily_data_usage_icon"
+                android:layout_height="@dimen/qs_temperatur_icon_size"
+                android:layout_width="wrap_content"
+                android:src="@drawable/ic_data_saver_off"
+                android:visibility="gone" />
+
 	 <com.android.systemui.statusbar.info.DataUsageView
              android:id="@+id/data_sim_usage"
              android:layout_width="wrap_content"
              android:layout_height="match_parent"
-             android:layout_marginStart="8dp"
              android:gravity="center_vertical|end"
              android:paddingStart="1dp"
              android:paddingEnd="1dp"
              android:singleLine="true"
              android:textAppearance="@style/TextAppearance.StatusBar.Clock"
              android:visibility="gone" />
+        </LinearLayout>
 
         <LinearLayout
                 android:id="@+id/system_info_layout"
@@ -93,8 +109,7 @@
                     android:id="@+id/system_info_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/status_bar_icon_size"
-                    android:visibility="gone"
-                    android:paddingEnd="1dp" />
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/system_info_text"
