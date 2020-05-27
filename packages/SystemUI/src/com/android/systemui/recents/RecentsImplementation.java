@@ -23,8 +23,7 @@ import com.android.systemui.SysUiServiceProvider;
 
 import java.io.PrintWriter;
 
-/** @hide */
-public interface RecentsImplementation {
+interface RecentsImplementation {
     default void onStart(Context context, SysUiServiceProvider sysUiServiceProvider) {}
     default void onBootCompleted() {}
     default void onAppTransitionFinished() {}

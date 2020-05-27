@@ -28,8 +28,6 @@ import com.android.internal.util.colt.ColtUtils;
 import com.android.systemui.R;
 import com.android.systemui.SystemUI;
 import com.android.systemui.statusbar.CommandQueue;
-import com.android.systemui.slimrecent.RecentController;
-import com.android.systemui.tuner.TunerService;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -37,32 +35,20 @@ import java.io.PrintWriter;
 /**
  * A proxy to a Recents implementation.
  */
-public class Recents extends SystemUI implements CommandQueue.Callbacks, TunerService.Tunable {
-
-    private static final String USE_SLIM_RECENTS = "system:" + Settings.System.USE_SLIM_RECENTS;
+public class Recents extends SystemUI implements CommandQueue.Callbacks {
 
     private RecentsImplementation mImpl;
-    private RecentsImplementation mDefaultImpl;
-    private RecentController mSlimImpl;
-
-    private boolean mStarted = false;
-    private boolean mBootCompleted = false;
-
-    private boolean mUseSlimRecents = false;
 
     @Override
     public void start() {
-        mStarted = true;
         getComponent(CommandQueue.class).addCallback(this);
         putComponent(Recents.class, this);
         mImpl = createRecentsImplementationFromConfig();
         mImpl.onStart(mContext, this);
-        Dependency.get(TunerService.class).addTunable(this, USE_SLIM_RECENTS);
     }
 
     @Override
     public void onBootCompleted() {
-        mBootCompleted = true;
         mImpl.onBootCompleted();
     }
 
@@ -183,53 +169,21 @@ public class Recents extends SystemUI implements CommandQueue.Callbacks, TunerSe
      * @return The recents implementation from the config.
      */
     private RecentsImplementation createRecentsImplementationFromConfig() {
-        RecentsImplementation newImpl;
-        boolean newCreated = false;
-        if (mUseSlimRecents) {
-            if (mSlimImpl == null) {
-                newCreated = true;
-                mSlimImpl = new RecentController();
-            }
-            newImpl = mSlimImpl;
-        } else {
-            if (mDefaultImpl == null) {
-                newCreated = true;
-                final String clsName = mContext.getString(R.string.config_recentsComponent);
-                if (clsName == null || clsName.length() == 0) {
-                    throw new RuntimeException("No recents component configured", null);
-                }
-                Class<?> cls = null;
-                try {
-                    cls = mContext.getClassLoader().loadClass(clsName);
-                } catch (Throwable t) {
-                    throw new RuntimeException("Error loading recents component: " + clsName, t);
-                }
-                try {
-                    mDefaultImpl = (RecentsImplementation) cls.newInstance();
-                } catch (Throwable t) {
-                    throw new RuntimeException("Error creating recents component: " + clsName, t);
-                }
-            }
-            newImpl = mDefaultImpl;
+        final String clsName = mContext.getString(R.string.config_recentsComponent);
+        if (clsName == null || clsName.length() == 0) {
+            throw new RuntimeException("No recents component configured", null);
         }
-        if (newCreated) {
-            if (mStarted) {
-                newImpl.onStart(mContext, this);
-            }
-            if (mBootCompleted) {
-                newImpl.onBootCompleted();
-            }
+        Class<?> cls = null;
+        try {
+            cls = mContext.getClassLoader().loadClass(clsName);
+        } catch (Throwable t) {
+            throw new RuntimeException("Error loading recents component: " + clsName, t);
         }
-        return newImpl;
-    }
-
-    @Override
-    public void onTuningChanged(String key, String newValue) {
-        switch (key) {
-            case USE_SLIM_RECENTS:
-                mUseSlimRecents = "1".equals(newValue);
-                mImpl = createRecentsImplementationFromConfig();
-                break;
+        try {
+            RecentsImplementation impl = (RecentsImplementation) cls.newInstance();
+            return impl;
+        } catch (Throwable t) {
+            throw new RuntimeException("Error creating recents component: " + clsName, t);
         }
     }
 
