@@ -54,6 +54,11 @@ public class ThemesUtils {
             "com.android.theme.materialocean.systemui",
     };
 
+    public static final String[] COLT_CLEAR = {
+            "com.android.theme.coltclear.system",
+            "com.android.theme.coltclear.systemui",
+    };
+
      // Switch themes
     private static final String[] SWITCH_THEMES = {
         "com.android.system.switch.stock", // 0

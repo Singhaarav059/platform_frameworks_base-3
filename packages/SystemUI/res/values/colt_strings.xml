@@ -311,5 +311,6 @@
     <string name="system_theme_style_pitch_black">Pitch Black</string>
     <string name="system_theme_style_dark_grey">Dark Grey</string>
     <string name="system_theme_style_material_ocean">Material Ocean</string>
+    <string name="system_theme_style_colt_clear">Transparent Colt</string>
 
 </resources>
