@@ -44,10 +44,6 @@
     <dimen name="net_traffic_multi_text_size">8dp</dimen>
     <dimen name="net_traffic_txt_img_padding">2dp</dimen>
     <dimen name="net_traffic_single_text_size_x">14dp</dimen>
-    
-    <!-- Recognizing fingerprint animation -->
-    <dimen name="fod_animation_size">300dp</dimen>
-    <dimen name="fod_animation_offset">0dp</dimen>
 
     <!-- OPA home dimens -->
     <dimen name="halo_inner_radius">10.0dip</dimen>
@@ -63,8 +59,4 @@
     <dimen name="opa_overshoot_translation">8.0dip</dimen>
     <dimen name="opa_return_translation">-1.0dip</dimen>
     <dimen name="opa_rest_to_collapse">7.0dip</dimen>
-
-    <!-- Bottom margin size when fingerprint in display is active -->
-    <dimen name="keyguard_indication_margin_bottom_fingerprint_in_display">30dp</dimen>
-    
 </resources>

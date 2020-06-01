@@ -6008,12 +6008,6 @@ public final class Settings {
          * @hide
          */
         public static final String GAMING_MODE_DYNAMIC_STATE = "gaming_mode_dynamic_state";
-        
-        /**
-        * FOD icon picker
-        * @hide
-        */
-        public static final String FOD_ICON = "fod_icon";
 
         /**
          * Whether to use new QS panel bg tint or not
@@ -6038,18 +6032,6 @@ public final class Settings {
 
         private static final Validator NAVIGATION_BAR_ARROW_KEYS_VALIDATOR =
                 BOOLEAN_VALIDATOR;
-
-        /**
-         * FOD recognizing animation picker
-         * @hide
-         */
-        public static final String FOD_ANIM = "fod_anim";
-
-        /**
-         * FOD recognizing animation
-         * @hide
-         */
-        public static final String FOD_RECOGNIZING_ANIMATION = "fod_recognizing_animation";
 
         /**
          * Show data usage in QS header
@@ -6224,6 +6206,7 @@ public final class Settings {
          * @hide
          */
         public static final String LOCKSCREEN_CHARGING_ANIMATION = "lockscreen_charging_animation";
+
 
 	/**
         * Powermenu Background

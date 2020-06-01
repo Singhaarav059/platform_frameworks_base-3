@@ -65,8 +65,7 @@ android_library {
         "SystemUI-proto",
         "dagger2-2.19",
         "airbnb-lottie",
-        "jsr330",
-        "vendor.lineage.biometrics.fingerprint.inscreen-V1.0-java",
+        "jsr330"
     ],
     manifest: "AndroidManifest.xml",
 
@@ -126,7 +125,6 @@ android_library {
         "jsr330",
         "vendor.lineage.biometrics.fingerprint.inscreen-V1.0-java",
         "airbnb-lottie",
-        "vendor.lineage.biometrics.fingerprint.inscreen-V1.0-java",
     ],
     libs: [
         "android.test.runner",
