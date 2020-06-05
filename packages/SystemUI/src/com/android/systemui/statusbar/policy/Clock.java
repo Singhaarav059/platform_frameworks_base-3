@@ -389,7 +389,7 @@ public class Clock extends TextView implements DemoMode, CommandQueue.Callbacks,
             }
 
             if (mScreenOn) {
-                handler().post(() -> updateClock());
+                handler.post(() -> updateClock());
             }
         }
     };
