@@ -158,8 +158,7 @@
     </family>
     <alias name="reemkufi-light" to="reemkufi" weight="300" />
     <alias name="reemkufi-medium" to="reemkufi" weight="500" />
-    <alias name="reemkufi-semi-bold" to="reemkufi" weight="600" />
-    <alias name="reemkufi-bold" to="reemkufi" weight="700" />
+    <alias name="reemkufi-bold" to="reemkufi" weight="600" />
     <alias name="times" to="reemkufi" />
     <alias name="times new roman" to="reemkufi" />
     <alias name="palatino" to="reemkufi" />
@@ -238,8 +237,7 @@
     <family name="comicsans">
         <font weight="400" style="normal">Comic_Sans.ttf</font>
     </family>
-    <alias name="comicsans-semi-bold" to="comicsans" weight="600" />
-    <alias name="comicsans-bold" to="comicsans" weight="700" />
+    <alias name="comicsans-bold" to="comicsans" weight="600" />
     <alias name="times" to="comicsans" />
     <alias name="times new roman" to="comicsans" />
     <alias name="palatino" to="comicsans" />
@@ -259,8 +257,7 @@
     </family>
 
     <alias name="google-sans-medium" to="google-sans" weight="500" />
-    <alias name="google-sans-semi-bold" to="google-sans" weight="600" />
-    <alias name="google-sans-bold" to="google-sans" weight="700" />
+    <alias name="google-sans-bold" to="google-sans" weight="600" />
     <alias name="times" to="google-sans" />
     <alias name="times new roman" to="google-sans" />
     <alias name="palatino" to="google-sans" />
@@ -275,8 +272,7 @@
     </family>
 
     <alias name="comfortaa-medium" to="comfortaa" weight="500" />
-    <alias name="comfortaa-semi-bold" to="comfortaa" weight="600" />
-    <alias name="comfortaa-bold" to="comfortaa" weight="700" />
+    <alias name="comfortaa-bold" to="comfortaa" weight="600" />
     <alias name="times" to="comfortaa" />
     <alias name="times new roman" to="comfortaa" />
     <alias name="palatino" to="comfortaa" />
@@ -291,8 +287,7 @@
     </family>
 
     <alias name="exotwo-medium" to="exotwo" weight="500" />
-    <alias name="exotwo-semi-bold" to="exotwo" weight="600" />
-    <alias name="exotwo-bold" to="exotwo" weight="700" />
+    <alias name="exotwo-bold" to="exotwo" weight="600" />
     <alias name="times" to="exotwo" />
     <alias name="times new roman" to="exotwo" />
     <alias name="palatino" to="exotwo" />
@@ -307,8 +302,7 @@
     </family>
 
     <alias name="storopia-medium" to="storopia" weight="500" />
-    <alias name="storopia-semi-bold" to="storopia" weight="600" />
-    <alias name="storopia-bold" to="storopia" weight="700" />
+    <alias name="storopia-bold" to="storopia" weight="600" />
     <alias name="times" to="storopia" />
     <alias name="times new roman" to="storopia" />
     <alias name="palatino" to="storopia" />
@@ -323,8 +317,7 @@
     </family>
 
     <alias name="ubuntu-medium" to="ubuntu" weight="500" />
-    <alias name="ubuntu-semi-bold" to="ubuntu" weight="600" />
-    <alias name="ubuntu-bold" to="ubuntu" weight="700" />
+    <alias name="ubuntu-bold" to="ubuntu" weight="600" />
     <alias name="times" to="ubuntu" />
     <alias name="times new roman" to="ubuntu" />
     <alias name="palatino" to="ubuntu" />
@@ -339,8 +332,7 @@
     </family>
     <alias name="nokiapure-light" to="nokiapure" weight="300" />
     <alias name="nokiapure-medium" to="nokiapure" weight="500" />
-    <alias name="nokiapure-semi-bold" to="nokiapure" weight="600" />
-    <alias name="nokiapure-bold" to="nokiapure" weight="700" />
+    <alias name="nokiapure-bold" to="nokiapure" weight="600" />
     <alias name="times" to="nokiapure" />
     <alias name="times new roman" to="nokiapure" />
     <alias name="palatino" to="nokiapure" />
@@ -355,8 +347,7 @@
     </family>
     <alias name="fifa2018-light" to="fifa2018" weight="300" />
     <alias name="fifa2018-medium" to="fifa2018" weight="500" />
-    <alias name="fifa2018-semi-bold" to="fifa2018" weight="600" />
-    <alias name="fifa2018-bold" to="fifa2018" weight="700" />
+    <alias name="fifa2018-bold" to="fifa2018" weight="600" />
     <alias name="times" to="fifa2018" />
     <alias name="times new roman" to="fifa2018" />
     <alias name="palatino" to="fifa2018" />
@@ -371,8 +362,7 @@
     </family>
     <alias name="cocon-light" to="cocon" weight="300" />
     <alias name="cocon-medium" to="cocon" weight="500" />
-    <alias name="cocon-semi-bold" to="cocon" weight="600" />
-    <alias name="cocon-bold" to="cocon" weight="700" />
+    <alias name="cocon-bold" to="cocon" weight="600" />
     <alias name="times" to="cocon" />
     <alias name="times new roman" to="cocon" />
     <alias name="palatino" to="cocon" />
@@ -387,8 +377,7 @@
     </family>
     <alias name="quando-light" to="quando" weight="300" />
     <alias name="quando-medium" to="quando" weight="500" />
-    <alias name="quando-semi-bold" to="quando" weight="600" />
-    <alias name="quando-bold" to="quando" weight="700" />
+    <alias name="quando-bold" to="quando" weight="600" />
     <alias name="times" to="quando" />
     <alias name="times new roman" to="quando" />
     <alias name="palatino" to="quando" />
@@ -403,8 +392,7 @@
     </family>
     <alias name="grandhotel-light" to="grandhotel" weight="300" />
     <alias name="grandhotel-medium" to="grandhotel" weight="500" />
-    <alias name="grandhotel-semi-bold" to="grandhotel" weight="600" />
-    <alias name="grandhotel-bold" to="grandhotel" weight="700" />
+    <alias name="grandhotel-bold" to="grandhotel" weight="600" />
     <alias name="times" to="grandhotel" />
     <alias name="times new roman" to="grandhotel" />
     <alias name="palatino" to="grandhotel" />
@@ -419,8 +407,7 @@
     </family>
     <alias name="redressed-light" to="redressed" weight="300" />
     <alias name="redressed-medium" to="redressed" weight="500" />
-    <alias name="redressed-semi-bold" to="redressed" weight="600" />
-    <alias name="redressed-bold" to="redressed" weight="700" />
+    <alias name="redressed-bold" to="redressed" weight="600" />
     <alias name="times" to="redressed" />
     <alias name="times new roman" to="redressed" />
     <alias name="palatino" to="redressed" />
@@ -436,8 +423,7 @@
     </family>
     <alias name="nunito-light" to="nunito" weight="300" />
     <alias name="nunito-medium" to="nunito" weight="500" />
-    <alias name="nunito-semi-bold" to="nunito" weight="600" />
-    <alias name="nunito-bold" to="nunito" weight="700" />
+    <alias name="nunito-bold" to="nunito" weight="600" />
     <alias name="times" to="nunito" />
     <alias name="times new roman" to="nunito" />
     <alias name="palatino" to="nunito" />
