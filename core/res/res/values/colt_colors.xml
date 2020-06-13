@@ -41,4 +41,7 @@
 
     <!-- Themes -->
     <color name="theme_generic_semi_transparent_color">#EAFFFFFF</color>
+
+    <!-- Mizu -->
+    <color name="theme_background_mizu">#ae000000</color>
 </resources>
