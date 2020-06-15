@@ -6556,6 +6556,15 @@ public final class Settings {
         private static final Validator NAVIGATION_HANDLE_WIDTH_VALIDATOR = ANY_INTEGER_VALIDATOR;
 
         /**
+         * Height of the navigation handle.
+         * @hide
+         */
+        public static final String NAVIGATION_HANDLE_HEIGHT = "navigation_handle_height";
+
+        /** @hide */
+        private static final Validator NAVIGATION_HANDLE_HEIGHT_VALIDATOR = ANY_INTEGER_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -6724,7 +6733,8 @@ public final class Settings {
             FLASHLIGHT_ON_CALL_IGNORE_DND,
             FLASHLIGHT_ON_CALL_RATE,
             SHOW_MEDIA_HEADS_UP,
-            THEMING_SETTINGS_DASHBOARD_ICONS
+            THEMING_SETTINGS_DASHBOARD_ICONS,
+            NAVIGATION_HANDLE_HEIGHT,
         };
 
         /**
@@ -6963,6 +6973,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(FLASHLIGHT_ON_CALL_IGNORE_DND);
             PRIVATE_SETTINGS.add(FLASHLIGHT_ON_CALL_RATE);
             PRIVATE_SETTINGS.add(THEMING_SETTINGS_DASHBOARD_ICONS);
+            PRIVATE_SETTINGS.add(NAVIGATION_HANDLE_HEIGHT);
         }
 
         /**
@@ -7181,6 +7192,7 @@ public final class Settings {
             VALIDATORS.put(FLASHLIGHT_ON_CALL_RATE, FLASHLIGHT_ON_CALL_RATE_VALIDATOR);
             VALIDATORS.put(SHOW_MEDIA_HEADS_UP, SHOW_MEDIA_HEADS_UP_VALIDATOR);
             VALIDATORS.put(THEMING_SETTINGS_DASHBOARD_ICONS, THEMING_SETTINGS_DASHBOARD_ICONS_VALIDATOR);
+            VALIDATORS.put(NAVIGATION_HANDLE_HEIGHT, NAVIGATION_HANDLE_HEIGHT_VALIDATOR);
         }
 
         /**
