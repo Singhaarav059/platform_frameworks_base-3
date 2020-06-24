@@ -284,6 +284,7 @@
     <!-- Kill App Permission -->
     <uses-permission android:name="android.permission.FORCE_STOP_PACKAGES" />
 
+    <protected-broadcast android:name="com.android.systemui.action.PLUGIN_CHANGED" />
     <protected-broadcast android:name="com.android.systemui.doze.pulse" />
 
     <!-- Screenshot tile -->
