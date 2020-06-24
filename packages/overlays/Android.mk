@@ -56,10 +56,13 @@ LOCAL_REQUIRED_MODULES := \
 	IconPackRoundedSystemUIOverlay \
 	IconPackRoundedThemePickerUIOverlay \
 	IconShapeCylinderOverlay \
+        IconShapePebbleOverlay \
 	IconShapeRoundedRectOverlay \
 	IconShapeSquareOverlay \
 	IconShapeSquircleOverlay \
+        IconShapeTaperedRectOverlay \
 	IconShapeTeardropOverlay \
+        IconShapeVesselOverlay \
 	NavigationBarMode3ButtonOverlay \
 	NavigationBarMode2ButtonOverlay \
 	NavigationBarModeGesturalOverlay \
