@@ -4845,6 +4845,12 @@ public final class Settings {
         private static final Validator OMNI_FOOTER_TEXT_SHOW_VALIDATOR =
                 BOOLEAN_VALIDATOR;
 
+	/**
+         * Holds current enabled volume panel implementation
+         * @hide
+         */
+        public static final String SYSTEMUI_PLUGIN_VOLUME = "systemui_plugin_volume";
+
         /**
  	 * Enable/Disable screenshot sound
          * @hide
@@ -7002,6 +7008,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(THEMING_SETTINGS_DASHBOARD_ICONS);
             PRIVATE_SETTINGS.add(NAVIGATION_HANDLE_HEIGHT);
             PRIVATE_SETTINGS.add(BRIGHTNESS_SLIDER_QS_UNEXPANDED);
+            PRIVATE_SETTINGS.add(SYSTEMUI_PLUGIN_VOLUME);
         }
 
         /**
