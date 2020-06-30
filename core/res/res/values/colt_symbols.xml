@@ -228,7 +228,4 @@
     <!-- Whether to show a custom view for FOD -->
     <java-symbol type="bool" name="config_needCustomFODView" />
 
-    <!-- FOD -->
-    <java-symbol type="bool" name="config_targetUsesInKernelDimming" />
-
 </resources>

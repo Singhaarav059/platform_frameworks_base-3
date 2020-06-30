@@ -169,7 +169,4 @@
     <!-- Whether to show a custom view for FOD -->
     <bool name="config_needCustomFODView">false</bool>
 
-    <!-- FOD -->
-    <bool name="config_targetUsesInKernelDimming">true</bool>
-
 </resources>
