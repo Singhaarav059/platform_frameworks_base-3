@@ -6414,6 +6414,12 @@ public final class Settings {
                 new SettingsValidators.InclusiveIntegerRangeValidator(1, 5);
 
         /**
+         * A2DP codec priority
+         * @hide
+         */
+        public static final String A2DP_SOURCE_CODEC_PRIORITY = "a2dp_source_codec_priority";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
