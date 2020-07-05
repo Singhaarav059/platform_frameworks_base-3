@@ -214,13 +214,11 @@ public class OronosClockController implements ClockPlugin {
     @Override
     public void setTextColor(int color) {}
 
-    @Override
     public void setTypeface(Typeface tf) {
         mHourClock.setTypeface(tf);
         mMinuteClock.setTypeface(tf);
     }
 
-    @Override
     public void setTextSize(int unit, float size) {
         mHourClock.setTextSize(unit, size);
         mMinuteClock.setTextSize(unit, size);
