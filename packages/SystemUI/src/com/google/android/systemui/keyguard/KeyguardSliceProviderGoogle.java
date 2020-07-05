@@ -14,6 +14,7 @@ import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.UserHandle;
 import android.os.Trace;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 import androidx.core.graphics.drawable.IconCompat;
