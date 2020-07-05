@@ -14,7 +14,6 @@ import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.UserHandle;
 import android.os.Trace;
-import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 import androidx.core.graphics.drawable.IconCompat;
@@ -113,7 +112,6 @@ public class KeyguardSliceProviderGoogle extends KeyguardSliceProvider implement
         synchronized (this) {
             ListBuilder listBuilder = new ListBuilder(getContext(), mSliceUri, -1);
             SmartSpaceCard currentCard = mSmartSpaceData.getCurrentCard();
-            boolean showStatusArea = Settings.System.getInt(getContext().getContentResolver(), Settings.System.CLOCK_SHOW_STATUS_AREA, 0) == 1;
             if (currentCard == null || currentCard.isExpired() || TextUtils.isEmpty(currentCard.getTitle())) {
                 if (needsMediaLocked()) {
                     addMediaLocked(listBuilder);
@@ -122,10 +120,8 @@ public class KeyguardSliceProviderGoogle extends KeyguardSliceProvider implement
                     rowBuilder.setTitle(getFormattedDateLocked());
                     listBuilder.addRow(rowBuilder);
                 }
-                if (showStatusArea) {
-                    addWeather(listBuilder);
-                    addNextAlarmLocked(listBuilder);
-                }
+                addWeather(listBuilder);
+                addNextAlarmLocked(listBuilder);
                 addZenModeLocked(listBuilder);
                 addPrimaryActionLocked(listBuilder);
             } else {
@@ -161,9 +157,7 @@ public class KeyguardSliceProviderGoogle extends KeyguardSliceProvider implement
                     }
                     listBuilder.addRow(rowBuilder2);
                 }
-                if (showStatusArea) {
-                    addWeather(listBuilder);
-                }
+                addWeather(listBuilder);
                 addZenModeLocked(listBuilder);
                 addPrimaryActionLocked(listBuilder);
             }
