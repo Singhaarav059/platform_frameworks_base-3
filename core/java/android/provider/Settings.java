@@ -6487,7 +6487,6 @@ public final class Settings {
             OMNI_DOZE_ON_CHARGE,
             QS_BLUR_INTENSITY,
             FINGERPRINT_SUCCESS_VIB,
-            CLOCK_SHOW_STATUS_AREA,
             HIDE_SMART_REPLIES,
             GESTURE_PILL_TOGGLE,
             LESS_BORING_HEADS_UP,
