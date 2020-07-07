@@ -172,7 +172,6 @@ public class TypeClockController implements ClockPlugin {
         mTypeClock.setTextColor(color);
     }
 
-    @Override
     public void setTypeface(Typeface tf) {
         mTypeClock.setTypeface(tf);
     }

@@ -177,12 +177,10 @@ public class TypeClockAltController implements ClockPlugin {
         mTypeClock.setTextColor(color);
     }
 
-    @Override
     public void setTypeface(Typeface tf) {
         mTypeClock.setTypeface(tf);
     }
 
-    @Override
     public void setTextSize(int unit, float size) {
         mTypeClock.setTextSize(unit, size);
     }
