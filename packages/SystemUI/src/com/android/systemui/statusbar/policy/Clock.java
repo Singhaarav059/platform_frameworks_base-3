@@ -429,7 +429,7 @@ public class Clock extends TextView implements DemoMode, CommandQueue.Callbacks,
     }
 
     protected void updateClockVisibility() {
-        boolean visible = ((mClockStyle == STYLE_CLOCK_LEFT))
+        boolean visible = ((mClockStyle == STYLE_CLOCK_LEFT) || (mQsHeader))
                 && mShowClock && mClockVisibleByPolicy && mClockVisibleByUser;
         int visibility = visible ? View.VISIBLE : View.GONE;
         super.setVisibility(visibility);
