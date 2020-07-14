@@ -309,4 +309,7 @@
     <string name="system_theme_style_material_ocean">Material Ocean</string>
     <string name="system_theme_style_colt_clear">Transparent Colt</string>
     <string name="system_theme_style_mizu">Colt Mizu</string>
+
+    <!-- Oneplus Numbers clock -->
+    <string name="clock_title_oneplus_numbers" translatable="false">OnePlus Numbers</string>
 </resources>

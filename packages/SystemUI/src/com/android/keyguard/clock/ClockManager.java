@@ -152,6 +152,7 @@ public final class ClockManager {
         addBuiltinClock(() -> new SfunyClockController(res, layoutInflater, colorExtractor));
         addBuiltinClock(() -> new MNMLBoxClockController(res, layoutInflater, colorExtractor));
         addBuiltinClock(() -> new MNMLMinimalClockController(res, layoutInflater, colorExtractor));
+        addBuiltinClock(() -> new OPNumbersClockController(res, layoutInflater, colorExtractor));
         addBuiltinClock(() -> new OronosClockController(res, layoutInflater, colorExtractor));
         addBuiltinClock(() -> new TypeClockAltController(res, layoutInflater, colorExtractor));
         //addBuiltinClock(() -> new BubbleClockController(res, layoutInflater, colorExtractor));
