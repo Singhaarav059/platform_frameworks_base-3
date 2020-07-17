@@ -5790,6 +5790,12 @@ public final class Settings {
         private static final Validator QS_BLUR_ALPHA_VALIDATOR = ANY_INTEGER_VALIDATOR;
 
 	/**
+         * toggle for ios like clipboard access toast
+         * @hide
+         */
+        public static final String IOS_CLIPBOARD_ENABLED = "ios_clipboard_enabled";
+
+	/**
          * User definable value of pulse notification screen brightness
          *
          * @hide
@@ -16448,7 +16454,7 @@ public final class Settings {
          */
         public static final String TOAST_ANIMATION = "toast_animation";
 
-        /**
+	/**
          * Disabled Transition animations of the android system
          * @hide
          */

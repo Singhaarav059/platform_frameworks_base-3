@@ -745,14 +745,17 @@ public class ClipboardService extends SystemService {
 
     private boolean clipboardAccessAllowed(int op, String callingPackage, int uid,
             @UserIdInt int userId) {
-        // create toast that app has tried to access clipboard
+    boolean mIosClipboardEnabled = Settings.System.getIntForUser(getContext().getContentResolver(),
+                    Settings.System.IOS_CLIPBOARD_ENABLED, 0, UserHandle.USER_CURRENT) == 1;
+    if(mIosClipboardEnabled) {
+    // create toast that app has tried to access clipboard
         final PackageManager pm = getContext().getPackageManager();
         ApplicationInfo ai;
         try {
             ai = pm.getApplicationInfo(callingPackage, 0);
         } catch (final NameNotFoundException e) {
             ai = null;
-        }
+	}
         final String applicationName = (String) (ai != null ? pm.getApplicationLabel(ai) : "(unknown)");
         Handler handler = new Handler(Looper.getMainLooper());
         handler.post(new Runnable() {
@@ -761,6 +764,7 @@ public class ClipboardService extends SystemService {
                 Toast.makeText(getContext(), applicationName + " tried to access the clipboard", Toast.LENGTH_SHORT).show();
             }
         });
+       }
         // Check the AppOp.
         if (mAppOps.noteOp(op, uid, callingPackage) != AppOpsManager.MODE_ALLOWED) {
             return false;
