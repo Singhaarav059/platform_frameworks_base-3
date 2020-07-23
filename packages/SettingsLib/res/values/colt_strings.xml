@@ -25,4 +25,7 @@
     <!-- Description for the screen zoom level that makes interface elements smallest. [CHAR LIMIT=24] -->
     <string name="screen_zoom_summary_smallest">Smallest</string>
 
+    <!-- Space Analog Clock -->
+    <string name="clock_title_space_clock" translatable="false">Space Analog Clock</string>
+
 </resources>
