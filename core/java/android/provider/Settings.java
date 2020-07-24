@@ -5385,6 +5385,15 @@ public final class Settings {
         /** @hide */
         public static final Validator VOLTE_ICON_STYLE_VALIDATOR = ANY_INTEGER_VALIDATOR;
 
+        /**
+         * Whether to show VoWiFi icon or not
+         * @hide
+         */
+        public static final String SHOW_VOWIFI_ICON = "show_vowifi_icon";
+
+        /** @hide */
+        public static final Validator SHOW_VOWIFI_ICON_VALIDATOR = BOOLEAN_VALIDATOR;
+
         /** @hide */
         private static final Validator BATTERY_LEVEL_CHARGE_ALARM_ENABLED_VALIDATOR = BOOLEAN_VALIDATOR;
 

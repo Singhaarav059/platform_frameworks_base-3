@@ -118,6 +118,9 @@ public class MobileSignalController extends SignalController<
     // Volte Icon Style
     private int mVoLTEstyle;
 
+    // VoWiFi Icon
+    private boolean mVoWiFiIcon;
+
     // TODO: Reduce number of vars passed in, if we have the NetworkController, probably don't
     // need listener lists anymore.
     public MobileSignalController(Context context, Config config, boolean hasMobileData,
@@ -207,6 +210,9 @@ public class MobileSignalController extends SignalController<
             resolver.registerContentObserver(
                     Settings.System.getUriFor(Settings.System.USE_OLD_MOBILETYPE), false,
                     this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(
+                    Settings.System.getUriFor(Settings.System.SHOW_VOWIFI_ICON), false,
+                    this, UserHandle.USER_ALL);
            resolver.registerContentObserver(Settings.System.getUriFor(
                   Settings.System.SHOW_VOLTE_ICON),
                   false,this, UserHandle.USER_ALL);
@@ -233,11 +239,14 @@ public class MobileSignalController extends SignalController<
                 UserHandle.USER_CURRENT) == 1;
 
         mVoLTEicon = Settings.System.getIntForUser(resolver,
-                Settings.System.SHOW_VOLTE_ICON, 0,
+                Settings.System.SHOW_VOLTE_ICON, 1,
                 UserHandle.USER_CURRENT) == 1;
         mVoLTEstyle = Settings.System.getIntForUser(resolver,
                 Settings.System.VOLTE_ICON_STYLE, 0,
                 UserHandle.USER_CURRENT);
+        mVoWiFiIcon = Settings.System.getIntForUser(resolver,
+                Settings.System.SHOW_VOWIFI_ICON, 1,
+                UserHandle.USER_CURRENT) == 1;
 
         mapIconSets();
         updateTelephony();
@@ -901,10 +910,14 @@ public class MobileSignalController extends SignalController<
     }
 
     private MobileIconGroup getVowifiIconGroup() {
-        if ( isVowifiAvailable() && !isCallIdle() ) {
-            return TelephonyIcons.VOWIFI_CALLING;
-        } else if (isVowifiAvailable()) {
-            return TelephonyIcons.VOWIFI;
+        if (mVoWiFiIcon) {
+            if ( isVowifiAvailable() && !isCallIdle() ) {
+                return TelephonyIcons.VOWIFI_CALLING;
+            } else if (isVowifiAvailable()) {
+                return TelephonyIcons.VOWIFI;
+            } else {
+                return null;
+            }
         } else {
             return null;
         }
