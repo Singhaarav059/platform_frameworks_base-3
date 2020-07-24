@@ -74,6 +74,8 @@ public class Toast {
     static final String TAG = "Toast";
     static final boolean localLOGV = false;
 
+    private Drawable mCustomIcon;
+
     /** @hide */
     @IntDef(prefix = { "LENGTH_" }, value = {
             LENGTH_SHORT,
@@ -139,6 +141,7 @@ public class Toast {
         String pkg = mContext.getOpPackageName();
         TN tn = mTN;
         tn.mNextView = mNextView;
+        tn.mCustomIcon = mCustomIcon;
         final int displayId = mContext.getDisplayId();
 
         try {
@@ -338,6 +341,14 @@ public class Toast {
         tv.setText(s);
     }
 
+    /**
+     * Set a custom toast icon, instead of the app icon
+     * @param icon The custom Drawable icon
+     */
+    public void setIcon(Drawable icon) {
+        mCustomIcon = icon;
+    }
+
     // =======================================================================================
     // All the gunk below is the interaction with the Notification Service, which handles
     // the proper ordering of these system-wide.
@@ -382,6 +393,8 @@ public class Toast {
         WindowManager mWM;
 
         String mPackageName;
+
+        Drawable mCustomIcon;
 
         static final long SHORT_DURATION_TIMEOUT = 4000;
         static final long LONG_DURATION_TIMEOUT = 7000;
@@ -485,15 +498,19 @@ public class Toast {
                 }
 
                 ImageView appIcon = (ImageView) mView.findViewById(android.R.id.icon);
-                if (appIcon != null) {
-                    PackageManager pm = context.getPackageManager();
-                    Drawable icon = null;
-                    try {
-                        icon = pm.getApplicationIcon(packageName);
-                    } catch (PackageManager.NameNotFoundException e) {
-                        // nothing to do
+                if (appIcon != null) { // using app icon
+                    if (mCustomIcon == null) {
+                        PackageManager pm = context.getPackageManager();
+                        Drawable icon = null;
+                        try {
+                            icon = pm.getApplicationIcon(packageName);
+                        } catch (PackageManager.NameNotFoundException e) {
+                            // nothing to do
+                        }
+                        appIcon.setImageDrawable(icon);
+                    } else { // using a custom icon
+                        appIcon.setImageDrawable(mCustomIcon);
                     }
-                    appIcon.setImageDrawable(icon);
                 }
 
                 mWM = (WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
