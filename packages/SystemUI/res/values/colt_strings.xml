@@ -324,4 +324,7 @@
 
     <!-- Oneplus Analog clock -->
     <string name="clock_title_minimalism" translatable="false">Minimalism</string>
+
+    <!-- Colt Analog clock -->
+    <string name="clock_title_colt" translatable="false">ColtOS Clock</string>
 </resources>
