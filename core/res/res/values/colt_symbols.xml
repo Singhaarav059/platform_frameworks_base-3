@@ -238,11 +238,13 @@
     <java-symbol type="integer" name="config_sysCPUTempMultiplier" />
     <java-symbol type="integer" name="config_sysBatteryTempMultiplier" />
 
-   <!-- SystemUI Restart -->
-  <java-symbol type="string" name="systemui_restart_title" />
-  <java-symbol type="string" name="systemui_restart_message" />
+    <!-- SystemUI Restart -->
+    <java-symbol type="string" name="systemui_restart_title" />
+    <java-symbol type="string" name="systemui_restart_message" />
 
-  <!-- Home button wake -->
-  <java-symbol type="bool" name="config_enableHomeButtonWake" /> 
- 
+    <!-- Home button wake -->
+    <java-symbol type="bool" name="config_enableHomeButtonWake" /> 
+
+    <!-- Cycle through ringer modes -->
+    <java-symbol type="string" name="volume_dialog_ringer_guidance_normal" />
 </resources>
