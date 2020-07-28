@@ -35,6 +35,7 @@ import android.graphics.Point;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.PorterDuffXfermode;
+import android.hardware.biometrics.BiometricSourceType;
 import android.graphics.drawable.AnimationDrawable;
 import android.hardware.display.DisplayManager;
 import android.graphics.drawable.BitmapDrawable;
@@ -93,6 +94,7 @@ public class FODCircleView extends ImageView {
     private boolean mIsDreaming;
     private boolean mIsKeyguard;
     private boolean mIsCircleShowing;
+    private boolean mIsAuthenticated;
 
     private Handler mHandler;
 
@@ -128,9 +130,23 @@ public class FODCircleView extends ImageView {
 
     private KeyguardUpdateMonitorCallback mMonitorCallback = new KeyguardUpdateMonitorCallback() {
         @Override
+        public void onBiometricAuthenticated(int userId, BiometricSourceType biometricSourceType) {
+            // We assume that if biometricSourceType matches Fingerprint it will be
+            // handled here, so we hide only when other biometric types authenticate
+            if (biometricSourceType != BiometricSourceType.FINGERPRINT) hide();
+            super.onBiometricAuthenticated(userId, biometricSourceType);
+            mIsAuthenticated = true;
+        }
+
+        @Override
         public void onDreamingStateChanged(boolean dreaming) {
             mIsDreaming = dreaming;
-            updateAlpha();
+
+            if (mIsKeyguard && mUpdateMonitor.isFingerprintDetectionRunning()) {
+                show();
+            } else {
+                hide();
+            }
 
             if (dreaming) {
                 mBurnInProtectionTimer = new Timer();
@@ -144,10 +160,17 @@ public class FODCircleView extends ImageView {
         @Override
         public void onKeyguardVisibilityChanged(boolean showing) {
             mIsKeyguard = showing;
+
             updateStyle();
             updatePosition();
             if (mFODAnimation != null) {
                 mFODAnimation.setAnimationKeyguard(mIsKeyguard);
+            }
+
+            if (!showing) {
+                hide();
+            } else {
+                updateAlpha();
             }
         }
 
@@ -485,6 +508,11 @@ public class FODCircleView extends ImageView {
 
         if (mIsBouncer && !isPinOrPattern(mUpdateMonitor.getCurrentUser())) {
             // Ignore show calls when Keyguard password screen is being shown
+            return;
+        }
+
+        if (mUpdateMonitor.getUserCanSkipBouncer(mUpdateMonitor.getCurrentUser())) {
+            // Ignore show calls if user can skip bouncer
             return;
         }
 
