@@ -165,16 +165,27 @@ public class StatusBarMobileView extends FrameLayout implements DarkReceiver,
         boolean showRoamingSpace = false;
         if (mState.typeId > 0) {
             if (mOldStyleType) {
-                showOldStyle(mState);
+                mMobileType.setVisibility(View.GONE);
+                mMobileTypeSmall.setContentDescription(mState.typeContentDescription);
+                mMobileTypeSmall.setImageResource(mState.typeId);
+                mMobileTypeSmall.setVisibility(View.VISIBLE);
                 showRoamingSpace = true;
+                setMobileSignalWidth(false);
             } else {
-                showNewStyle(mState);
+                mMobileType.setVisibility(View.VISIBLE);
+                mMobileType.setContentDescription(mState.typeContentDescription);
+                mMobileType.setImageResource(mState.typeId);
+                mMobileTypeSmall.setVisibility(View.GONE);
+                setMobileSignalWidth(true);
             }
         } else {
-            hideIndicators();
+            mMobileType.setVisibility(View.GONE);
+            mMobileTypeSmall.setVisibility(View.GONE);
+            setMobileSignalWidth(true);
         }
         if (mState.roaming) {
-            showRoaming();
+            mMobileTypeSmall.setVisibility(View.GONE);
+            setMobileSignalWidth(true);
         }
         mMobileRoaming.setVisibility(mState.roaming ? View.VISIBLE : View.GONE);
         mMobileRoamingSpace.setVisibility(mState.roaming || showRoamingSpace ? View.VISIBLE : View.GONE);
@@ -223,17 +234,28 @@ public class StatusBarMobileView extends FrameLayout implements DarkReceiver,
             needsLayout |= state.typeId == 0 || mState.typeId == 0;
             if (state.typeId != 0) {
                 if (oldStyleType) {
-                    showOldStyle(state);
+                    mMobileType.setVisibility(View.GONE);
+                    mMobileTypeSmall.setContentDescription(state.typeContentDescription);
+                    mMobileTypeSmall.setImageResource(state.typeId);
+                    mMobileTypeSmall.setVisibility(View.VISIBLE);
                     showRoamingSpace = true;
+                    setMobileSignalWidth(false);
                 } else {
-                    showNewStyle(state);
+                    mMobileType.setVisibility(View.VISIBLE);
+                    mMobileType.setContentDescription(state.typeContentDescription);
+                    mMobileType.setImageResource(state.typeId);
+                    mMobileTypeSmall.setVisibility(View.GONE);
+                    setMobileSignalWidth(true);
                 }
             } else {
-                hideIndicators();
+                mMobileType.setVisibility(View.GONE);
+                mMobileTypeSmall.setVisibility(View.GONE);
+                setMobileSignalWidth(true);
             }
         }
         if (state.roaming) {
-            showRoaming();
+            mMobileTypeSmall.setVisibility(View.GONE);
+            setMobileSignalWidth(true);
         }
         mMobileRoaming.setVisibility(state.roaming ? View.VISIBLE : View.GONE);
         mMobileRoamingSpace.setVisibility(showRoamingSpace || state.roaming ? View.VISIBLE : View.GONE);
@@ -359,17 +381,28 @@ public class StatusBarMobileView extends FrameLayout implements DarkReceiver,
         if (mOldStyleType != oldStyleType) {
             if (mState.typeId != 0) {
                 if (oldStyleType) {
-                    showOldStyle(mState);
+                    mMobileType.setVisibility(View.GONE);
+                    mMobileTypeSmall.setContentDescription(mState.typeContentDescription);
+                    mMobileTypeSmall.setImageResource(mState.typeId);
+                    mMobileTypeSmall.setVisibility(View.VISIBLE);
                     showRoamingSpace = true;
-               } else {
-                    showNewStyle(mState);
+                    setMobileSignalWidth(false);
+                } else {
+                    mMobileType.setVisibility(View.VISIBLE);
+                    mMobileType.setContentDescription(mState.typeContentDescription);
+                    mMobileType.setImageResource(mState.typeId);
+                    mMobileTypeSmall.setVisibility(View.GONE);
+                    setMobileSignalWidth(true);
                 }
             } else {
-                hideIndicators();
+                mMobileType.setVisibility(View.GONE);
+                mMobileTypeSmall.setVisibility(View.GONE);
+                setMobileSignalWidth(true);
             }
         }
         if (mState.roaming) {
-            showRoaming();
+            mMobileTypeSmall.setVisibility(View.GONE);
+            setMobileSignalWidth(true);
         }
         mMobileRoaming.setVisibility(mState.roaming ? View.VISIBLE : View.GONE);
         mMobileRoamingSpace.setVisibility(showRoamingSpace || mState.roaming ? View.VISIBLE : View.GONE);
@@ -384,32 +417,5 @@ public class StatusBarMobileView extends FrameLayout implements DarkReceiver,
         if (needsLayout) {
             requestLayout();
         }
-    }
-
-    private void showOldStyle(MobileIconState state) {
-        mMobileType.setVisibility(View.GONE);
-        mMobileTypeSmall.setContentDescription(state.typeContentDescription);
-        mMobileTypeSmall.setImageResource(state.typeId);
-        mMobileTypeSmall.setVisibility(View.VISIBLE);
-        setMobileSignalWidth(false);
-    }
-
-    private void showNewStyle(MobileIconState state) {
-        mMobileType.setVisibility(View.VISIBLE);
-        mMobileType.setContentDescription(state.typeContentDescription);
-        mMobileType.setImageResource(state.typeId);
-        mMobileTypeSmall.setVisibility(View.GONE);
-        setMobileSignalWidth(true);
-    }
-
-    private void showRoaming() {
-        mMobileTypeSmall.setVisibility(View.GONE);
-        setMobileSignalWidth(true);
-    }
-
-    private void hideIndicators() {
-        mMobileType.setVisibility(View.GONE);
-        mMobileTypeSmall.setVisibility(View.GONE);
-        setMobileSignalWidth(true);
     }
 }
