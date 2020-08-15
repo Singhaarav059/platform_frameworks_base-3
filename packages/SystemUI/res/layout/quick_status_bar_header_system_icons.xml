@@ -94,6 +94,7 @@
              android:paddingEnd="1dp"
              android:singleLine="true"
              android:textAppearance="@style/TextAppearance.StatusBar.Clock"
+	     systemui:showDark="false"
              android:visibility="gone" />
         </LinearLayout>
 
@@ -128,6 +129,7 @@
            android:layout_width="wrap_content"
            android:layout_gravity="center_vertical|end"
            systemui:textAppearance="@style/TextAppearance.QS.Status"
+	   systemui:showDark="false"
            android:paddingStart="2dp"
            android:paddingEnd="2dp" />
 
