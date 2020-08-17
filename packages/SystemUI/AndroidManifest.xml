@@ -358,7 +358,7 @@
 
         <activity android:name=".screenrecord.ScreenRecordDialog"
             android:excludeFromRecents="true"
-            android:theme="@style/ScreenRecordStyle" />
+            android:theme="@style/ScreenRecord" />
         <service android:name=".screenrecord.RecordingService" />
 
         <receiver android:name=".SysuiRestartReceiver"
