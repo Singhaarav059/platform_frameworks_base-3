@@ -99,6 +99,7 @@
 
     <!-- Whether device has screen with higher aspect ratio -->
     <bool name="config_haveHigherAspectRatioScreen">false</bool>
+
     <!-- Aspect ratio of screen -->
     <item name="config_screenAspectRatio" format="float" type="dimen">2.1</item>
 
@@ -112,9 +113,6 @@
 
     <!-- -1 means use same as config_screenBrightnessDoze -->
     <integer name="config_screenBrightnessPulse">-1</integer>
-
-    <!-- Whether device supports internal audio recording -->
-    <bool name="config_hasInternalAudioRecordingSupport">true</bool>
 
     <!-- Smart charging -->
     <integer name="config_smartChargingBatteryLevel">80</integer>
