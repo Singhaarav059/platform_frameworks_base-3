@@ -39,7 +39,6 @@
         android:paddingLeft="@dimen/volume_dialog_panel_transparent_padding"
         android:orientation="vertical"
         android:clipToPadding="false">
-
         <LinearLayout
             android:id="@+id/main"
             android:minWidth="@dimen/volume_dialog_panel_width"
@@ -104,20 +103,27 @@
                      android:layout_marginTop="6dp"/>
             </FrameLayout>
 
-            <LinearLayout
-                android:id="@+id/settings_container"
+	  <LinearLayout
+                android:id="@+id/expandable_indicator_container"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/volume_dialog_tap_target_size">
-                <com.android.keyguard.AlphaOptimizedImageButton
-                    android:id="@+id/settings"
-                    android:src="@drawable/ic_tune_black_16dp"
+                android:layout_height="@dimen/volume_dialog_tap_target_size"
+                android:gravity="center"
+                android:layout_gravity="center">
+                <com.android.systemui.statusbar.phone.ExpandableIndicator
+                    android:id="@+id/expandable_indicator"
                     android:layout_width="@dimen/volume_dialog_tap_target_size"
                     android:layout_height="@dimen/volume_dialog_tap_target_size"
+                    android:clipToPadding="false"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="8dp"
                     android:layout_gravity="center"
-                    android:contentDescription="@string/accessibility_volume_settings"
                     android:background="@drawable/ripple_drawable_20dp"
-                    android:tint="?android:attr/textColorSecondary"
-                    android:soundEffectsEnabled="false" />
+                    android:contentDescription="@string/accessibility_quick_settings_expand"
+                    android:padding="14dp"
+                    android:rotation="90"
+                    android:tint="?android:attr/textColorSecondary" />
             </LinearLayout>
 
         </LinearLayout>
@@ -152,6 +158,7 @@
         android:layout="@layout/volume_tool_tip_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom | right"
         android:layout_marginRight="@dimen/volume_tool_tip_right_margin"
         android:layout_marginBottom="@dimen/volume_tool_tip_bottom_margin"/>
 
