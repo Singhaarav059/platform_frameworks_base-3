@@ -4885,6 +4885,15 @@ public final class Settings {
         private static final Validator OMNIJAWS_WEATHER_ICON_PACK_VALIDATOR =
                 ANY_STRING_VALIDATOR;
 
+	        /**
+         * Change location of Audio Panel
+         * @hide
+         */
+        public static final String AUDIO_PANEL_LOCATION = "audio_panel_location";
+        /** @hide */
+        public static final Validator AUDIO_PANEL_LOCATION_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
          /**
          * Show or hide clock
          * 0 - hide
@@ -4892,6 +4901,7 @@ public final class Settings {
          * @hide
          */
         public static final String STATUS_BAR_CLOCK = "status_bar_clock";
+
 
         /** @hide */
         public static final Validator STATUS_BAR_CLOCK_VALIDATOR =
@@ -7229,6 +7239,7 @@ public final class Settings {
             VALIDATORS.put(THEMING_SETTINGS_DASHBOARD_ICONS, THEMING_SETTINGS_DASHBOARD_ICONS_VALIDATOR);
             VALIDATORS.put(NAVIGATION_HANDLE_HEIGHT, NAVIGATION_HANDLE_HEIGHT_VALIDATOR);
             VALIDATORS.put(BRIGHTNESS_SLIDER_QS_UNEXPANDED, BRIGHTNESS_SLIDER_QS_UNEXPANDED_VALIDATOR);
+            VALIDATORS.put(AUDIO_PANEL_LOCATION, AUDIO_PANEL_LOCATION_VALIDATOR);
         }
 
         /**
