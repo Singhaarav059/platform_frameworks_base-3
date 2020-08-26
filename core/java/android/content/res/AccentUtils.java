@@ -24,6 +24,7 @@ public class AccentUtils {
                     "holo_blue_dark",
                     "omni_color5",
                     "omni_color4",
+		    "recents_dismiss_all_icon_color",
                     "dialer_theme_color",
                     "dialer_theme_color_dark",
                     "dialer_theme_color_20pct"));
