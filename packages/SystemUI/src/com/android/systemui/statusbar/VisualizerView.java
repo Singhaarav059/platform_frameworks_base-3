@@ -304,6 +304,11 @@ public class VisualizerView extends View
                 Settings.Secure.LOCKSCREEN_VISUALIZER_ENABLED, 0) == 1;
     }
 
+    private void setAmbientVisEnabled() {
+        mAmbientVisualizerEnabled = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.AMBIENT_VISUALIZER_ENABLED, 0, UserHandle.USER_CURRENT) == 1;
+    }
+
     private void setLavaLampEnabled() {
         mLavaLampEnabled = Settings.Secure.getIntForUser(mContext.getContentResolver(),
                 Settings.Secure.LOCKSCREEN_LAVALAMP_ENABLED , 0, UserHandle.USER_CURRENT) == 1;
@@ -564,6 +569,9 @@ public class VisualizerView extends View
             if (uri.equals(Settings.Secure.getUriFor(
                     Settings.Secure.LOCKSCREEN_VISUALIZER_ENABLED))) {
                 setVisualizerEnabled();
+            } else if (uri.equals(Settings.System.getUriFor(
+                    Settings.System.AMBIENT_VISUALIZER_ENABLED))) {
+                setAmbientVisEnabled();
             } else if (uri.equals(Settings.Secure.getUriFor(
                     Settings.Secure.LOCKSCREEN_LAVALAMP_ENABLED))) {
                 setLavaLampEnabled();
@@ -589,10 +597,8 @@ public class VisualizerView extends View
         }
 
         protected void update() {
-            mAmbientVisualizerEnabled = Settings.System.getIntForUser(
-                getContext().getContentResolver(), Settings.System.AMBIENT_VISUALIZER_ENABLED, 0,
-                UserHandle.USER_CURRENT) == 1;
             setVisualizerEnabled();
+            setAmbientVisEnabled();
             setLavaLampEnabled();
             setLavaLampSpeed();
             setAutoColorEnabled();
