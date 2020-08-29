@@ -5570,22 +5570,13 @@ public final class Settings {
                 ANY_INTEGER_VALIDATOR;
 
         /**
-         * Whether to use color from wallpaper for Ambient edge light
+         * What color mode to use for Ambient edge light
          * @hide
          */
-        public static final String PULSE_AMBIENT_LIGHT_AUTO_COLOR = "pulse_ambient_light_auto_color";
+        public static final String PULSE_AMBIENT_TYPE_COLOR = "pulse_ambient_type_color";
 
         /** @hide */
-        private static final Validator PULSE_AMBIENT_LIGHT_AUTO_COLOR_VALIDATOR = BOOLEAN_VALIDATOR;
-
-        /**
-         * Wether to use random color for Ambient edge light
-         * @hide
-         */
-        public static final String PULSE_AMBIENT_LIGHT_RANDOM = "pulse_ambient_random_color";
-
-        /** @hide */
-        private static final Validator PULSE_AMBIENT_LIGHT_RANDOM_VALIDATOR = BOOLEAN_VALIDATOR;
+        private static final Validator PULSE_AMBIENT_TYPE_COLOR_VALIDATOR = ANY_INTEGER_VALIDATOR;
 
         /**
          * Duration of Ambient edge light in seconds
@@ -6565,16 +6556,6 @@ public final class Settings {
          */
         public static final String RIGHT_LONG_BACK_SWIPE_APP_ACTIVITY_ACTION = "right_long_back_swipe_app_activity_action";
 
-         /**
-         * Whether to use accent color for pulse
-         * @hide
-         */
-
-        public static final String OMNI_AMBIENT_NOTIFICATION_LIGHT_ACCENT = "ambient_notification_light_accent";
-
-        private static final Validator OMNI_AMBIENT_NOTIFICATION_LIGHT_ACCENT_VALIDATOR =
-                BOOLEAN_VALIDATOR;
-
         /**
          * Gestures nav: long back swipe timeout
          * @hide
@@ -6753,9 +6734,7 @@ public final class Settings {
             USE_OLD_MOBILETYPE,
             PULSE_AMBIENT_LIGHT,
             PULSE_AMBIENT_LIGHT_COLOR,
-            PULSE_AMBIENT_LIGHT_AUTO_COLOR,
-            OMNI_AMBIENT_NOTIFICATION_LIGHT_ACCENT,
-            PULSE_AMBIENT_LIGHT_RANDOM,
+            PULSE_AMBIENT_TYPE_COLOR,
             PULSE_AMBIENT_LIGHT_DURATION,
             PULSE_AMBIENT_LIGHT_REPEAT_COUNT,
             PULSE_AMBIENT_LIGHT_LAYOUT,
@@ -6991,8 +6970,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(USE_OLD_MOBILETYPE);
             PRIVATE_SETTINGS.add(PULSE_AMBIENT_LIGHT);
             PRIVATE_SETTINGS.add(PULSE_AMBIENT_LIGHT_COLOR);
-            PRIVATE_SETTINGS.add(PULSE_AMBIENT_LIGHT_AUTO_COLOR);
-            PRIVATE_SETTINGS.add(PULSE_AMBIENT_LIGHT_RANDOM);
+            PRIVATE_SETTINGS.add(PULSE_AMBIENT_TYPE_COLOR);
             PRIVATE_SETTINGS.add(PULSE_AMBIENT_LIGHT_DURATION);
             PRIVATE_SETTINGS.add(PULSE_AMBIENT_LIGHT_REPEAT_COUNT);
             PRIVATE_SETTINGS.add(PULSE_AMBIENT_LIGHT_LAYOUT);
@@ -7208,9 +7186,7 @@ public final class Settings {
             VALIDATORS.put(USE_OLD_MOBILETYPE, USE_OLD_MOBILETYPE_VALIDATOR);
             VALIDATORS.put(PULSE_AMBIENT_LIGHT, PULSE_AMBIENT_LIGHT_VALIDATOR);
             VALIDATORS.put(PULSE_AMBIENT_LIGHT_COLOR, PULSE_AMBIENT_LIGHT_COLOR_VALIDATOR);
-            VALIDATORS.put(PULSE_AMBIENT_LIGHT_AUTO_COLOR, PULSE_AMBIENT_LIGHT_AUTO_COLOR_VALIDATOR);
-            VALIDATORS.put(OMNI_AMBIENT_NOTIFICATION_LIGHT_ACCENT, OMNI_AMBIENT_NOTIFICATION_LIGHT_ACCENT_VALIDATOR);
-            VALIDATORS.put(PULSE_AMBIENT_LIGHT_RANDOM, PULSE_AMBIENT_LIGHT_RANDOM_VALIDATOR);
+            VALIDATORS.put(PULSE_AMBIENT_TYPE_COLOR, PULSE_AMBIENT_TYPE_COLOR_VALIDATOR);
             VALIDATORS.put(PULSE_AMBIENT_LIGHT_DURATION, PULSE_AMBIENT_LIGHT_DURATION_VALIDATOR);
             VALIDATORS.put(PULSE_AMBIENT_LIGHT_REPEAT_COUNT, PULSE_AMBIENT_LIGHT_REPEAT_COUNT_VALIDATOR);
             VALIDATORS.put(PULSE_AMBIENT_LIGHT_LAYOUT, PULSE_AMBIENT_LIGHT_LAYOUT_VALIDATOR);
