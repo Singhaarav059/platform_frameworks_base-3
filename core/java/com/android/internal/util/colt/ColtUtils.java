@@ -50,6 +50,9 @@ import android.view.KeyEvent;
 import android.content.om.IOverlayManager;
 import android.content.om.OverlayInfo;
 
+import android.provider.Settings;
+import android.os.UserHandle;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
