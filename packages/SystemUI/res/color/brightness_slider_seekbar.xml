@@ -17,5 +17,5 @@
 
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 	<item android:color="@color/brightness_slider_progress"
-          android:alpha="0.12" />
+          android:alpha="0.32" />
 </selector>
