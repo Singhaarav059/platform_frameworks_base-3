@@ -5470,7 +5470,7 @@ public class NotificationStackScrollLayout extends ViewGroup implements ScrollAd
      * @param listener the listener to notify.
      */
     @ShadeViewRefactor(RefactorComponent.SHADE_VIEW)
-    public void addOnExpandedHeightChangedListener(BiConsumer<Float, Float> listener) {
+    public void addOnExpandedHeightListener(BiConsumer<Float, Float> listener) {
         mExpandedHeightListeners.add(listener);
     }
 
