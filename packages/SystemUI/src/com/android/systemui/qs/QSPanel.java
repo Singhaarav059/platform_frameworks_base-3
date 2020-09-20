@@ -25,15 +25,12 @@ import android.animation.Animator.AnimatorListener;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.content.ComponentName;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.database.ContentObserver;
 import android.graphics.Color;
 import android.metrics.LogMaker;
 import android.os.Bundle;
-import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
 import android.os.UserHandle;
@@ -118,7 +115,6 @@ public class QSPanel extends LinearLayout implements Tunable, Callback, Brightne
 
     private BrightnessMirrorController mBrightnessMirrorController;
     private View mDivider;
-    private boolean mQSBrightnessSlider;
 
     // omni
     private boolean mBrightnessBottom;
@@ -399,7 +395,7 @@ public class QSPanel extends LinearLayout implements Tunable, Callback, Brightne
     }
 
     public void updateBrightnessMirror() {
-        if (mBrightnessMirrorController != null && !mQSBrightnessSlider) {
+        if (mBrightnessMirrorController != null) {
             ToggleSliderView brightnessSlider = findViewById(R.id.brightness_slider);
             ToggleSliderView mirrorSlider = mBrightnessMirrorController.getMirror()
                     .findViewById(R.id.brightness_slider);
@@ -521,51 +517,6 @@ public class QSPanel extends LinearLayout implements Tunable, Callback, Brightne
 
     protected boolean shouldShowDetail() {
         return mExpanded;
-    }
-
-    private final class SettingObserver extends ContentObserver {
-        public SettingObserver(Handler handler) {
-            super(handler);
-        }
-
-        void observe() {
-            ContentResolver resolver = mContext.getContentResolver();
-            resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.QS_BOTTOM_BRIGHTNESS),
-                    false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.BRIGHTNESS_SLIDER_QS_UNEXPANDED),
-                    false, this, UserHandle.USER_ALL);
-            update();
-        }
-
-        @Override
-        public void onChange(boolean selfChange, Uri uri) {
-            super.onChange(selfChange, uri);
-            update();
-        }
-
-        public void update() {
-            boolean mBottomBrightnessSlider = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.QS_BOTTOM_BRIGHTNESS, 0) != 0;
-            mQSBrightnessSlider = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.BRIGHTNESS_SLIDER_QS_UNEXPANDED, 0) != 0;
-
-            if (!mBottomBrightnessSlider) {
-                removeView(mBrightnessView);
-                addView(mBrightnessView, 0);
-                mBrightnessBottom = false;
-            } else if (mBottomBrightnessSlider) {
-                removeView(mBrightnessView);
-                addView(mBrightnessView, getBrightnessViewPositionBottom());
-                mBrightnessBottom = true;
-            }
-
-            if (mQSBrightnessSlider) {
-                removeView(mBrightnessView);
-            }
-
-        }
     }
 
     protected TileRecord addTile(final QSTile tile, boolean collapsedView) {
