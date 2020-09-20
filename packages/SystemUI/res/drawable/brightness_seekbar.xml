@@ -20,8 +20,8 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@android:id/background">
         <shape android:shape="rectangle">
-	    <corners android:radius="?android:attr/dialogCornerRadius"/>
-            <size android:height="30dp" />
+            <corners android:radius="8dp"/>
+            <size android:height="42dp" />
             <solid android:color="@color/brightness_slider_background" />
         </shape>
     </item>
@@ -33,7 +33,7 @@
                 <item>
                     <shape android:shape="rectangle">
                         <corners android:radius="?android:attr/dialogCornerRadius"/>
-			<size android:height="@dimen/qs_brightness_slider_height" />
+                        <size android:height="42dp" />
                         <solid android:color="@color/brightness_slider_seekbar" />
                         <stroke android:width="4dp"
                                 android:color="@color/brightness_slider_background" />
