@@ -90,13 +90,13 @@
 
     <color name="ringer_icon_mute">@android:color/white</color>
 
+    <color name="qs_tile_background_color_disabled">#1f1f1f</color>
+
     <color name="keyguard_affordance_background_preview">#171717</color>
     <color name="keyguard_affordance_background_preview_background">#242426</color>
 
-    <color name="qs_tile_background_color_disabled">#0fffffff</color>
-
-    <color name="brightness_slider_progress">?android:attr/colorAccent</color>
-    <color name="brightness_slider_background">@*android:color/primary_dark_device_default_dark</color>
-    <color name="brightness_slider_icons">?android:attr/colorAccent</color>
+    <color name="brightness_slider_progress">#9B9B9D</color>
+    <color name="brightness_slider_background">@android:color/black</color>
+    <color name="brightness_slider_icons">@android:color/white</color>
 
 </resources>

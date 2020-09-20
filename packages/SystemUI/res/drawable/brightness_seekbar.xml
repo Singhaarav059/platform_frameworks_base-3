@@ -2,7 +2,6 @@
 <!--
 /*
 ** Copyright 2019 ExtendedUI
-** Copyright 2020 ProjectFluid
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -29,14 +28,13 @@
     <clip android:clipOrientation="horizontal" android:gravity="left">
             <selector>
                 <item android:state_enabled="false"
-                      android:drawable="@android:color/transparent" />
+                    android:drawable="@android:color/transparent" />
                 <item>
-                    <shape android:shape="rectangle">
-                        <corners android:radius="?android:attr/dialogCornerRadius"/>
+                    <shape android:shape="rectangle"
+                        android:tint="@color/brightness_slider_progress">
+                        <corners android:radius="8dp"/>
                         <size android:height="42dp" />
-                        <solid android:color="@color/brightness_slider_seekbar" />
-                        <stroke android:width="4dp"
-                                android:color="@color/brightness_slider_background" />
+                        <solid android:color="@color/brightness_slider_progress" />
                     </shape>
                 </item>
             </selector>
