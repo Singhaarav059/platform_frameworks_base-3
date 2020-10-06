@@ -40,11 +40,6 @@
     <dimen name="keyguard_charging_indication_height">60dp</dimen>
     <dimen name="keyguard_charging_indication_width">32dp</dimen>
 
-    <!-- Network traffic monitor -->
-    <dimen name="net_traffic_multi_text_size">8dp</dimen>
-    <dimen name="net_traffic_txt_img_padding">2dp</dimen>
-    <dimen name="net_traffic_single_text_size_x">14dp</dimen>
-
     <!-- OPA home dimens -->
     <dimen name="halo_inner_radius">10.0dip</dimen>
     <dimen name="halo_thickness">1.0dip</dimen>
@@ -85,5 +80,4 @@
 
     <!-- App lock -->
     <dimen name="applock_icon_dimension">48dp</dimen>
-
 </resources>
